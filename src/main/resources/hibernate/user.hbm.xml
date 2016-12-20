@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 4.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-15 16:30:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.hfut.buaa.data.manager.model.User">
+        <id name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="userId" type="long"/>
+        <property name="userName" type="java.lang.String"/>
+        <property name="password" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>
