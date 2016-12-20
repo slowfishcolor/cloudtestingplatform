@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
+ * 处理首页相关
  * Created by Prophet on 2016/12/15.
  */
 @Controller
@@ -35,5 +36,15 @@ public class HomeController {
         model.addAttribute("serverTime", formattedDate );
 
         return "index-login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+        return "register";
     }
 }
