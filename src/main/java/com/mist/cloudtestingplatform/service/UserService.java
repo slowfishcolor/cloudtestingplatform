@@ -1,15 +1,13 @@
-package com.mist.cloudtestingplatform.dao;
+package com.mist.cloudtestingplatform.service;
 
 import com.mist.cloudtestingplatform.model.User;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
- * Created by Prophet on 2016/12/20.
+ * Created by Prophet on 2016/12/24.
  */
-@Repository
-public interface UserDao {
+public interface UserService {
 
     int countUser();
 
@@ -18,17 +16,16 @@ public interface UserDao {
     User getUserById(int id);
 
     /**
-     * 根据用户名和密码访问用户数据
+     * 通过用户名和密码拿到用户
      * @param username
      * @param password
-     * @return 如果用户名密码匹配，返回该User，若无，User为null
+     * @return  如果用户名密码匹配，返回该User，若无，User为null
      */
     User getUserByPassword(String username, String password);
 
-    void saveUser(User user);
+    void addUser(User user);
 
     void deleteUser(User user);
 
     List<User> getAllUser();
-
 }

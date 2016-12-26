@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Created by Prophet on 2016/12/20.
  */
-@Transactional
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -56,12 +55,32 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUserByPassword(String username, String password) {
+
+        Session session = sessionFactory.getCurrentSession();
+
+        String hql = "from User where username = :username and password = :password";
+
+        Query query = session.createQuery(hql);
+        query.setParameter("username", username).setParameter("password", password);
+
+        List result = query.list();
+
+        if(result.size() != 0) {
+            return (User)result.get(0);
+        }
+
+        return null;
+    }
+
+    @Override
     public void saveUser(User user) {
 
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
+        // session.beginTransaction();
         session.save(user);
-        session.getTransaction().commit();
+        System.out.println(user.getId());
+        // session.getTransaction().commit();
 
 
     }
