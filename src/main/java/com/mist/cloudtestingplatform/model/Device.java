@@ -3,5 +3,5 @@ package com.mist.cloudtestingplatform.model;
 /**
  * Created by Prophet on 2016/12/20.
  */
-public class Device {
+public class Device extends BaseModel {
 }

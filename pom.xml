@@ -160,7 +160,17 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- utils -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.5</version>
+    </dependency>
+
   </dependencies>
+
+
 
   <build>
     <finalName>cloud-testing-platform</finalName>

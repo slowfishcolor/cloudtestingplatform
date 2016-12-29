@@ -35,10 +35,11 @@
 
 <div class="container">
 
-    <form class="form-signin" role="form">
+    <form class="form-signin" role="form" th:action="@{/login}" method="post">
+        <h3 th:if="${error != null}" th:text="${error}" class="text-danger">当前错误</h3>
         <h2 class="form-signin-heading">请登录</h2>
-        <input type="text" class="form-control" placeholder="Username" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="text" class="form-control" placeholder="Username" required autofocus name="username">
+        <input type="password" class="form-control" placeholder="Password" required name="password">
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> 记住我

@@ -46,7 +46,7 @@ public class UserServiceImplTestTest {
         if (user == null) {
             System.out.println("null");
         } else {
-            System.out.println(user.getUsername());
+            System.out.println(user.toString());
         }
     }
 

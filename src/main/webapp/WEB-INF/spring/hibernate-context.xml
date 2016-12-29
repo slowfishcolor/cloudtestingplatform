@@ -8,7 +8,7 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/cloudtesting"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/cloudtesting?useSSL=false"
           p:user="root"
           p:password="629629"
           p:maxPoolSize="40"

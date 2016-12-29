@@ -30,16 +30,20 @@
             <a class="navbar-brand" href="#">云检测平台</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
+            <form th:if="${user == null}" class="navbar-form navbar-right" role="form" th:action="@{/login}" method="post">
                 <div class="form-group">
-                    <input type="text" placeholder="Username" class="form-control">
+                    <input type="text" placeholder="Username" class="form-control" required name="username">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input type="password" placeholder="Password" class="form-control" required name="password">
                 </div>
-                <button type="submit" class="btn btn-success">登陆</button>
+                <button type="submit" class="btn btn-success" >登陆</button>
                 <button type="button" class="btn btn-info" onclick="location.href='./register'">注册</button>
             </form>
+            <div th:if="${user != null}" class="navbar-right">
+                <a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>
+                <a class="navbar-brand" th:href="@{/logout/main}">退出</a>
+            </div>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
