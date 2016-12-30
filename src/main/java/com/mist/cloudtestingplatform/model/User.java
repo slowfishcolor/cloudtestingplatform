@@ -7,6 +7,10 @@ package com.mist.cloudtestingplatform.model;
  * Created by Prophet on 2016/12/20.
  */
 public class User extends BaseModel{
+
+    public static String ADMIN = "admin";
+    public static String USER = "user";
+
     private int id;
     private String username;
     private String password;

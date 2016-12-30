@@ -23,7 +23,12 @@ public interface UserService {
      */
     User getUserByPassword(String username, String password);
 
-    void addUser(User user);
+    /**
+     * 添加一个User，如果已经存在相同用户名的user，就返回false，否则返回true
+     * @param user
+     * @return
+     */
+    boolean addUser(User user);
 
     void deleteUser(User user);
 

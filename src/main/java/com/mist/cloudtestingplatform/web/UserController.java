@@ -68,10 +68,6 @@ public class UserController
         }
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register() {
-        return "register";
-    }
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     public String user(@PathVariable("userId") Integer userId, Model model, HttpSession session) {
@@ -102,5 +98,29 @@ public class UserController
         if(page.equals("main")) path = "/";
 
         return "redirect:" + path;
+    }
+
+    /**
+     * 注册页面
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(Model model) {
+        // 通过model向view传送新建的未初始化的user
+        model.addAttribute("user", new User());
+        return "register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(User user, Model model) {
+
+        // 注册失败
+        if (userService.addUser(user) == false) {
+            model.addAttribute("error", "用户名重复，请重新注册！");
+            return "register";
+        }
+        // 注册成功，返回登陆界面
+        return "login";
     }
 }

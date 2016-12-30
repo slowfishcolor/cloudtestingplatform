@@ -51,8 +51,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void addUser(User user) {
+    public boolean addUser(User user) {
+
+        // 注册的只能是用户
+        user.setRole(User.USER);
+
+        if (userDao.getUserByUsername(user.getUsername()) != null) {
+            return false;
+        }
         userDao.saveUser(user);
+        return true;
     }
 
     @Override

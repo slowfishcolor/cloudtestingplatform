@@ -35,16 +35,19 @@
 
 <div class="container">
 
-    <form class="form-register" role="form">
+    <form class="form-register" role="form" th:action="@{/register}" th:object="${user}" method="post" th:method="post">
+        <h3 th:if="${error != null}" th:text="${error}" class="text-danger">当前错误</h3>
         <h2 class="form-register-heading">请注册</h2>
         用户名：<br>
-        <input type="text" class="form-control" placeholder="Username" required autofocus>
+        <input type="text" class="form-control" placeholder="Username" required autofocus th:field="*{username}">
+        邮箱：<br>
+        <input type="email" class="form-control" placeholder="Email" required th:field="*{email}" >
         密码:<br>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="password" class="form-control" placeholder="Password" required th:field="*{password}" id="password">
         确认密码:<br>
-        <input type="password" class="form-control" placeholder="Repeat Password" required>
+        <input type="password" class="form-control" placeholder="Repeat Password" required id="repeat-password">
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="return checkpasswd()">注册</button>
     </form>
 
 </div> <!-- /container -->
@@ -55,6 +58,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script th:src="@{/resources/dist/js/bootstrap.min.js}" ></script>
+<script th:src="@{/resources/js/checkpw.js}"></script>
 
 </body>
 </html>
