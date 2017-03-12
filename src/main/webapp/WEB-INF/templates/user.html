@@ -14,6 +14,7 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/resources/css/index.css}" rel="stylesheet">
+    <link th:href="@{/resources/css/user.css}" rel="stylesheet">
 
 </head>
 <body>
@@ -30,21 +31,49 @@
             <a class="navbar-brand" th:href="@{/}">云检测平台</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div th:if="${user != null}" class="navbar-right">
+                <a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>
+                <a class="navbar-brand" th:href="@{/logout/main}">退出</a>
+            </div>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active">
+                    <a href="">用户中心</a>
+                </li>
+                <li>
+                    <a href="">测试设备</a>
+                </li>
+                <li class="second-nav">
+                    <a href="">设备列表</a>
+                </li>
+                <li class="second-nav">
+                    <a href="">添加设备</a>
+                </li>
+                <li>
+                    <a href="">测试任务</a>
+                </li>
+                <li class="second-nav">
+                    <a href="">任务列表</a>
+                    <a href="">新的任务</a>
+                </li>
 
-    <div class="starter-template">
-        <h1>Hello World! </h1>
-        <p class="lead" th:text="'Hello ' + ${user.getUsername()}">Hello user! </p>
+            </ul>
+        </div>
     </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="">
+            <h1 class="page-header">用户中心</h1>
+            <p class="lead" th:text="'Hello ' + ${user.getUsername()}">Hello user! </p>
+        </div>
+    </div>
+
+
 
 </div><!-- /.container -->
 
