@@ -15,14 +15,7 @@ import java.util.List;
  * Created by Prophet on 2016/12/20.
  */
 @Repository
-public class UserDaoImpl implements UserDao {
-
-    private SessionFactory sessionFactory;
-
-    @Autowired
-    public void UserDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+public class UserDaoImpl extends DaoBase implements UserDao {
 
     @Override
     public int countUser() {
