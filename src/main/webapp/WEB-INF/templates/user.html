@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
     <title>用户</title>
-
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/resources/dist/css/bootstrap.css}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
-    <link th:href="@{/resources/css/index.css}" rel="stylesheet">
-    <link th:href="@{/resources/css/user.css}" rel="stylesheet">
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
 
 </head>
 <body>
@@ -30,6 +24,7 @@
         <div class="">
             <h1 class="page-header">用户中心</h1>
             <p class="lead" th:text="'Hello ' + ${user.getUsername()}">Hello user! </p>
+            <i class="fa fa-tachometer" aria-hidden="true"></i>
         </div>
     </div>
 
@@ -38,11 +33,7 @@
 </div><!-- /.container -->
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script th:src="@{/resources/dist/js/bootstrap.min.js}" ></script>
+
 
 </body>
 </html>
