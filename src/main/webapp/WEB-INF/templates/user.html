@@ -19,53 +19,13 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" th:href="@{/}">云检测平台</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <div th:if="${user != null}" class="navbar-right">
-                <a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>
-                <a class="navbar-brand" th:href="@{/logout/main}">退出</a>
-            </div>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<div th:replace="~{component-header :: #header}"></div>
+
 
 <div class="container-fluid">
-    <div class="col-sm-3 col-md-2 sidebar">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-                <li class="active">
-                    <a href="">用户中心</a>
-                </li>
-                <li>
-                    <a href="">测试设备</a>
-                </li>
-                <li class="second-nav">
-                    <a href="">设备列表</a>
-                </li>
-                <li class="second-nav">
-                    <a href="">添加设备</a>
-                </li>
-                <li>
-                    <a href="">测试任务</a>
-                </li>
-                <li class="second-nav">
-                    <a href="">任务列表</a>
-                    <a href="">新的任务</a>
-                </li>
 
-            </ul>
-        </div>
-    </div>
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div class="">
             <h1 class="page-header">用户中心</h1>

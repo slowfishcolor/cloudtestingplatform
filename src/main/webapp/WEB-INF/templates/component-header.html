@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<nav id="header" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">云检测平台</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <div th:if="${user != null}" class="navbar-right">
+                <a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>
+                <a class="navbar-brand" th:href="@{/logout/main}">退出</a>
+            </div>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+</body>
+</html>
