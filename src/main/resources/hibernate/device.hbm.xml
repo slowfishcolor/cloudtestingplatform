@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 4.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-15 16:30:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.mist.cloudtestingplatform.model.Device">
+        <id name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="deviceId" type="java.lang.String"/>
+        <property name="modelId" type="java.lang.String"/>
+        <property name="status" type="java.lang.Integer"/>
+        <property name="registerTime" type="java.lang.Long"/>
+        <property name="updateTime" type="java.lang.Long"/>
+        <property name="config" type="java.lang.String"/>
+        <property name="remark" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

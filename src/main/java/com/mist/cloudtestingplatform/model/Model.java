@@ -1,39 +1,46 @@
 package com.mist.cloudtestingplatform.model;
 
 /**
- * Created by Prophet on 2016/12/20.
+ * Created by Prophet on 2017/11/4.
  */
-public class Device extends BaseModel {
+public class Model extends BaseModel {
 
     private int id;
 
-    private String deviceId;
-
     private String modelId;
+
+    private String name;
+
+    private int type;
 
     private int status;
 
     private long registerTime;
 
-    private long updateTime;
-
     private String config;
 
     private String remark;
 
-    public String getStatusStr() {
+    private String getTypeStr() {
+
+        switch (type) {
+            case 0:
+                return "数字设备";
+            case 1:
+                return "模拟设备";
+            default:
+                return "未知设备";
+        }
+
+    }
+
+    private String getStatusStr() {
 
         switch (status) {
             case 0:
-                return "正常在线";
+                return "正常";
             case 1:
-                return "正常离线";
-            case 2:
-                return "使用中";
-            case 3:
-                return "维护中";
-            case 4:
-                return "已删除";
+                return "删除";
             default:
                 return "未知";
         }
@@ -48,20 +55,28 @@ public class Device extends BaseModel {
         this.id = id;
     }
 
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
-    }
-
     public String getModelId() {
         return modelId;
     }
 
     public void setModelId(String modelId) {
         this.modelId = modelId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public int getStatus() {
@@ -78,14 +93,6 @@ public class Device extends BaseModel {
 
     public void setRegisterTime(long registerTime) {
         this.registerTime = registerTime;
-    }
-
-    public long getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(long updateTime) {
-        this.updateTime = updateTime;
     }
 
     public String getConfig() {
