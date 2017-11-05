@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>控制面板</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+    <link th:href="@{/resources/css/device-control-panel.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">控制面板</h3>
+
+        <h3 style="margin-bottom: 24px;">
+            <span th:text="${device.model.getName()}">Device Name</span>
+            <a style="font-size: 18px; margin-left: 18px;"> Setting</a>
+        </h3>
+
+        <div>
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="left-panel panel panel-default ">
+
+                        <div class="panel-heading">设备控制</div>
+
+                        <div class="panel-body">
+
+                        <div><span class="left ">Device ID: </span><span th:text="${device.getDeviceId()}">id</span></div>
+
+                        <div><span class="left">Channel: </span><a>AI 0</a></div>
+
+                        <div><span class="left">Method: </span><a>Differential</a></div>
+
+                        <div><span class="left">Min Voltage: </span><input></div>
+
+                        <div><span class="left">Max Voltage: </span><input></div>
+
+                        <div><span class="left">Samples: </span><input></div>
+
+                        <div><span class="left">Rate (Hz):</span><input></div>
+
+                        <div class="line" style="margin-bottom: 24px;"></div>
+
+                        <div style="text-align: center;">
+                            <button class="btn btn-success">开始</button>
+                            <button class="btn btn-danger">停止</button>
+                        </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <div class="list-group">
+
+                        <div class="list-group-item active">采样列表</div>
+                        <div class="list-group-item">sample1</div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-7">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">波形图</div>
+                        <div class="panel-body"></div>
+
+
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+
+
+
+</body>
+</html>

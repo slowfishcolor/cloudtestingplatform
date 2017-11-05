@@ -1,0 +1,25 @@
+.left-panel > div > div {
+    height: 48px;
+    line-height: 48px;
+}
+.left-panel input {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 100px;
+}
+.left-panel .left {
+    padding-right: 10px;
+    text-align: right;
+    width: 100px;
+    display: inline-block;
+    font-weight: 600;
+}
+.left-panel button {
+    min-width: 72px;
+    margin: 0 auto;
+}
