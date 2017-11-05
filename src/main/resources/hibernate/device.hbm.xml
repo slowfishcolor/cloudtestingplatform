@@ -8,11 +8,14 @@
             <generator class="identity"/>
         </id>
         <property name="deviceId" type="java.lang.String"/>
-        <property name="modelId" type="java.lang.String"/>
+        <property name="modelId" type="java.lang.Integer"/>
         <property name="status" type="java.lang.Integer"/>
         <property name="registerTime" type="java.lang.Long"/>
         <property name="updateTime" type="java.lang.Long"/>
         <property name="config" type="java.lang.String"/>
         <property name="remark" type="java.lang.String"/>
+        <property name="ownerId" type="java.lang.Integer"/>
+        <property name="visibility" type="java.lang.Integer"/>
+
     </class>
 </hibernate-mapping>

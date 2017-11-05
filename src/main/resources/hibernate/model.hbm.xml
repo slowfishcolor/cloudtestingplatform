@@ -7,7 +7,6 @@
         <id name="id" type="int">
             <generator class="identity"/>
         </id>
-        <property name="modelId" type="java.lang.String"/>
         <property name="name" type="java.lang.String"/>
         <property name="type" type="java.lang.Integer"/>
         <property name="status" type="java.lang.Integer"/>

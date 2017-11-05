@@ -9,7 +9,7 @@ public class Device extends BaseModel {
 
     private String deviceId;
 
-    private String modelId;
+    private int modelId;
 
     private int status;
 
@@ -20,6 +20,12 @@ public class Device extends BaseModel {
     private String config;
 
     private String remark;
+
+    private Model model;
+
+    private int ownerId;
+
+    private int visibility;
 
     public String getStatusStr() {
 
@@ -40,6 +46,19 @@ public class Device extends BaseModel {
 
     }
 
+    public String getVisibilityStr() {
+        switch (visibility) {
+            case 0:
+                return "私有";
+            case 1:
+                return "组可见";
+            case 2:
+                return "公有";
+            default:
+                return "未知";
+        }
+    }
+
     public int getId() {
         return id;
     }
@@ -56,11 +75,11 @@ public class Device extends BaseModel {
         this.deviceId = deviceId;
     }
 
-    public String getModelId() {
+    public int getModelId() {
         return modelId;
     }
 
-    public void setModelId(String modelId) {
+    public void setModelId(int modelId) {
         this.modelId = modelId;
     }
 
@@ -102,5 +121,29 @@ public class Device extends BaseModel {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(int visibility) {
+        this.visibility = visibility;
     }
 }

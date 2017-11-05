@@ -7,8 +7,6 @@ public class Model extends BaseModel {
 
     private int id;
 
-    private String modelId;
-
     private String name;
 
     private int type;
@@ -53,14 +51,6 @@ public class Model extends BaseModel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getModelId() {
-        return modelId;
-    }
-
-    public void setModelId(String modelId) {
-        this.modelId = modelId;
     }
 
     public String getName() {
