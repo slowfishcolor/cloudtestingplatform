@@ -4,6 +4,7 @@
 $(function () {
     connectToBroker();
     initEcharts();
+    addBtnClickEvent();
 });
 
 // STOMP connect
@@ -32,7 +33,7 @@ function connectToBroker() {
             addData(data);
         })
         // default display temp data
-        client.send(sendDestination, {foo: 1}, "start temp");
+        client.send(sendDestination, {foo: 1}, "hello");
     }
     // connect to broker
     client.connect(login, passcode, onconnect);
@@ -118,4 +119,21 @@ function newData(dataValue) {
             dataValue
         ]
     }
+}
+
+function startAcquire() {
+    client.send(sendDestination, {foo: 1}, "start");
+    $("#startBtn").addClass("disabled");
+    $("#stopBtn").removeClass("disabled");
+}
+
+function stopAcquire() {
+    client.send(sendDestination, {foo: 1}, "stop");
+    $("#stopBtn").addClass("disabled");
+    $("#startBtn").removeClass("disabled");
+}
+
+function addBtnClickEvent() {
+    $("#startBtn").click(startAcquire);
+    $("#stopBtn").click(stopAcquire);
 }

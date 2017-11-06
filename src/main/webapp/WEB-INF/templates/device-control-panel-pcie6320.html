@@ -10,7 +10,7 @@
     <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
     <script th:src="@{/resources/js/emptyjs.js}" ></script>
 
-    <script th:src="@{/resources/dist/echarts/echarts.js}" ></script>
+    <script th:src="@{/resources/dist/echarts/echarts.min.js}" ></script>
     <script th:src="@{/resources/js/stomp.js}" ></script>
     <script th:src="@{/resources/js/device-control-panel-pcie6320.js}" ></script>
 
@@ -67,8 +67,8 @@
                         <div class="line" style="margin-bottom: 24px;"></div>
 
                         <div style="text-align: center;">
-                            <button class="btn btn-success">开始</button>
-                            <button class="btn btn-danger">停止</button>
+                            <button id="startBtn" class="btn btn-success">开始</button>
+                            <button id="stopBtn" class="btn btn-danger">停止</button>
                         </div>
 
                         </div>
