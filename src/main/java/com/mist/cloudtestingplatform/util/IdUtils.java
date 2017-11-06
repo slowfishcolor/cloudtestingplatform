@@ -8,7 +8,7 @@ import java.util.UUID;
 public class IdUtils {
 
     public static String generateDeviceId() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
+        return UUID.randomUUID().toString().replaceAll("-", "").substring(16);
     }
 
     public static void main(String[] args) {
@@ -16,5 +16,6 @@ public class IdUtils {
             System.out.println(generateDeviceId());
         }
         System.out.println(generateDeviceId());
+        System.out.println(System.currentTimeMillis());
     }
 }

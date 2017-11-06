@@ -10,10 +10,18 @@
     <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
     <script th:src="@{/resources/js/emptyjs.js}" ></script>
 
+    <script th:src="@{/resources/dist/echarts/echarts.js}" ></script>
+    <script th:src="@{/resources/js/stomp.js}" ></script>
+    <script th:src="@{/resources/js/device-control-panel-pcie6320.js}" ></script>
+
     <link th:href="@{/resources/css/device-control-panel.css}" rel="stylesheet">
 
 </head>
 <body>
+<script th:inline="javascript">
+    var deviceId = [[${device.getDeviceId()}]];
+
+</script>
 
 <div th:replace="~{component-header :: #header}"></div>
 
@@ -89,11 +97,12 @@
                     <div class="panel panel-default">
 
                         <div class="panel-heading">波形图</div>
-                        <div class="panel-body"></div>
+                        <div class="panel-body">
+                            <div id="chart" style="height: 455px;">
 
 
-
-
+                            </div>
+                        </div>
 
                     </div>
 
