@@ -1,5 +1,7 @@
 package com.mist.cloudtestingplatform.model;
 
+import com.mist.cloudtestingplatform.util.TimeUtils;
+
 /**
  * Created by Prophet on 2016/12/20.
  */
@@ -26,6 +28,20 @@ public class Device extends BaseModel {
     private int ownerId;
 
     private int visibility;
+
+    private User owner;
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public String getRegisterTimeStr() {
+        return TimeUtils.getDateTimeFromTimestamp(registerTime);
+    }
 
     public String getStatusStr() {
 

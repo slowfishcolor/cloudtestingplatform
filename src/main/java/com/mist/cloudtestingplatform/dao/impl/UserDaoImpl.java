@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -86,5 +87,13 @@ public class UserDaoImpl extends DaoBase implements UserDao {
     @Override
     public List<User> getAllUser() {
         return null;
+    }
+
+    @Override
+    public List<User> getUserIn(Collection<Integer> idList) {
+        String hql = "from User where id in (:idList)";
+        return sessionFactory.getCurrentSession()
+                .createQuery(hql).setParameterList("idList", idList)
+                .list();
     }
 }

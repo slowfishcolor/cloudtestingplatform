@@ -3,6 +3,7 @@ package com.mist.cloudtestingplatform.dao;
 import com.mist.cloudtestingplatform.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,5 +31,7 @@ public interface UserDao {
     void deleteUser(User user);
 
     List<User> getAllUser();
+
+    List<User> getUserIn(Collection<Integer> idList);
 
 }

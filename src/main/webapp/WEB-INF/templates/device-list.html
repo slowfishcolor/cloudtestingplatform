@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>设备列表</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">设备列表</h3>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    设备列表
+                </h3>
+            </div>
+            <div class="panel-body">
+
+                <button class="btn btn-success">添加设备</button>
+                <button class="btn btn-danger">删除设备</button>
+
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>设备ID</th>
+                    <th>型号</th>
+                    <th>状态</th>
+                    <th>添加时间</th>
+                    <th>所有者</th>
+                    <th>可见性</th>
+                    <th>备注</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="device : ${devices}">
+                    <td th:text="${device.getDeviceId()}">deviceId</td>
+                    <td th:text="${device.getModel().getName()}">modelName</td>
+                    <td th:text="${device.getStatusStr()}">status</td>
+                    <td th:text="${device.getRegisterTimeStr()}">registerTime</td>
+                    <td th:text="${device.getOwner().getUsername()}">owner</td>
+                    <td th:text="${device.getVisibilityStr()}">visibility</td>
+                    <td th:text="${device.getRemark()}">remark</td>
+                    <td><a class="btn btn-primary" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}">控制面板</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+
+
+
+</body>
+</html>

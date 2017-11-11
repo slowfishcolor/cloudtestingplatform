@@ -4,6 +4,7 @@ import com.mist.cloudtestingplatform.dao.ModelDao;
 import com.mist.cloudtestingplatform.model.Model;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,5 +26,13 @@ public class ModelDaoImpl extends DaoBase implements ModelDao {
             return rs.get(0);
         }
         return null;
+    }
+
+    @Override
+    public List<Model> listModelIn(Collection<Integer> idList) {
+        String hql = "from Model where id in (:idList)";
+        return sessionFactory.getCurrentSession()
+                .createQuery(hql).setParameterList("idList", idList)
+                .list();
     }
 }

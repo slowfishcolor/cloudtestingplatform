@@ -20,7 +20,9 @@ public class DeviceDaoImpl extends DaoBase implements DeviceDao {
 
     @Override
     public List<Device> listVisibleDevice(Integer userId) {
-        return null;
+        String hql = "from Device where ownerId = :uId or visibility > 1";
+        return sessionFactory.getCurrentSession()
+                .createQuery(hql).setInteger("uId", userId).list();
     }
 
     @Override
