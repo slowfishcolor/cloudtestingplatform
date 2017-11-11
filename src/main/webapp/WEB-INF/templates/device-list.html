@@ -61,6 +61,7 @@
                 </tr>
                 </tbody>
             </table>
+            <div class="panel-footer" th:text="'共 ' + ${devices.size()} + ' 台'">设备数目</div>
         </div>
 
 
@@ -71,8 +72,10 @@
 
 </div><!-- /.container -->
 
-
-
+<!-- nav selector -->
+<script>
+    $("#device-list").addClass("active");
+</script>
 
 </body>
 </html>
