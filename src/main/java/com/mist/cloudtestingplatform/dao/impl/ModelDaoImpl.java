@@ -30,6 +30,9 @@ public class ModelDaoImpl extends DaoBase implements ModelDao {
 
     @Override
     public List<Model> listModelIn(Collection<Integer> idList) {
+        if (idList == null || idList.size() == 0) {
+            return null;
+        }
         String hql = "from Model where id in (:idList)";
         return sessionFactory.getCurrentSession()
                 .createQuery(hql).setParameterList("idList", idList)

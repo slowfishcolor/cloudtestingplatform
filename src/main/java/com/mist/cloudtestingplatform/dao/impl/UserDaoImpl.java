@@ -91,6 +91,9 @@ public class UserDaoImpl extends DaoBase implements UserDao {
 
     @Override
     public List<User> getUserIn(Collection<Integer> idList) {
+        if (idList == null || idList.size() == 0) {
+            return null;
+        }
         String hql = "from User where id in (:idList)";
         return sessionFactory.getCurrentSession()
                 .createQuery(hql).setParameterList("idList", idList)

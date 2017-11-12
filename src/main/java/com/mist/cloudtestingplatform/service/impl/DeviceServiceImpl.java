@@ -57,7 +57,7 @@ public class DeviceServiceImpl implements DeviceService {
     public List<Device> listVisibleDeviceByUser(Integer userId) {
         List<Device> result;
         result = deviceDao.listVisibleDevice(userId);
-        if (result == null) {
+        if (result == null || result.size() == 0) {
             result = new ArrayList<>();
         } else {
 
