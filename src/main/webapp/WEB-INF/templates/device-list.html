@@ -57,7 +57,11 @@
                     <td th:text="${device.getOwner().getUsername()}">owner</td>
                     <td th:text="${device.getVisibilityStr()}">visibility</td>
                     <td th:text="${device.getRemark()}">remark</td>
-                    <td><a class="btn btn-primary" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}">控制面板</a></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}">控制面板</a>
+                        <a class="btn btn-default btn-sm" href="" th:href="'device-info/' + ${device.getDeviceId()}">详细信息</a>
+                        <a class="btn btn-default btn-sm" href="" th:href="'device-history/' + ${device.getDeviceId()}">历史数据</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

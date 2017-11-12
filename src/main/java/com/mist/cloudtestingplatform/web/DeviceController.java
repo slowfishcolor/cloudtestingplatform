@@ -43,4 +43,18 @@ public class DeviceController {
         model.addAttribute("devices", devices);
         return "device-list";
     }
+
+    @RequestMapping(value = "/device-info/{deviceId}", method = RequestMethod.GET)
+    public String deviceInfoPage(@PathVariable("deviceId") String deviceId,@ModelAttribute User user, Model model) {
+        Device device = deviceService.getDeviceByDeviceId(deviceId);
+        model.addAttribute(device);
+        return "device-info";
+    }
+
+    @RequestMapping(value = "/device-history/{deviceId}", method = RequestMethod.GET)
+    public String deviceHistoryPage(@PathVariable("deviceId") String deviceId,@ModelAttribute User user, Model model) {
+        Device device = deviceService.getDeviceByDeviceId(deviceId);
+        model.addAttribute(device);
+        return "device-history";
+    }
 }
