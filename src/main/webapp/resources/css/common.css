@@ -9,3 +9,12 @@ a:hover {
     width:100%;
     border-bottom: 1px solid #EBEBEB;
 }
+
+.navbar-default {
+    -moz-box-shadow:0px 2px 5px #E7E7E7;
+    -webkit-box-shadow:0px 2px 5px #E7E7E7;
+    box-shadow:0px 2px 5px #E7E7E7;
+}
+.navbar-header img {
+    height: 22px;
+}
