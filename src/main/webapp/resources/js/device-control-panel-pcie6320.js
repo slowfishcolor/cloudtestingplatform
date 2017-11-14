@@ -11,8 +11,8 @@ $(function () {
 var url = "ws://www.prophet-xu.com:61614/stomp";
 var login = "";
 var passcode = "";
-var sendDestination = "/topic/messanger.topic.server";
-var subDestination = "/topic/messanger.topic.device.";
+var sendDestination = "/topic/messenger.topic.server";
+var subDestination = "/topic/messenger.topic.device.";
 // STOMP client
 var client;
 
