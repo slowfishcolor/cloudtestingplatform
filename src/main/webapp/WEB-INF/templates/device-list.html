@@ -10,6 +10,8 @@
     <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
     <script th:src="@{/resources/js/emptyjs.js}" ></script>
 
+    <script th:src="@{/resources/js/device-list.js}" ></script>
+
 </head>
 <body>
 
@@ -31,13 +33,14 @@
             </div>
             <div class="panel-body">
 
-                <button class="btn btn-success">添加设备</button>
-                <button class="btn btn-danger">删除设备</button>
+                <button class="btn btn-success" id="addDeviceBtn">添加设备</button>
+                <button class="btn btn-danger" id="deleteDeviceBtn">删除设备</button>
 
             </div>
-            <table class="table">
+            <table class="table" id="deviceList">
                 <thead>
                 <tr>
+                    <th><input type="checkbox"></th>
                     <th>设备ID</th>
                     <th>型号</th>
                     <th>状态</th>
@@ -50,6 +53,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="device : ${devices}">
+                    <td><input type="checkbox" deviceId="deviceId" th:attr="deviceId=${device.deviceId}"></td>
                     <td th:text="${device.getDeviceId()}">deviceId</td>
                     <td th:text="${device.getModel().getName()}">modelName</td>
                     <td th:text="${device.getStatusStr()}">status</td>
@@ -58,7 +62,8 @@
                     <td th:text="${device.getVisibilityStr()}">visibility</td>
                     <td th:text="${device.getRemark()}">remark</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}">控制面板</a>
+                        <a class="btn btn-primary btn-sm" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}"
+                            th:classappend="${device.status == 4} ? 'disabled' : ''">控制面板</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-info/' + ${device.getDeviceId()}">详细信息</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-history/' + ${device.getDeviceId()}">历史数据</a>
                     </td>
@@ -80,6 +85,19 @@
 <script>
     $("#device-list").addClass("active");
 </script>
-
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 300px;">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="alertModalLabel">操作提示</h4>
+            </div>
+            <div class="modal-body" id="alert-content">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 </body>
 </html>

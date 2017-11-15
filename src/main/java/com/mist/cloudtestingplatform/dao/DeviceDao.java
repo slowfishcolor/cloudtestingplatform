@@ -2,6 +2,7 @@ package com.mist.cloudtestingplatform.dao;
 
 import com.mist.cloudtestingplatform.model.Device;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,5 +17,10 @@ public interface DeviceDao {
     public Device getDevice(String deviceId);
 
     public void saveDevice(Device device);
+
+    public List<Device> listDevice(Collection deviceIds);
+
+    public void deleteDevice(Collection deviceIds);
+
 
 }

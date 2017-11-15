@@ -3,6 +3,7 @@ package com.mist.cloudtestingplatform.web;
 import com.mist.cloudtestingplatform.model.Device;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.DeviceService;
+import com.mist.cloudtestingplatform.service.OperateResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class DeviceController {
     public void setDeviceService(DeviceService deviceService) {
         this.deviceService = deviceService;
     }
+
+    /***************************** pages *****************************/
 
     @RequestMapping(value = "/device-control-panel/{deviceId}", method = RequestMethod.GET)
     public String controlPanelPage(@PathVariable("deviceId") String deviceId, Model model, @ModelAttribute User user) {
@@ -57,4 +60,13 @@ public class DeviceController {
         model.addAttribute(device);
         return "device-history";
     }
+
+
+    /***************************** apis *****************************/
+    @ResponseBody
+    @RequestMapping(value = "/api/deleteDevice", method = RequestMethod.POST)
+    public OperateResult deleteDevice(String deviceIdStrs, @ModelAttribute User user) {
+        return deviceService.deleteDevice(deviceIdStrs, user.getId());
+    }
+
 }

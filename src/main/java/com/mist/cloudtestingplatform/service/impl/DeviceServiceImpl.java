@@ -3,10 +3,14 @@ package com.mist.cloudtestingplatform.service.impl;
 import com.mist.cloudtestingplatform.dao.DeviceDao;
 import com.mist.cloudtestingplatform.dao.ModelDao;
 import com.mist.cloudtestingplatform.dao.UserDao;
+import com.mist.cloudtestingplatform.exception.BusinessException;
 import com.mist.cloudtestingplatform.model.Device;
 import com.mist.cloudtestingplatform.model.Model;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.DeviceService;
+import com.mist.cloudtestingplatform.service.OperateResult;
+import com.mist.cloudtestingplatform.service.OperateResultFactory;
+import com.mist.cloudtestingplatform.util.IdUtils;
 import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,6 +82,19 @@ public class DeviceServiceImpl implements DeviceService {
             fillUser(result, userList);
         }
         return result;
+    }
+
+    @Override
+    public OperateResult deleteDevice(String deviceIdStrs, Integer userId) {
+        List<String> deviceIds = IdUtils.stringIdsFromStr(deviceIdStrs);
+        List<Device> deviceList = deviceDao.listDevice(deviceIds);
+        for (Device device: deviceList) {
+            if (device.getOwnerId() != userId) {
+                throw new BusinessException(OperateResultFactory.failResult("只能删除用户自己的设备！"));
+            }
+        }
+        deviceDao.deleteDevice(deviceIds);
+        return OperateResultFactory.successResult();
     }
 
     private void fillModel(List<Device> deviceList, List<Model> modelList) {

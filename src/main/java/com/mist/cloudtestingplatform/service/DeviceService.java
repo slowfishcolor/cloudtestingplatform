@@ -15,4 +15,6 @@ public interface DeviceService {
     @NotNull
     public List<Device> listVisibleDeviceByUser(Integer userId);
 
+    public OperateResult deleteDevice(String deviceIdStrs, Integer userId);
+
 }

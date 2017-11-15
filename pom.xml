@@ -14,6 +14,7 @@
     <org.slf4j-version>1.6.6</org.slf4j-version>
     <org.aspectj-version>1.6.10</org.aspectj-version>
     <servlet.version>2.5</servlet.version>
+    <json.version>2.8.0</json.version>
   </properties>
 
   <dependencies>
@@ -164,6 +165,23 @@
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring4</artifactId>
       <version>3.0.2.RELEASE</version>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${json.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${json.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${json.version}</version>
     </dependency>
 
     <!-- Test -->
