@@ -1,5 +1,7 @@
 package com.mist.cloudtestingplatform.model;
 
+import com.mist.cloudtestingplatform.util.TimeUtils;
+
 /**
  * Created by Prophet on 2017/11/4.
  */
@@ -11,6 +13,8 @@ public class Model extends BaseModel {
 
     private int type;
 
+    private int testType;
+
     private int status;
 
     private long registerTime;
@@ -19,20 +23,35 @@ public class Model extends BaseModel {
 
     private String remark;
 
-    private String getTypeStr() {
+    public String getTypeStr() {
 
         switch (type) {
             case 0:
-                return "数字设备";
+                return "测试设备";
             case 1:
-                return "模拟设备";
+                return "UUT";
             default:
                 return "未知设备";
         }
 
     }
 
-    private String getStatusStr() {
+    public String getTestTypeStr() {
+
+        switch (testType) {
+            case 0:
+                return "数字设备";
+            case 1:
+                return "模拟设备";
+            case 2:
+                return "数字 + 模拟";
+            default:
+                return "未知设备";
+        }
+
+    }
+
+    public String getStatusStr() {
 
         switch (status) {
             case 0:
@@ -43,6 +62,18 @@ public class Model extends BaseModel {
                 return "未知";
         }
 
+    }
+
+    public String getRegisterTimeStr() {
+        return TimeUtils.getDateTimeFromTimestamp(registerTime);
+    }
+
+    public int getTestType() {
+        return testType;
+    }
+
+    public void setTestType(int testType) {
+        this.testType = testType;
     }
 
     public int getId() {

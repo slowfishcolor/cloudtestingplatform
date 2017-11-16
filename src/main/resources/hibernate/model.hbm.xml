@@ -9,6 +9,7 @@
         </id>
         <property name="name" type="java.lang.String"/>
         <property name="type" type="java.lang.Integer"/>
+        <property name="testType" type="java.lang.Integer"/>
         <property name="status" type="java.lang.Integer"/>
         <property name="registerTime" type="java.lang.Long"/>
         <property name="config" type="java.lang.String"/>

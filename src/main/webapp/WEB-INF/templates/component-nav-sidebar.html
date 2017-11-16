@@ -15,7 +15,7 @@
                 <a href=""><i class="fa fa-tachometer" aria-hidden="true"></i>总览面板</a>
             </li>
             <li>
-                <a href="device"><i class="fa fa-cogs" aria-hidden="true"></i>测试设备</a>
+                <a th:href="@{/device-list}"><i class="fa fa-cogs" aria-hidden="true"></i>测试设备</a>
             </li>
                 <li id="device-list" class="second-nav">
                     <a th:href="@{/device-list}"><i class="fa fa-list" aria-hidden="true"></i>设备列表</a>
@@ -25,6 +25,12 @@
                 </li>
                 <li id="device-add" class="second-nav">
                     <a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> 添加设备</a>
+                </li>
+            <li>
+                <a th:href="@{/model-list}"><i class="fa fa-list-alt" aria-hidden="true"></i>型号管理</a>
+            </li>
+                <li id="model-list" class="second-nav">
+                    <a th:href="@{/model-list}"><i class="fa fa-list" aria-hidden="true"></i>型号列表</a>
                 </li>
             <li>
                 <a href=""><i class="fa fa-tasks" aria-hidden="true"></i>测试任务</a>

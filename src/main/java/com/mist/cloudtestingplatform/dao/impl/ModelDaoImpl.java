@@ -14,7 +14,8 @@ import java.util.List;
 public class ModelDaoImpl extends DaoBase implements ModelDao {
     @Override
     public List<Model> listAllModel() {
-        return null;
+        String hql = "from Model";
+        return sessionFactory.getCurrentSession().createQuery(hql).list();
     }
 
     @Override
