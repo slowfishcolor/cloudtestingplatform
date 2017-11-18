@@ -15,13 +15,13 @@ public class ModelDaoImpl extends DaoBase implements ModelDao {
     @Override
     public List<Model> listAllModel() {
         String hql = "from Model";
-        return sessionFactory.getCurrentSession().createQuery(hql).list();
+        return currentSession().createQuery(hql).list();
     }
 
     @Override
     public Model getModel(Integer modelId) {
         String hql = "from Model where id = :mId";
-        List<Model> rs = sessionFactory.getCurrentSession()
+        List<Model> rs = currentSession()
                 .createQuery(hql).setInteger("mId", modelId).list();
         if (rs != null && rs.size() > 0 ) {
             return rs.get(0);
@@ -35,7 +35,7 @@ public class ModelDaoImpl extends DaoBase implements ModelDao {
             return null;
         }
         String hql = "from Model where id in (:idList)";
-        return sessionFactory.getCurrentSession()
+        return currentSession()
                 .createQuery(hql).setParameterList("idList", idList)
                 .list();
     }

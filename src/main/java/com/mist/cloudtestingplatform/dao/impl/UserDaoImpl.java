@@ -27,7 +27,7 @@ public class UserDaoImpl extends DaoBase implements UserDao {
     @Override
     public User getUserByUsername(String username) {
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = currentSession();
 
         String hql = "from User where username = :username";
 
@@ -44,14 +44,14 @@ public class UserDaoImpl extends DaoBase implements UserDao {
 
     @Override
     public User getUserById(int id) {
-        Session session = sessionFactory.getCurrentSession();
+        Session session = currentSession();
         return session.get(User.class, id);
     }
 
     @Override
     public User getUserByPassword(String username, String password) {
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = currentSession();
 
         String hql = "from User where username = :username and password = :password";
 
@@ -70,7 +70,7 @@ public class UserDaoImpl extends DaoBase implements UserDao {
     @Override
     public void saveUser(User user) {
 
-        Session session = sessionFactory.getCurrentSession();
+        Session session = currentSession();
         // session.beginTransaction();
         session.save(user);
         System.out.println(user.getId());
@@ -95,7 +95,7 @@ public class UserDaoImpl extends DaoBase implements UserDao {
             return null;
         }
         String hql = "from User where id in (:idList)";
-        return sessionFactory.getCurrentSession()
+        return currentSession()
                 .createQuery(hql).setParameterList("idList", idList)
                 .list();
     }
