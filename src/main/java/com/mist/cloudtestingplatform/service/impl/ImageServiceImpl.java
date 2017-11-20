@@ -4,6 +4,7 @@ import com.mist.cloudtestingplatform.dao.ImageDao;
 import com.mist.cloudtestingplatform.model.Image;
 import com.mist.cloudtestingplatform.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +38,7 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
+    @Cacheable(value = "images", key = "#imageId")
     public Image getImage(Integer imageId) {
         return imageDao.getImage(imageId);
     }
