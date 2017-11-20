@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>设备详情</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+</head>
+<body>
+<script>
+
+    function uploadFile() {
+        var formData = new FormData($( "#uploadForm" )[0]);
+        $.ajax({
+            url: 'api/uploadImage' ,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.code === 200) {
+                    alert("上传成功，imageId: " + data.data);
+                } else {
+                    alert("上传失败");
+                }
+            },
+            error: function (data) {
+                alert("上传失败");
+            }
+        });
+    }
+
+</script>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">图片上传</h3>
+        <form class="form-inline" enctype="multipart/form-data" method="post" id="uploadForm" >
+            <div class="form-group">
+            <label>上传文件： </label><input id="file_input_1" type="file" name="file"/>
+            </div>
+        </form>
+        <input class="btn btn-default" type="button" value="上传" onclick="uploadFile()" >
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+
+
+</body>
+</html>

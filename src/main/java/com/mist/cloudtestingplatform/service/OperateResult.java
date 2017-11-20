@@ -26,23 +26,26 @@ public class OperateResult {
         return code;
     }
 
-    public void setCode(int code) {
+    public OperateResult setCode(int code) {
         this.code = code;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public OperateResult setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public Object getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public OperateResult setData(Object data) {
         this.data = data;
+        return this;
     }
 }

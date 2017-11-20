@@ -62,6 +62,14 @@
         <property name="order" value="2" />
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- set the max upload size 10MB -->
+        <property name="maxUploadSize">
+            <value>10485760</value>
+        </property>
+    </bean>
+
 
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="favorPathExtension" value="false" />
