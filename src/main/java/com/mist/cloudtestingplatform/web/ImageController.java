@@ -1,5 +1,6 @@
 package com.mist.cloudtestingplatform.web;
 
+import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.Image;
 import com.mist.cloudtestingplatform.service.ImageService;
 import com.mist.cloudtestingplatform.service.OperateResult;
@@ -26,6 +27,7 @@ import java.io.OutputStream;
 /**
  * Created by Prophet on 2017/11/18.
  */
+@Auth
 @Controller
 public class ImageController {
 

@@ -1,5 +1,6 @@
 package com.mist.cloudtestingplatform.web;
 
+import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by Prophet on 2017/11/16.
  */
+@Auth
 @SessionAttributes("user")
 @Controller
 public class ModelController {

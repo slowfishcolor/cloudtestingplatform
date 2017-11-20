@@ -1,5 +1,6 @@
 package com.mist.cloudtestingplatform.web;
 
+import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.Device;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.DeviceService;
@@ -17,6 +18,7 @@ import java.util.List;
  * device related pages
  * Created by Prophet on 2017/11/4.
  */
+@Auth
 @SessionAttributes("user")
 @Controller
 public class DeviceController {

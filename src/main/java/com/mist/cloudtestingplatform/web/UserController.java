@@ -1,5 +1,6 @@
 package com.mist.cloudtestingplatform.web;
 
+import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.UserService;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
  * 用户登陆、注册、界面相关
  * Created by Prophet on 2016/12/18.
  */
+@Auth
 @Controller
 public class UserController
 {
@@ -30,6 +32,7 @@ public class UserController
      * 用户登陆界面
      * @return
      */
+    @Auth(false)
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
@@ -43,6 +46,7 @@ public class UserController
      * @param model
      * @return
      */
+    @Auth(false)
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -105,6 +109,7 @@ public class UserController
      * @param model
      * @return
      */
+    @Auth(false)
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         // 通过model向view传送新建的未初始化的user
@@ -112,6 +117,7 @@ public class UserController
         return "register";
     }
 
+    @Auth(false)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(User user, Model model) {
 

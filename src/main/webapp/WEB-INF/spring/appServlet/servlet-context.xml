@@ -100,6 +100,17 @@
         </property>
     </bean>
 
+    <mvc:interceptors>
+        <!-- 使用 bean 定义一个 Interceptor，直接定义在 mvc:interceptors 下面的 Interceptor 将拦截所有的请求 -->
+        <!--<bean class="com.xxx.interceptor"/>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping  path="/resources/**" />
+            <!-- 定义在 mvc:interceptor 下面的 Interceptor，表示对特定的请求进行拦截 -->
+            <bean class="com.mist.cloudtestingplatform.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
 
     <!--指明 controller 所在包，并扫描其中的注解-->
