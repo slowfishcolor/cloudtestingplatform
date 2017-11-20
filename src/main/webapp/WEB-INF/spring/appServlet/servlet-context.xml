@@ -107,6 +107,11 @@
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping  path="/resources/**" />
             <!-- 定义在 mvc:interceptor 下面的 Interceptor，表示对特定的请求进行拦截 -->
+            <bean class="com.mist.cloudtestingplatform.interceptor.PerformanceInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping  path="/resources/**" />
             <bean class="com.mist.cloudtestingplatform.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
