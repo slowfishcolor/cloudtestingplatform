@@ -14,5 +14,6 @@
         <property name="registerTime" type="java.lang.Long"/>
         <property name="config" type="java.lang.String"/>
         <property name="remark" type="java.lang.String"/>
+        <property name="imageId" type="java.lang.Long"/>
     </class>
 </hibernate-mapping>

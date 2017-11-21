@@ -43,6 +43,10 @@ public class Device extends BaseModel {
         return TimeUtils.getDateTimeFromTimestamp(registerTime);
     }
 
+    public String getUpdateTimeStr() {
+        return TimeUtils.getDateTimeFromTimestamp(updateTime);
+    }
+
     public String getStatusStr() {
 
         switch (status) {

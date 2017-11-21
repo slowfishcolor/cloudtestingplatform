@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
 
-    <title>设备详情</title>
+    <title>型号详情</title>
     <!-- Custom styles for this template -->
     <!-- should have at least 1 link and script for thymeleaf to parse -->
 
@@ -21,25 +21,24 @@
     <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h3 class="page-header">设备详情</h3>
+        <h3 class="page-header">型号详情</h3>
 
         <div class="row">
 
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    设备信息
+                    型号信息
                 </div>
                 <table class="table">
-                    <tr><th>设备 ID</th><td th:text="${device.deviceId}">content</td></tr>
-                    <tr><th>型号</th><td th:text="${device.model.name}">content</td></tr>
-                    <tr><th>状态</th><td th:text="${device.statusStr}">content</td></tr>
-                    <tr><th>类别</th><td th:text="${device.model.typeStr}">content</td></tr>
-                    <tr><th>测试类别</th><td th:text="${device.model.testTypeStr}">content</td></tr>
-                    <tr><th>注册时间</th><td th:text="${device.registerTimeStr}">content</td></tr>
-                    <tr><th>更新时间</th><td th:text="${device.updateTimeStr}">content</td></tr>
-                    <tr><th>备注</th><td th:text="${device.remark}">content</td></tr>
-                    <tr><th>配置信息</th><td th:text="${device.config}">content</td></tr>
+                    <tr><th>型号 ID</th><td th:text="${model.id}">content</td></tr>
+                    <tr><th>型号</th><td th:text="${model.name}">content</td></tr>
+                    <tr><th>状态</th><td th:text="${model.statusStr}">content</td></tr>
+                    <tr><th>类别</th><td th:text="${model.typeStr}">content</td></tr>
+                    <tr><th>测试类别</th><td th:text="${model.testTypeStr}">content</td></tr>
+                    <tr><th>注册时间</th><td th:text="${model.registerTimeStr}">content</td></tr>
+                    <tr><th>备注</th><td th:text="${model.remark}">content</td></tr>
+                    <tr><th>配置信息</th><td th:text="${model.config}">content</td></tr>
                 </table>
             </div>
 
@@ -48,7 +47,7 @@
         <div class="col-md-6">
 
             <img class="img-thumbnail" style="max-height: 400px;"
-                 th:src="@{'/api/image/' + ${device.model.imageId}}">
+                 th:src="@{'/api/image/' + ${model.imageId}}">
 
 
         </div>
@@ -62,7 +61,7 @@
 
 <!-- nav selector -->
 <script>
-    $("#device-list").addClass("active");
+    $("#model-list").addClass("active");
 </script>
 
 </body>

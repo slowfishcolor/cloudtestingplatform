@@ -23,6 +23,8 @@ public class Model extends BaseModel {
 
     private String remark;
 
+    private long imageId;
+
     public String getTypeStr() {
 
         switch (type) {
@@ -130,5 +132,13 @@ public class Model extends BaseModel {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public long getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(long imageId) {
+        this.imageId = imageId;
     }
 }

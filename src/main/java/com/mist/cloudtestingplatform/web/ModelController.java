@@ -5,6 +5,7 @@ import com.mist.cloudtestingplatform.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -34,6 +35,14 @@ public class ModelController {
         List<com.mist.cloudtestingplatform.model.Model> models = modelService.listModel();
         model.addAttribute("models", models);
         return "model-list";
+    }
+
+    @RequestMapping(value = "/model-info/{modelId}", method = RequestMethod.GET)
+    public String modelInfoPage(@PathVariable Integer modelId, Model model) {
+        com.mist.cloudtestingplatform.model.Model deviceModel
+                = modelService.getModelById(modelId);
+        model.addAttribute("model", deviceModel);
+        return "model-info";
     }
 
 }
