@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,6 +34,8 @@ public class DataPersistTaskImpl implements DataPersistTask {
 
     private static final int CONSUMER_COUNT = 3;
 
+    private List<DataPersistConsumer> consumerList;
+
     @PostConstruct
     public void init() {
 
@@ -39,16 +43,27 @@ public class DataPersistTaskImpl implements DataPersistTask {
 
         executorService = Executors.newFixedThreadPool(CONSUMER_COUNT);
 
+        consumerList = new ArrayList<>(CONSUMER_COUNT);
+
         for (int i = 0; i < CONSUMER_COUNT - 1; i++) {
-            executorService.submit(new DataPersistBatchConsumer(dataService, blockingQueue));
+            DataPersistConsumer consumer = new DataPersistBatchConsumer(dataService, blockingQueue);
+            consumerList.add(consumer);
+            executorService.submit(consumer);
         }
 
-        executorService.submit(new DataPersistTimeoutConsumer(dataService, blockingQueue));
+        DataPersistConsumer consumer = new DataPersistTimeoutConsumer(dataService, blockingQueue);
+        consumerList.add(consumer);
+        executorService.submit(consumer);
 
     }
 
     @PreDestroy
     public void destroy() {
+
+        for(DataPersistConsumer consumer: consumerList) {
+            consumer.stop();
+        }
+
         executorService.shutdown();
     }
 

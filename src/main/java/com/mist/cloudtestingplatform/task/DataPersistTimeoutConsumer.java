@@ -13,13 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Prophet on 2017/11/22.
  */
-public class DataPersistTimeoutConsumer implements Runnable{
+public class DataPersistTimeoutConsumer extends DataPersistConsumer{
 
     private static Logger logger = LoggerFactory.getLogger(DataPersistTimeoutConsumer.class);
 
     private static AtomicInteger atomicInteger = new AtomicInteger(0);
-
-    private volatile boolean isRunning = true;
 
     private DataService dataService;
 
@@ -32,6 +30,8 @@ public class DataPersistTimeoutConsumer implements Runnable{
     private long batchInterval = 1000L;
 
     private long timeout = 2000L;
+
+    private long processTimeAlertThreshold = 100L;
 
     public DataPersistTimeoutConsumer(DataService dataService, BlockingQueue<Data> blockingQueue) {
 
@@ -53,8 +53,8 @@ public class DataPersistTimeoutConsumer implements Runnable{
         this.timeout = timeout;
     }
 
-    public void stop() {
-        this.isRunning = false;
+    public void setProcessTimeAlertThreshold(long processTimeAlertThreshold) {
+        this.processTimeAlertThreshold = processTimeAlertThreshold;
     }
 
     @Override
@@ -65,6 +65,8 @@ public class DataPersistTimeoutConsumer implements Runnable{
         try {
 
             while (isRunning) {
+
+                long startTime = System.currentTimeMillis();
 
                 if (blockingQueue.size() > 0 && blockingQueue.size() < batchSize) {
                     Data data = blockingQueue.peek();
@@ -82,6 +84,11 @@ public class DataPersistTimeoutConsumer implements Runnable{
                         }
                     }
 
+                }
+
+                long processTime = System.currentTimeMillis() - startTime;
+                if (processTime > processTimeAlertThreshold) {
+                    logger.warn("timeout consumer {} process time: {} ms", consumerCounter, processTime);
                 }
 
                 Thread.sleep(batchInterval);

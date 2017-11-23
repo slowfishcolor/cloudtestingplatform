@@ -13,13 +13,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Prophet on 2017/11/22.
  */
-public class DataPersistBatchConsumer implements Runnable{
+public class DataPersistBatchConsumer extends DataPersistConsumer{
 
     private static Logger logger = LoggerFactory.getLogger(DataPersistBatchConsumer.class);
 
     private static AtomicInteger atomicInteger = new AtomicInteger(0);
-
-    private volatile boolean isRunning = true;
 
     private DataService dataService;
 
@@ -30,6 +28,8 @@ public class DataPersistBatchConsumer implements Runnable{
     private int batchSize = 10;
 
     private long batchInterval = 1000L;
+
+    private long processTimeAlertThreshold = 100L;
 
     public DataPersistBatchConsumer(DataService dataService, BlockingQueue<Data> blockingQueue) {
 
@@ -48,8 +48,8 @@ public class DataPersistBatchConsumer implements Runnable{
         this.batchInterval = batchInterval;
     }
 
-    public void stop() {
-        this.isRunning = false;
+    public void setProcessTimeAlertThreshold(long processTimeAlertThreshold) {
+        this.processTimeAlertThreshold = processTimeAlertThreshold;
     }
 
     @Override
@@ -60,6 +60,8 @@ public class DataPersistBatchConsumer implements Runnable{
         try {
 
             while (isRunning) {
+
+                long startTime = System.currentTimeMillis();
 
                 if (blockingQueue.size() >= batchSize) {
                     synchronized (this) {
@@ -81,8 +83,12 @@ public class DataPersistBatchConsumer implements Runnable{
                     }
                 }
 
-                Thread.sleep(batchInterval);
+                long processTime = System.currentTimeMillis() - startTime;
+                if (processTime > processTimeAlertThreshold) {
+                    logger.warn("batch consumer {} process time: {} ms", consumerCounter, processTime);
+                }
 
+                Thread.sleep(batchInterval);
             }
 
         } catch (InterruptedException e) {
