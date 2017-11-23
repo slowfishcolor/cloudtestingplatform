@@ -3,5 +3,15 @@ package com.mist.cloudtestingplatform.protocol.model;
 /**
  * Created by Prophet on 2017/11/22.
  */
-public interface Data {
+public abstract class Data {
+
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

@@ -1,9 +1,9 @@
 package com.mist.cloudtestingplatform.protocol.model;
 
 /**
- * Created by Prophet on 2017/11/22.
+ * Created by Prophet on 2017/11/23.
  */
-public class PayLoad {
+public class PayloadBase {
 
     private long messageId;
 
@@ -16,6 +16,10 @@ public class PayLoad {
     private int userId;
 
     private int code;
+    // Data 的 type
+    private String type;
+
+    private Option option;
 
     public long getMessageId() {
         return messageId;
@@ -63,5 +67,21 @@ public class PayLoad {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Option getOption() {
+        return option;
+    }
+
+    public void setOption(Option option) {
+        this.option = option;
     }
 }

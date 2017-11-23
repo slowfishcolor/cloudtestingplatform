@@ -3,7 +3,9 @@ package com.mist.cloudtestingplatform.protocol.model;
 /**
  * Created by Prophet on 2017/11/22.
  */
-public class AnalogSampleData implements Data {
+public class AnalogSampleData extends Data {
+
+    private String type = "AnalogSampleData";
 
     // 设备端口号
     private String port;
