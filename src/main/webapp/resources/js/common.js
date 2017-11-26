@@ -1,61 +1,6 @@
 /**
  * Created by Prophet on 2017/11/15.
  */
-// var Alert, Confirm;
-// (function () {
-//     var modal,
-//         Proxy = function (isAlert) {
-//             return function () {
-//                 if (arguments.length != 1) return;
-//                 var msg = typeof arguments[0] === 'string' && arguments[0] || arguments[0].msg || '',
-//                     onOk = typeof arguments[0] === 'object' && typeof arguments[0].onOk === 'function' && arguments[0].onOk,
-//                     onCancel = typeof arguments[0] === 'object' && typeof arguments[0].onCancel === 'function' && arguments[0].onCancel,
-//                     width = typeof arguments[0] === 'object' && arguments[0].width || 400,
-//                     _onModalShow = function () {
-//                         this.setWidth(width);
-//                         this.setContent(msg);
-//                         this[(isAlert ? 'hide' : 'show') + 'Button']('.btn-cancel');
-//                     },
-//                     _onModalHide = function () {
-//                         this.setContent('');
-//                     };
-//
-//                 //延迟初始化modal
-//                 if(!modal) {
-//                     modal = new Modal({
-//                         'title': '操作提示',
-//                         onModalShow: _onModalShow,
-//                         onModalHide: _onModalHide,
-//                         onContentReady: function(){
-//                             this.$modalBody.css({
-//                                 'padding-top': '30px',
-//                                 'padding-bottom': '30px'
-//                             })
-//                         }
-//                     });
-//                 } else {
-//                     var $modal = modal.$modal;
-//                     //如果modal已经初始化则需要重新监听事件
-//                     $modal.off('modalShow modalHide');
-//                     $modal.off('modalShow modalHide');
-//                     $modal.on('modalShow', $.proxy(_onModalShow, modal));
-//                     $modal.on('modalHide', $.proxy(_onModalHide, modal));
-//                 }
-//
-//                 modal.setOptions({
-//                     onOk: onOk || $.noop,
-//                     onCancel: onCancel || $.noop
-//                 });
-//
-//                 modal.open();
-//
-//                 $("#alert").modal();
-//             }
-//         };
-//
-//     Alert = Proxy(true);
-//     Confirm = Proxy();
-// })();
 
 function Alert(msg) {
     $("#alert-content").text(msg);
@@ -69,3 +14,29 @@ $(function () {
         $('tbody [type="checkbox"]', $table).prop('checked', $checked);
     });
 });
+
+Date.prototype.format = function(format) {
+    var date = {
+        "M+": this.getMonth() + 1,
+        "d+": this.getDate(),
+        "h+": this.getHours(),
+        "m+": this.getMinutes(),
+        "s+": this.getSeconds(),
+        "q+": Math.floor((this.getMonth() + 3) / 3),
+        "S+": this.getMilliseconds()
+    };
+    if (/(y+)/i.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    for (var k in date) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+        }
+    }
+    return format;
+}
+
+function timeStampToDateStrMs(timestamp) {
+    return new Date(timestamp).format("yyyy-MM-dd hh:mm:ss.S");
+}

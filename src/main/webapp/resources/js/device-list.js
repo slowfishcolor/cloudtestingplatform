@@ -20,7 +20,7 @@ function deleteDevice() {
 
     $.ajax( {
         type : "POST",
-        url : "api/deleteDevice.s",
+        url : "api/deleteDevice",
         data : "deviceIdStrs=" + deviceIdStrs,
         success : function(data) {
             if (data.code == 200) {

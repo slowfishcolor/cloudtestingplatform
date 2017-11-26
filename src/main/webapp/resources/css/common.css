@@ -18,3 +18,9 @@ a:hover {
 .navbar-header img {
     height: 22px;
 }
+.datashow {
+    display: none;
+}
+.mg-r {
+    margin-right: 12px;
+}
