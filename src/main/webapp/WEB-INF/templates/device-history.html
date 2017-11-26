@@ -10,6 +10,9 @@
     <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
     <script th:src="@{/resources/js/emptyjs.js}" ></script>
 
+    <link th:href="@{/resources/css/json-viewer.css}" rel="stylesheet">
+
+    <script th:src="@{/resources/js/json-viewer.js}" ></script>
     <script th:src="@{/resources/js/device-history.js}" ></script>
 
 </head>
@@ -76,9 +79,9 @@
                     <div class="col-md-8 text-right">
                         <span >跳转至</span>
                         <input id="pageNumInput" type="number" style="width: 64px;">
-                        <button id="jumpTo" class="btn btn-default btn-sm mg-r">跳转</button>
-                        <button id="prevPage" class="btn btn-default btn-sm">上一页</button>
-                        <button id="nextPage" class="btn btn-default btn-sm">下一页</button>
+                        <button id="jumpTo" class="btn btn-default btn-sm mg-r" style="color: #337ab7;">跳转</button>
+                        <button id="prevPage" class="btn btn-default btn-sm" style="color: #337ab7;">上一页</button>
+                        <button id="nextPage" class="btn btn-default btn-sm" style="color: #337ab7;">下一页</button>
                     </div>
                 </div>
             </div>
@@ -93,7 +96,7 @@
 
 <!-- nav selector -->
 <script>
-    $("#device-list").addClass("active");
+    $("#device-history").addClass("active");
 </script>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -103,7 +106,23 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">数据详情</h4>
             </div>
-            <div class="modal-body" id="dataRaw" style="word-wrap: break-word;word-break: normal;">在这里添加一些文本</div>
+            <div style="margin-top: 12px;">
+                <ul id="modal-nav" class="nav nav-tabs">
+                    <li class="active" contentId="dataRaw"><a >原始数据</a></li>
+                    <li contentId="dataPrettyJson"><a >数据格式化</a></li>
+                    <li contentId="dataGraph"><a >数据可视化</a></li>
+                </ul>
+
+            </div>
+            <div class="modal-body modal-data-show" id="dataRaw" style="word-wrap: break-word;word-break: normal; overflow-y: scroll; max-height: 700px;">
+
+            </div>
+            <div class="modal-body modal-data-show" id="dataPrettyJson" style="word-wrap: break-word;word-break: normal; overflow-y: scroll; max-height: 700px; display: none;">
+
+            </div>
+            <div class="modal-body modal-data-show" id="dataGraph" style="word-wrap: break-word;word-break: normal; overflow-y: scroll; max-height: 700px; display: none;">
+
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>

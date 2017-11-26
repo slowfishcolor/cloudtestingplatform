@@ -14,6 +14,8 @@ $(function () {
         curPage++;
         listData(curPage);
     });
+
+    bindModalNavSwitch();
 });
 var curPage = 1;
 function listData(page) {
@@ -41,8 +43,7 @@ function listData(page) {
                     $(tr).find("td:eq(4)").find("a")
                         .click(function () {
                             var jsonStr = $(this).parent().prev().text();
-                            $("#dataRaw").text(jsonStr);
-                            $("#myModal").modal();
+                            dataDisplay(jsonStr);
                         });
 
                 });
@@ -69,4 +70,31 @@ function getDirectionStr(direction) {
     if (direction == 2)
         return "device -> device";
     return "unknown"
+}
+
+function dataDisplay(jsonStr) {
+    $("#dataRaw").text(jsonStr);
+    $('#dataPrettyJson').jsonview(jsonStr);
+
+    var obj = eval('(' + jsonStr + ')');
+
+    $("#myModal").modal();
+}
+
+function bindModalNavSwitch() {
+
+    $("#modal-nav li").each(function () {
+        $(this).click(function () {
+            $(this).siblings().each(function () {
+                $(this).removeClass("active");
+            })
+
+            $(this).addClass("active");
+
+            var contentId = $(this).attr("contentId");
+            $(".modal-data-show").hide();
+            $("#" + contentId).show();
+        });
+    })
+
 }
