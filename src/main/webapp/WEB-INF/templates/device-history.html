@@ -12,6 +12,8 @@
 
     <link th:href="@{/resources/css/json-viewer.css}" rel="stylesheet">
 
+    <script th:src="@{/resources/dist/echarts/echarts.min.js}" ></script>
+
     <script th:src="@{/resources/js/json-viewer.js}" ></script>
     <script th:src="@{/resources/js/device-history.js}" ></script>
 
@@ -120,8 +122,14 @@
             <div class="modal-body modal-data-show" id="dataPrettyJson" style="word-wrap: break-word;word-break: normal; overflow-y: scroll; max-height: 700px; display: none;">
 
             </div>
-            <div class="modal-body modal-data-show" id="dataGraph" style="word-wrap: break-word;word-break: normal; overflow-y: scroll; max-height: 700px; display: none;">
-
+            <div class="modal-body modal-data-show" id="dataGraph" style="word-wrap: break-word;word-break: normal;  max-height: 700px; display: none;">
+                <div id="chart" style="height: 500px; width:750px;">
+                </div>
+                <div class="row" style="padding: 12px 24px;">
+                    <div class="col-md-4"><strong>最小值：</strong><span id="chart-min"></span></div>
+                    <div class="col-md-4"><strong>最大值：</strong><span id="chart-max"></span></div>
+                    <div class="col-md-4"><strong>平均值：</strong><span id="chart-avg"></span></div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

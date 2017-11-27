@@ -16,6 +16,8 @@ $(function () {
     });
 
     bindModalNavSwitch();
+
+    initEcharts();
 });
 var curPage = 1;
 function listData(page) {
@@ -77,6 +79,8 @@ function dataDisplay(jsonStr) {
     $('#dataPrettyJson').jsonview(jsonStr);
 
     var obj = eval('(' + jsonStr + ')');
+    // console.log(obj)
+    addData(obj.data);
 
     $("#myModal").modal();
 }
@@ -97,4 +101,118 @@ function bindModalNavSwitch() {
         });
     })
 
+}
+
+var chart;
+var option;
+var chartData = [];
+
+
+function initEcharts() {
+    chart = echarts.init(document.getElementById('chart'));
+    option = {
+        title: {
+            text: '波形图'
+        },
+        legend: {
+            data:['Voltage']
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                return 'Voltage: ' + params.value[1] + ' V';
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        xAxis: {
+            type: 'value',
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: 'Voltage',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: true
+            }
+        },
+        series: [{
+            name: 'Voltage',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: chartData
+        }]
+    };
+
+    chart.setOption(option);
+}
+
+var count = 0;
+
+function addData(data) {
+    count = 0;
+    var sampleCount = data.sampleCount;
+    var values = data.value;
+    while (chartData.length > 0) {
+        chartData.shift();
+    }
+    for (var index in values) {
+        chartData.push(newData(values[index]))
+    }
+
+    var minMax = getMinMaxAvg(values);
+    // console.log(minMax);
+    // console.log(chartData);
+    chart.setOption({
+        yAxis:{
+            min: minMax[2],
+            max: minMax[3]
+        },
+        series: [{
+            data: chartData
+        }]
+    });
+
+    updateDataDetail(data, minMax[0], minMax[1], minMax[4]);
+}
+
+function newData(dataValue) {
+    count++;
+    return {
+        // name: count,
+        value: [
+            count,
+            dataValue
+        ]
+    }
+}
+
+function getMinMaxAvg(values) {
+
+    var min = values[0];
+    var max = values[0];
+    var avg = 0;
+
+    for (var i in values) {
+        min = min > values[i] ? values[i] : min;
+        max = max < values[i] ? values[i] : max;
+        avg += values[i];
+    }
+
+    var tenPercent = (max - min) / 10;
+    avg /= values.length;
+
+    return [min, max, min - tenPercent, max + tenPercent, avg];
+}
+
+function updateDataDetail(data, min, max, avg) {
+    $("#chart-min").text(min);
+    $("#chart-max").text(max);
+    $("#chart-avg").text(avg);
 }
