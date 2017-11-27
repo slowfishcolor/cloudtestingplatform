@@ -2,6 +2,9 @@
     height: 48px;
     line-height: 48px;
 }
+.left-panel > div > div > div {
+    display:inline-block;
+}
 .left-panel input {
     height: 34px;
     padding: 6px 12px;
@@ -22,4 +25,18 @@
 .left-panel button {
     min-width: 72px;
     margin: 0 auto;
+}
+.left-panel .dropdown-toggle {
+    width: 100px;
+}
+.left-panel .dropdown-toggle span {
+    display: inline-block;
+}
+.left-panel .dropdown-toggle .chosenItem {
+    width: 64px;
+    height: 20px;
+    overflow: hidden;
+    vertical-align: bottom;
+    text-overflow: ellipsis;
+    white-space:nowrap;
 }

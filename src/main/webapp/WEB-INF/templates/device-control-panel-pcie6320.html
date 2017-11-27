@@ -50,19 +50,55 @@
 
                         <div class="panel-body">
 
-                        <div><span class="left ">Device ID: </span><span th:text="${device.getDeviceId()}">id</span></div>
+                        <div><div class="left ">Device ID: </div><div th:text="${device.getDeviceId()}">id</div></div>
 
-                        <div><span class="left">Channel: </span><a>AI 0</a></div>
+                        <div><div class="left">Channel: </div><div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle btn-default" id="dropdownMenu1"
+                                    data-toggle="dropdown">
+                                <span class="chosenItem">Dev1/ai0</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai0</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai1</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai2</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai3</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai4</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai5</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai6</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai7</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai8</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai9</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai10</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai11</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai12</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai13</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai14</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai15</a></li>
+                            </ul>
+                        </div></div>
 
-                        <div><span class="left">Method: </span><a>Differential</a></div>
+                        <div><div class="left">Method: </div><div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle btn-default" id="dropdownMenu2"
+                                    data-toggle="dropdown">
+                                <span class="chosenItem">Differential</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Differential</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Nrse</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Pseudodifferential</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" >Rse</a></li>
+                            </ul>
+                        </div></div>
 
-                        <div><span class="left">Min Voltage: </span><input></div>
+                        <div><div class="left">Min Voltage: </div><input></div>
 
-                        <div><span class="left">Max Voltage: </span><input></div>
+                        <div><div class="left">Max Voltage: </div><input></div>
 
-                        <div><span class="left">Samples: </span><input></div>
+                        <div><div class="left">Samples: </div><input></div>
 
-                        <div><span class="left">Rate (Hz):</span><input></div>
+                        <div><div class="left">Rate (Hz):</div><input></div>
 
                         <div class="line" style="margin-bottom: 24px;"></div>
 

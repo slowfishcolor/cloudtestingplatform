@@ -134,6 +134,13 @@ function stopAcquire() {
 }
 
 function addBtnClickEvent() {
+
     $("#startBtn").click(startAcquire);
     $("#stopBtn").click(stopAcquire);
+
+    $(".dropdown-menu a").click(function () {
+        var item = $(this).text();
+        var dropdown = $(this).parents(".dropdown").get(0);
+        $(dropdown).find(".chosenItem").text(item);
+    });
 }
