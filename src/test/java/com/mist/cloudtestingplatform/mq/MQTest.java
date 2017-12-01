@@ -1,5 +1,6 @@
 package com.mist.cloudtestingplatform.mq;
 
+import com.mist.cloudtestingplatform.protocol.model.*;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,9 @@ public class MQTest {
     @Autowired
     private JmsTemplate jmsTopicTemplate;
 
+    @Autowired
+    private MessageSender messageSender;
+
     @Test
     public void sendMessageTest() {
         Destination destination = new ActiveMQTopic("messenger.topic.server");
@@ -34,6 +38,21 @@ public class MQTest {
                 return msg;
             }
         });
+    }
+
+    @Test
+    public void messageSenderTest() {
+        messageSender.sendMessage("deviceId", "hello");
+    }
+
+    @Test
+    public void messageSenderPayloadTest() {
+        Option option = new Option();
+        Data data = new AnalogSampleData();
+        Payload payload = PayloadFactory.createPayload(option, data);
+        payload.setDeviceId("deviceId");
+        System.out.println(payload.getData().getType());
+//        messageSender.sendMessage(payload);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.mist.cloudtestingplatform.mq;
 
 import com.mist.cloudtestingplatform.model.Data;
+import com.mist.cloudtestingplatform.model.DataFacotry;
 import com.mist.cloudtestingplatform.protocol.model.PayloadBase;
 import com.mist.cloudtestingplatform.protocol.util.JsonUtil;
 import com.mist.cloudtestingplatform.task.DataPersistTask;
@@ -68,12 +69,7 @@ public class DeviceMessageListener {
 //            logger.info(messageStr);
 
             PayloadBase payload = JsonUtil.jsonToPayloadBase(messageStr);
-            Data data = new Data();
-            data.setDeviceId(payload.getDeviceId());
-            data.setDirection(0);
-            data.setUserId(payload.getUserId());
-            data.setTimestamp(System.currentTimeMillis());
-            data.setData(messageStr);
+            Data data = DataFacotry.createDeviceData(payload, messageStr);
 
             dataPersistTask.persistData(data);
 

@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mist.cloudtestingplatform.protocol.model.AnalogSampleData;
-import com.mist.cloudtestingplatform.protocol.model.Option;
-import com.mist.cloudtestingplatform.protocol.model.Payload;
-import com.mist.cloudtestingplatform.protocol.model.PayloadBase;
+import com.mist.cloudtestingplatform.protocol.model.*;
 
 import java.io.IOException;
 
@@ -51,6 +48,8 @@ public class JsonUtil {
         String dataStr = node.get("data").toString();
         if ("AnalogSampleData".equals(payload.getType())) {
             payload.setData(objectMapper.readValue(dataStr, AnalogSampleData.class));
+        } else if ("ControlData".equals(payload.getType())) {
+            payload.setData(objectMapper.readValue(dataStr, ControlData.class));
         } else {
             payload.setData(null);
         }

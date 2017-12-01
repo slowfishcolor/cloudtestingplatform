@@ -5,7 +5,7 @@ package com.mist.cloudtestingplatform.protocol.model;
  */
 public abstract class Data {
 
-    private String type;
+    protected String type;
 
     public String getType() {
         return type;

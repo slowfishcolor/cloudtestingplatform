@@ -5,6 +5,6 @@ package com.mist.cloudtestingplatform.protocol.config;
  */
 public class Config {
 
-    
+    public String brokerUrl = "www.prophet-xu.com";
 
 }

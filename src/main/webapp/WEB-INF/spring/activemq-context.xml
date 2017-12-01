@@ -13,7 +13,9 @@
         http://activemq.apache.org/schema/core
         http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
 
-    <amq:connectionFactory id="jmsConnectionFactory" brokerURL="tcp://www.prophet-xu.com:61616"  />
+    <amq:connectionFactory id="jmsConnectionFactory"
+                           brokerURL="tcp://www.prophet-xu.com:61616"
+                           useAsyncSend="true"/>
 
     <bean id="jmsConnectionFactoryExtend" class="org.springframework.jms.connection.CachingConnectionFactory">
         <constructor-arg ref="jmsConnectionFactory" />

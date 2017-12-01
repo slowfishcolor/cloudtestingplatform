@@ -5,8 +5,6 @@ package com.mist.cloudtestingplatform.protocol.model;
  */
 public class AnalogSampleData extends Data {
 
-    private String type = "AnalogSampleData";
-
     // 设备端口号
     private String port;
     // differential or what
@@ -20,6 +18,10 @@ public class AnalogSampleData extends Data {
     private long timestamp;
     // 具体的值
     private double[] value;
+
+    public AnalogSampleData() {
+        super.type = "AnalogSampleData";
+    }
 
     public String getPort() {
         return port;
