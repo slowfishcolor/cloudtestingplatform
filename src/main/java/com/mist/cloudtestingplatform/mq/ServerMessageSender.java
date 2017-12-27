@@ -18,14 +18,7 @@ public class ServerMessageSender implements MessageSender{
 
     Logger logger = LoggerFactory.getLogger(ServerMessageSender.class);
 
-    DataPersistTask dataPersistTask;
-
     JmsTemplate jmsTemplate;
-
-    @Autowired
-    public void setDataPersistTask(DataPersistTask dataPersistTask) {
-        this.dataPersistTask = dataPersistTask;
-    }
 
     @Qualifier("jmsTopicTemplate")
     @Autowired
@@ -54,6 +47,7 @@ public class ServerMessageSender implements MessageSender{
             payload.setDestination(destinationString);
             String messageString = JsonUtil.payLoadToJson(payload);
             jmsTemplate.convertAndSend(destinationString, messageString);
+            return true;
         } catch (Exception e) {
             logger.warn(e.toString());
             e.printStackTrace();
