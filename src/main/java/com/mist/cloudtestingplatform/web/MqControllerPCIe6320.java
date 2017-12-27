@@ -1,6 +1,7 @@
 package com.mist.cloudtestingplatform.web;
 
 import com.mist.cloudtestingplatform.annotation.Auth;
+import com.mist.cloudtestingplatform.annotation.DeviceAuth;
 import com.mist.cloudtestingplatform.service.MQServicePCIe6320;
 import com.mist.cloudtestingplatform.service.OperateResult;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * Created by Prophet on 2017/12/22.
  */
 @Auth
+@DeviceAuth
 @SessionAttributes("user")
 @Controller
 public class MqControllerPCIe6320 implements MqController {

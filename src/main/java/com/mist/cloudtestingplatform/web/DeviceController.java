@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,9 +45,16 @@ public class DeviceController {
     }
 
     @RequestMapping(value = "/device-list", method = RequestMethod.GET)
-    public String deviceListPage(@ModelAttribute User user, Model model) {
+    public String deviceListPage(@ModelAttribute User user, Model model, HttpServletRequest request) {
         List<Device> devices = deviceService.listVisibleDeviceByUser(user.getId());
         model.addAttribute("devices", devices);
+
+        List<String> deviceIdList = new ArrayList<>();
+        for(Device device: devices) {
+            deviceIdList.add(device.getDeviceId());
+        }
+        request.getSession().setAttribute("deviceIdList", deviceIdList);
+
         return "device-list";
     }
 
