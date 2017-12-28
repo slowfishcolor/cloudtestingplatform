@@ -68,6 +68,7 @@
                             th:classappend="${device.status == 4} ? 'disabled' : ''">控制面板</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-info/' + ${device.getDeviceId()}">详细信息</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-history/' + ${device.getDeviceId()}">历史数据</a>
+                        <a class="btn btn-default btn-sm" href="" th:href="'device-mapping/' + ${device.getDeviceId()}">映射管理</a>
                     </td>
                 </tr>
                 </tbody>

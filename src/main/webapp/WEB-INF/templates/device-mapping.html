@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>映射管理</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">映射管理</h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        映射配置
+                    </div>
+                    <div style="height: 500px;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        映射关系图
+                    </div>
+                    <div style="height: 500px; " id="chart">
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#device-mapping").addClass("active");
+</script>
+
+<!-- scripts -->
+<script th:src="@{/resources/dist/echarts/echarts.min.js}" ></script>
+<script th:src="@{/resources/js/device-mapping.js}" ></script>
+
+</body>
+</html>

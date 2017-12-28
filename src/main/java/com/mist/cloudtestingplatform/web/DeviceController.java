@@ -72,6 +72,13 @@ public class DeviceController {
         return "device-history";
     }
 
+    @RequestMapping(value = "/device-mapping/{deviceId}", method = RequestMethod.GET)
+    public String deviceMappingPage(@PathVariable("deviceId") String deviceId,@ModelAttribute User user, Model model) {
+        Device device = deviceService.getDeviceByDeviceId(deviceId);
+        model.addAttribute(device);
+        return "device-mapping";
+    }
+
 
     /***************************** apis *****************************/
     @ResponseBody

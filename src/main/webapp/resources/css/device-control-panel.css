@@ -13,12 +13,12 @@
     color: #555;
     border: 1px solid #ccc;
     border-radius: 4px;
-    max-width: 100px;
+    max-width: 142px;
 }
 .left-panel .left {
-    padding-right: 10px;
+    padding-right: 16px;
     text-align: right;
-    width: 100px;
+    width: 132px;
     display: inline-block;
     font-weight: 600;
 }
@@ -27,13 +27,13 @@
     margin: 0 auto;
 }
 .left-panel .dropdown-toggle {
-    width: 100px;
+    width: 142px;
 }
 .left-panel .dropdown-toggle span {
     display: inline-block;
 }
 .left-panel .dropdown-toggle .chosenItem {
-    width: 64px;
+    width: 96px;
     height: 20px;
     overflow: hidden;
     vertical-align: bottom;
