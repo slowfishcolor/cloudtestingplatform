@@ -29,6 +29,10 @@ public class Device extends BaseModel {
 
     private int visibility;
 
+    private int virtual;
+
+    private String physicalDeviceId;
+
     private User owner;
 
     public User getOwner() {
@@ -76,6 +80,14 @@ public class Device extends BaseModel {
                 return "公有";
             default:
                 return "未知";
+        }
+    }
+
+    public String getVirtualStr() {
+        if (virtual == 0) {
+            return "物理设备";
+        } else {
+            return "虚拟设备";
         }
     }
 
@@ -165,5 +177,21 @@ public class Device extends BaseModel {
 
     public void setVisibility(int visibility) {
         this.visibility = visibility;
+    }
+
+    public int getVirtual() {
+        return virtual;
+    }
+
+    public void setVirtual(int virtual) {
+        this.virtual = virtual;
+    }
+
+    public String getPhysicalDeviceId() {
+        return physicalDeviceId;
+    }
+
+    public void setPhysicalDeviceId(String physicalDeviceId) {
+        this.physicalDeviceId = physicalDeviceId;
     }
 }

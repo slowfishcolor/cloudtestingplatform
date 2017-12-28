@@ -16,6 +16,7 @@
         <property name="remark" type="java.lang.String"/>
         <property name="ownerId" type="java.lang.Integer"/>
         <property name="visibility" type="java.lang.Integer"/>
-
+        <property name="virtual" type="java.lang.Integer"/>
+        <property name="physicalDeviceId" type="java.lang.String"/>
     </class>
 </hibernate-mapping>

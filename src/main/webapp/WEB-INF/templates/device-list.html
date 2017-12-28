@@ -43,6 +43,7 @@
                     <th><input type="checkbox"></th>
                     <th>设备ID</th>
                     <th>型号</th>
+                    <th>类型</th>
                     <th>状态</th>
                     <th>添加时间</th>
                     <th>所有者</th>
@@ -56,6 +57,7 @@
                     <td><input type="checkbox" deviceId="deviceId" th:attr="deviceId=${device.deviceId}"></td>
                     <td th:text="${device.getDeviceId()}">deviceId</td>
                     <td th:text="${device.getModel().getName()}">modelName</td>
+                    <td th:text="${device.getVirtualStr()}">virtualStr</td>
                     <td th:text="${device.getStatusStr()}">status</td>
                     <td th:text="${device.getRegisterTimeStr()}">registerTime</td>
                     <td th:text="${device.getOwner().getUsername()}">owner</td>

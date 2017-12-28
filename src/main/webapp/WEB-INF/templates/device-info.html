@@ -33,6 +33,8 @@
                 <table class="table">
                     <tr><th>设备 ID</th><td th:text="${device.deviceId}">content</td></tr>
                     <tr><th>型号</th><td th:text="${device.model.name}">content</td></tr>
+                    <tr><th>类型</th><td th:text="${device.virtualStr}">content</td></tr>
+                    <tr><th>物理设备 ID</th><td th:text="${device.physicalDeviceId}">content</td></tr>
                     <tr><th>状态</th><td th:text="${device.statusStr}">content</td></tr>
                     <tr><th>类别</th><td th:text="${device.model.typeStr}">content</td></tr>
                     <tr><th>测试类别</th><td th:text="${device.model.testTypeStr}">content</td></tr>
