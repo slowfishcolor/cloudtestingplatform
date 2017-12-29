@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class PayloadUtil {
 
-    public static Payload createControlDataWithSingleCommand(String deviceId, String physicalDeviceId, String command) {
+    public static Payload createControlDataWithSingleCommand(String deviceId, String physicalDeviceId, int userId, String command) {
 
         Option option = new Option();
         ControlData controlData = new ControlData();
@@ -26,11 +26,12 @@ public class PayloadUtil {
         Payload payload = PayloadFactory.createPayload(option, controlData);
         payload.setDeviceId(deviceId);
         payload.setPhysicalDeviceId(physicalDeviceId);
+        payload.setUserId(userId);
 
         return payload;
     }
 
-    public static Payload createControlDataWithMapCommand(String deviceId, String physicalDeviceId, Map<String, String> commandMap) {
+    public static Payload createControlDataWithMapCommand(String deviceId, String physicalDeviceId, Map<String, String> commandMap, int userId) {
 
         Option option = new Option();
         ControlData controlData = new ControlData();
@@ -44,6 +45,7 @@ public class PayloadUtil {
         Payload payload = PayloadFactory.createPayload(option, controlData);
         payload.setDeviceId(deviceId);
         payload.setPhysicalDeviceId(physicalDeviceId);
+        payload.setUserId(userId);
 
         return payload;
     }

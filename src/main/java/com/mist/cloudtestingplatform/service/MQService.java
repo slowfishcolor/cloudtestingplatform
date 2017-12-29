@@ -5,7 +5,7 @@ package com.mist.cloudtestingplatform.service;
  */
 public interface MQService {
 
-    public OperateResult sendSingleCommand(String deviceId, String command);
+    public OperateResult sendSingleCommand(String deviceId, int userId, String command);
 
-    public OperateResult sendStartStopCommand(String deviceId, boolean isStart);
+    public OperateResult sendStartStopCommand(String deviceId, int userId, boolean isStart);
 }

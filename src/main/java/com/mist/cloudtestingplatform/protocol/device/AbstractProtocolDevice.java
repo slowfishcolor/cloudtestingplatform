@@ -14,15 +14,15 @@ public abstract class AbstractProtocolDevice implements ProtocolDevice {
 
     public static final String COMMAND_SETUP = "setup";
 
-    public static Payload createSingleCommandPayload(String deviceId, String physicalDeviceId, String command) {
-        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, command);
+    public static Payload createSingleCommandPayload(String deviceId, String physicalDeviceId, int userId, String command) {
+        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, userId, command);
     }
 
-    public static Payload createStartCommandPayload(String deviceId, String physicalDeviceId) {
-        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, COMMAND_START);
+    public static Payload createStartCommandPayload(String deviceId, String physicalDeviceId, int userId) {
+        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, userId, COMMAND_START);
     }
 
-    public static Payload createStopCommandPayload(String deviceId, String physicalDeviceId) {
-        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, COMMAND_STOP);
+    public static Payload createStopCommandPayload(String deviceId, String physicalDeviceId, int userId) {
+        return PayloadUtil.createControlDataWithSingleCommand(deviceId, physicalDeviceId, userId, COMMAND_STOP);
     }
 }

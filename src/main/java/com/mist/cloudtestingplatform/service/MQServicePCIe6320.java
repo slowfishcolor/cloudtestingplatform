@@ -5,6 +5,6 @@ package com.mist.cloudtestingplatform.service;
  */
 public interface MQServicePCIe6320 extends MQService {
 
-    public OperateResult sendSetupCommand(String deviceId, String channel, String method, float minVoltage, float maxVoltage, int samples, float rate, String command);
+    public OperateResult sendSetupCommand(String deviceId, String channel, String method, float minVoltage, float maxVoltage, int samples, float rate, String command, int userId);
 
 }
