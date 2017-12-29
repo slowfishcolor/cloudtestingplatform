@@ -8,6 +8,7 @@
             <generator class="identity"/>
         </id>
         <property name="deviceId" type="java.lang.String"/>
+        <property name="physicalDeviceId" type="java.lang.String"/>
         <property name="direction" type="java.lang.Integer"/>
         <property name="userId" type="java.lang.Integer"/>
         <property name="timestamp" type="java.lang.Long"/>

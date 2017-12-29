@@ -9,6 +9,8 @@ public class Data extends BaseModel {
 
     private String deviceId;
 
+    private String physicalDeviceId;
+
     // 0 device to server, 1 server to device
     private int direction;
 
@@ -34,6 +36,14 @@ public class Data extends BaseModel {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public String getPhysicalDeviceId() {
+        return physicalDeviceId;
+    }
+
+    public void setPhysicalDeviceId(String physicalDeviceId) {
+        this.physicalDeviceId = physicalDeviceId;
     }
 
     public int getDirection() {

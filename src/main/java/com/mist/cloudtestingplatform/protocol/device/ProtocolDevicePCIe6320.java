@@ -13,7 +13,7 @@ public class ProtocolDevicePCIe6320 extends AbstractProtocolDevice {
 
 
 
-    public static Payload ceateSetupCommandPayload(String deviceId, String channel, String method, float minVoltage, float maxVoltage, int samples, float rate, String command) {
+    public static Payload createSetupCommandPayload(String deviceId, String physicalDeviceId, String channel, String method, float minVoltage, float maxVoltage, int samples, float rate, String command) {
 
         Map<String, String> commandMap = new HashMap<>();
 
@@ -30,6 +30,6 @@ public class ProtocolDevicePCIe6320 extends AbstractProtocolDevice {
             commandMap.put("command", COMMAND_SETUP);
         }
 
-        return PayloadUtil.createControlDataWithMapCommand(deviceId, commandMap);
+        return PayloadUtil.createControlDataWithMapCommand(deviceId, physicalDeviceId, commandMap);
     }
 }

@@ -20,7 +20,7 @@
 <body>
 <script th:inline="javascript">
     var deviceId = [[${device.getDeviceId()}]];
-
+    var physicalDeviceId = [[${device.getPhysicalDeviceId()}]];
 </script>
 
 <div th:replace="~{component-header :: #header}"></div>

@@ -25,6 +25,7 @@ public class DataFacotry {
         try {
             Data data = new Data();
             data.setDeviceId(payload.getDeviceId());
+            data.setPhysicalDeviceId(payload.getPhysicalDeviceId());
             data.setDirection(direction);
             data.setUserId(payload.getUserId());
             data.setTimestamp(System.currentTimeMillis());
@@ -40,6 +41,7 @@ public class DataFacotry {
     public static Data createDeviceData(PayloadBase payload, String messageStr) {
         Data data = new Data();
         data.setDeviceId(payload.getDeviceId());
+        data.setPhysicalDeviceId(payload.getPhysicalDeviceId());
         data.setDirection(0);
         data.setUserId(payload.getUserId());
         data.setTimestamp(System.currentTimeMillis());

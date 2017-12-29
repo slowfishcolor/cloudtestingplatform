@@ -21,7 +21,7 @@ function connectToBroker() {
     // on connect callback
     var onconnect = function (frame) {
         // add deviceId to subDestination
-        subDestination += deviceId;
+        subDestination += physicalDeviceId;
         sendDestination += deviceId;
         // subscribe receive topic
         client.subscribe(subDestination, function (message) {

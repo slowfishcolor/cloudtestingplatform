@@ -42,7 +42,15 @@
             </div>
             <div class="panel-body">
 
-                <strong th:text="'deviceId：' + ${device.deviceId} + ' &nbsp&nbsp&nbsp&nbsp型号：' + ${device.model.name}"></strong>
+                <!--<strong th:text="'设备 ID：' + ${device.deviceId} + ' &nbsp&nbsp&nbsp&nbsp型号：' + ${device.model.name}-->
+                                <!--+ ' &nbsp&nbsp&nbsp&nbsp类型：' + ${device.virtualStr}-->
+                                <!--+ ' &nbsp&nbsp&nbsp&nbsp物理设备 ID：' + ${device.physicalDeviceId}"></strong>-->
+                <div>
+                    <div class="col-md-3" th:text="'设备 ID：' + ${device.deviceId}"></div>
+                    <div class="col-md-3" th:text="'物理设备 ID：' + ${device.physicalDeviceId}"></div>
+                    <div class="col-md-3" th:text="'型号：' + ${device.model.name}"></div>
+                    <div class="col-md-3" th:text="'类型：' + ${device.virtualStr}"></div>
+                </div>
 
                 <!--<button class="btn btn-success" id="addModelBtn">添加型号</button>-->
                 <!--<button class="btn btn-danger" id="deleteModelBtn">删除型号</button>-->

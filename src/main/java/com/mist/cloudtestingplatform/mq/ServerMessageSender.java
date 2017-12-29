@@ -27,9 +27,9 @@ public class ServerMessageSender implements MessageSender{
     }
 
     @Override
-    public boolean sendMessage(String deviceId, String message) {
+    public boolean sendMessage(String physicalDeviceId, String message) {
         try {
-            jmsTemplate.convertAndSend(publishDestination + deviceId, message);
+            jmsTemplate.convertAndSend(publishDestination + physicalDeviceId, message);
             return true;
         } catch (Exception e) {
             logger.warn(e.toString());
@@ -43,7 +43,7 @@ public class ServerMessageSender implements MessageSender{
     @Override
     public boolean sendMessage(Payload payload) {
         try {
-            String destinationString = publishDestination + payload.getDeviceId();
+            String destinationString = publishDestination + payload.getPhysicalDeviceId();
             payload.setDestination(destinationString);
             String messageString = JsonUtil.payLoadToJson(payload);
             jmsTemplate.convertAndSend(destinationString, messageString);

@@ -11,6 +11,8 @@ public class PayloadBase {
 
     private String deviceId;
 
+    private String physicalDeviceId;
+
     private long timestamp;
 
     private int userId;
@@ -43,6 +45,14 @@ public class PayloadBase {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public String getPhysicalDeviceId() {
+        return physicalDeviceId;
+    }
+
+    public void setPhysicalDeviceId(String physicalDeviceId) {
+        this.physicalDeviceId = physicalDeviceId;
     }
 
     public long getTimestamp() {
