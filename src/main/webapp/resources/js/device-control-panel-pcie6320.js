@@ -11,7 +11,7 @@ $(function () {
 var url = "ws://www.prophet-xu.com:61614/stomp";
 var login = "";
 var passcode = "";
-var sendDestination = "/topic/messenger.topic.server";
+var sendDestination = "/topic/messenger.topic.server.";
 var subDestination = "/topic/messenger.topic.device.";
 // STOMP client
 var client;
@@ -22,6 +22,7 @@ function connectToBroker() {
     var onconnect = function (frame) {
         // add deviceId to subDestination
         subDestination += deviceId;
+        sendDestination += deviceId;
         // subscribe receive topic
         client.subscribe(subDestination, function (message) {
             // add new data
@@ -102,8 +103,14 @@ function addData(data) {
         chartData.push(newData(values[index]))
     }
 
+    var minMax = getMinMaxAvg(values);
+
     // console.log(chartData);
     chart.setOption({
+        yAxis:{
+            min: minMax[2],
+            max: minMax[3]
+        },
         series: [{
             data: chartData
         }]
@@ -121,26 +128,72 @@ function newData(dataValue) {
     }
 }
 
+
 function startAcquire() {
-    client.send(sendDestination, {foo: 1}, "start");
-    $("#startBtn").addClass("disabled");
-    $("#stopBtn").removeClass("disabled");
+    // client.send(sendDestination, {foo: 1}, "start");
+    sendStartStop(deviceId, true);
 }
 
 function stopAcquire() {
-    client.send(sendDestination, {foo: 1}, "stop");
-    $("#stopBtn").addClass("disabled");
-    $("#startBtn").removeClass("disabled");
+    // client.send(sendDestination, {foo: 1}, "stop");
+    sendStartStop(deviceId, false);
 }
 
 function addBtnClickEvent() {
 
     $("#startBtn").click(startAcquire);
     $("#stopBtn").click(stopAcquire);
+    $("#setupBtn").click(setup);
 
     $(".dropdown-menu a").click(function () {
         var item = $(this).text();
         var dropdown = $(this).parents(".dropdown").get(0);
         $(dropdown).find(".chosenItem").text(item);
     });
+}
+
+function sendStartStop(deviceId, isStart) {
+    $.ajax({
+        type: "POST",
+        url: "../api/mq/pcie6320/sendStartStopCommand",
+        data: {deviceId : deviceId, isStart : isStart},
+        success: function (data) {
+            if (data.code == 200) {
+                if (isStart) {
+                    $("#startBtn").addClass("disabled");
+                    $("#stopBtn").removeClass("disabled");
+                } else {
+                    $("#stopBtn").addClass("disabled");
+                    $("#startBtn").removeClass("disabled");
+                }
+            }
+        },
+        dataType: "json"
+    });
+}
+
+function sendSetup(deviceId) {
+    $.ajax({
+        type: "POST",
+        url: "../api/mq/pcie6320/sendSetupCommand",
+        data: {
+            deviceId: deviceId,
+            channel: trim($("#dropdownMenu1").text()),
+            method: trim($("#dropdownMenu2").text()),
+            minVoltage: $("#minVoltage").val(),
+            maxVoltage: $("#maxVoltage").val(),
+            samples: $("#samples").val(),
+            rate: $("#rate").val(),
+            command: "setup"
+        },
+        dataType: "json"
+    });
+}
+
+function setup() {
+    sendSetup(deviceId);
+}
+
+function trim(s){
+    return s.replace(/(^\s*)|(\s*$)/g, "");
 }

@@ -40,3 +40,21 @@ Date.prototype.format = function(format) {
 function timeStampToDateStrMs(timestamp) {
     return new Date(timestamp).format("yyyy-MM-dd hh:mm:ss.S");
 }
+
+function getMinMaxAvg(values) {
+
+    var min = values[0];
+    var max = values[0];
+    var avg = 0;
+
+    for (var i in values) {
+        min = min > values[i] ? values[i] : min;
+        max = max < values[i] ? values[i] : max;
+        avg += values[i];
+    }
+
+    var tenPercent = (max - min) / 10;
+    avg /= values.length;
+
+    return [min, max, min - tenPercent, max + tenPercent, avg];
+}
