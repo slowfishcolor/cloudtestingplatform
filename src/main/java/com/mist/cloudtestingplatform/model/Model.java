@@ -25,6 +25,8 @@ public class Model extends BaseModel {
 
     private long imageId;
 
+    private String view;
+
     public String getTypeStr() {
 
         switch (type) {
@@ -140,5 +142,13 @@ public class Model extends BaseModel {
 
     public void setImageId(long imageId) {
         this.imageId = imageId;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
     }
 }

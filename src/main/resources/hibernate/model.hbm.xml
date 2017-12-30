@@ -15,5 +15,6 @@
         <property name="config" type="java.lang.String"/>
         <property name="remark" type="java.lang.String"/>
         <property name="imageId" type="java.lang.Long"/>
+        <property name="view" type="java.lang.String"/>
     </class>
 </hibernate-mapping>

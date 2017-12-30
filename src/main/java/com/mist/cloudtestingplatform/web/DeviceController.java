@@ -41,7 +41,12 @@ public class DeviceController {
         Device device = deviceService.getDeviceByDeviceId(deviceId);
         model.addAttribute(device);
         logger.info("deviceId: " + deviceId);
-        return "device-control-panel-pcie6320";
+
+        String viewName = device.getModel().getView();
+        if (viewName == null || "".equals(viewName)) {
+            viewName = "viewName";
+        }
+        return "device-control-panel-" + viewName;
     }
 
     @RequestMapping(value = "/device-list", method = RequestMethod.GET)
