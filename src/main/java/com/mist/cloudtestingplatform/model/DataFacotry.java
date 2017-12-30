@@ -38,12 +38,20 @@ public class DataFacotry {
         return null;
     }
 
-    public static Data createDeviceData(PayloadBase payload, String messageStr) {
+    public static Data createDeviceData(PayloadBase payloadBase, String messageStr) {
+        return createData(payloadBase, messageStr, 0);
+    }
+
+    public static Data createServerData(PayloadBase payloadBase, String messageStr) {
+        return createData(payloadBase, messageStr, 1);
+    }
+
+    public static Data createData(PayloadBase payloadBase, String messageStr, int direction) {
         Data data = new Data();
-        data.setDeviceId(payload.getDeviceId());
-        data.setPhysicalDeviceId(payload.getPhysicalDeviceId());
-        data.setDirection(0);
-        data.setUserId(payload.getUserId());
+        data.setDeviceId(payloadBase.getDeviceId());
+        data.setPhysicalDeviceId(payloadBase.getPhysicalDeviceId());
+        data.setDirection(direction);
+        data.setUserId(payloadBase.getUserId());
         data.setTimestamp(System.currentTimeMillis());
         data.setData(messageStr);
         return data;

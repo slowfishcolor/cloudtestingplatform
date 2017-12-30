@@ -13,13 +13,13 @@ import javax.jms.Destination;
 import javax.jms.Message;
 
 /**
- * Created by Prophet on 2017/11/14.
+ * Created by Prophet on 2017/12/30.
  */
 @Component
 @EnableJms
-public class DeviceMessageListener {
+public class ServerMessageListener {
 
-    private Logger logger = LoggerFactory.getLogger(DeviceMessageListener.class);
+    private Logger logger = LoggerFactory.getLogger(ServerMessageListener.class);
 
     private DataPersistTask dataPersistTask;
 
@@ -28,7 +28,7 @@ public class DeviceMessageListener {
         this.dataPersistTask = dataPersistTask;
     }
 
-    @JmsListener(containerFactory = "jmsListenerContainerFactory", destination = "messenger.topic.device.*")
+    @JmsListener(containerFactory = "jmsListenerContainerFactory", destination = "messenger.topic.server.*")
     public void onMessage(Message message) {
 
         long startTime = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class DeviceMessageListener {
             Destination destination = message.getJMSDestination();
             logger.info("destination" + destination);
 
-            Data data = MessageProcessor.dataFromMessage(message, false);
+            Data data = MessageProcessor.dataFromMessage(message, true);
 
             dataPersistTask.persistData(data);
 
@@ -49,5 +49,4 @@ public class DeviceMessageListener {
         logger.info("on message process time: {} ms", System.currentTimeMillis() - startTime);
 
     }
-
 }

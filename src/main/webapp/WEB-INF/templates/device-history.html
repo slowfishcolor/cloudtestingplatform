@@ -131,12 +131,17 @@
 
             </div>
             <div class="modal-body modal-data-show" id="dataGraph" style="word-wrap: break-word;word-break: normal;  max-height: 700px; display: none;">
-                <div id="chart" style="height: 500px; width:750px;">
+                <div id="dataGraphChart">
+                    <div id="chart" style="height: 500px; width:750px;">
+                    </div>
+                    <div class="row" style="padding: 12px 24px;">
+                        <div class="col-md-4"><strong>最小值：</strong><span id="chart-min"></span></div>
+                        <div class="col-md-4"><strong>最大值：</strong><span id="chart-max"></span></div>
+                        <div class="col-md-4"><strong>平均值：</strong><span id="chart-avg"></span></div>
+                    </div>
                 </div>
-                <div class="row" style="padding: 12px 24px;">
-                    <div class="col-md-4"><strong>最小值：</strong><span id="chart-min"></span></div>
-                    <div class="col-md-4"><strong>最大值：</strong><span id="chart-max"></span></div>
-                    <div class="col-md-4"><strong>平均值：</strong><span id="chart-avg"></span></div>
+                <div id="dataGraphText">
+                    text
                 </div>
             </div>
             <div class="modal-footer">

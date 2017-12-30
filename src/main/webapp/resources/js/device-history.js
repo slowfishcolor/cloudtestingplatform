@@ -41,11 +41,13 @@ function listData(page) {
                     $(tr).find("td:eq(1)").text(timeStampToDateStrMs(this.timestamp));
                     $(tr).find("td:eq(2)").text(getDirectionStr(this.direction));
                     $(tr).find("td:eq(3)").text(this.data);
+                    $(tr).find("td:eq(3)").attr("dir", this.direction);
 
                     $(tr).find("td:eq(4)").find("a")
                         .click(function () {
                             var jsonStr = $(this).parent().prev().text();
-                            dataDisplay(jsonStr);
+                            var dir = $(this).parent().prev().attr("dir");
+                            dataDisplay(jsonStr, dir);
                         });
 
                 });
@@ -68,19 +70,24 @@ function getDirectionStr(direction) {
     if (direction == 0)
         return "device -> server";
     if (direction == 1)
-        return "server -> server";
+        return "server -> device";
     if (direction == 2)
         return "device -> device";
     return "unknown"
 }
 
-function dataDisplay(jsonStr) {
+function dataDisplay(jsonStr, dir) {
     $("#dataRaw").text(jsonStr);
     $('#dataPrettyJson').jsonview(jsonStr);
 
     var obj = eval('(' + jsonStr + ')');
     // console.log(obj)
-    addData(obj.data);
+    if (dir === '0') {
+        showDataGraphChart(obj);
+    } else if (dir === '1') {
+        showDataGraphText(obj);
+    }
+
 
     $("#myModal").modal();
 }
@@ -154,6 +161,17 @@ function initEcharts() {
 }
 
 var count = 0;
+
+function showDataGraphChart(obj) {
+    $("#dataGraphText").hide();
+    $("#dataGraphChart").show();
+    addData(obj.data);
+}
+
+function showDataGraphText(obj) {
+    $("#dataGraphChart").hide();
+    $("#dataGraphText").show();
+}
 
 function addData(data) {
     count = 0;
