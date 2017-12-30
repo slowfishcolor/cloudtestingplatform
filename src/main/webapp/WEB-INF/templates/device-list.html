@@ -55,7 +55,7 @@
                 <tbody>
                 <tr th:each="device : ${devices}">
                     <td><input type="checkbox" deviceId="deviceId" th:attr="deviceId=${device.deviceId}"></td>
-                    <td th:text="${device.getDeviceId()}">deviceId</td>
+                    <td ><a href="" th:href="'device-info/' + ${device.getDeviceId()}" th:text="${device.getDeviceId()}">deviceId</a></td>
                     <td th:text="${device.getModel().getName()}">modelName</td>
                     <td th:text="${device.getVirtualStr()}">virtualStr</td>
                     <td th:text="${device.getStatusStr()}">status</td>
@@ -66,7 +66,6 @@
                     <td>
                         <a class="btn btn-primary btn-sm" href="" th:href="'device-control-panel/' + ${device.getDeviceId()}"
                             th:classappend="${device.status == 4} ? 'disabled' : ''">控制面板</a>
-                        <a class="btn btn-default btn-sm" href="" th:href="'device-info/' + ${device.getDeviceId()}">详细信息</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-history/' + ${device.getDeviceId()}">历史数据</a>
                         <a class="btn btn-default btn-sm" href="" th:href="'device-mapping/' + ${device.getDeviceId()}">映射管理</a>
                     </td>
