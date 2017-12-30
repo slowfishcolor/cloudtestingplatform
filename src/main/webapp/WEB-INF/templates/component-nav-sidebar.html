@@ -11,8 +11,8 @@
 
     <div id="nav-sidebar" class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-            <li id="index">
-                <a href=""><i class="fa fa-tachometer" aria-hidden="true"></i>总览面板</a>
+            <li id="home">
+                <a th:href="@{/home}"><i class="fa fa-tachometer" aria-hidden="true"></i>总览面板</a>
             </li>
             <li>
                 <a th:href="@{/device-list}"><i class="fa fa-cogs" aria-hidden="true"></i>测试设备</a>
@@ -44,6 +44,9 @@
             <li class="second-nav">
                 <a href=""><i class="fa fa-list" aria-hidden="true"></i>任务列表</a>
                 <a href=""><i class="fa fa-plus-square" aria-hidden="true"></i> 新的任务</a>
+            </li>
+            <li id="user">
+                <a th:href="@{/user}"><i class="fa fa-user-circle" aria-hidden="true"></i>用户中心</a>
             </li>
 
         </ul>

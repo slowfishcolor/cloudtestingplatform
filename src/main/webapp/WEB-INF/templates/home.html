@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
 
-    <title>控制面板</title>
+    <title>用户</title>
     <!-- Custom styles for this template -->
     <!-- should have at least 1 link and script for thymeleaf to parse -->
 
@@ -21,17 +21,10 @@
     <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h3 class="page-header">控制面板</h3>
-
-        <h3 >
-            <span th:text="${device.model.getName()}">Device Name</span>
-            <a style="font-size: 18px; margin-left: 18px;"> Setting</a>
-        </h3>
-
-        <p>
-            默认的视图，请配置 model 的 view 字段来选择专有视图。
-        </p>
-
+        <div class="">
+            <h1 class="page-header">总览面板</h1>
+            <p class="lead" th:text="'Hello ' + ${user.getUsername()}">Hello user! </p>
+        </div>
     </div>
 
 
@@ -40,7 +33,7 @@
 
 <!-- nav selector -->
 <script>
-    $("#device-control-panel").addClass("active");
+    $("#home").addClass("active");
 </script>
 
 

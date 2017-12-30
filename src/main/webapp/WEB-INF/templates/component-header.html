@@ -16,7 +16,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <div th:if="${user != null}" class="navbar-right">
-                <a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>
+                <!--<a class="navbar-brand" th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}">Username</a>-->
+                <a class="navbar-brand" th:href="@{/home}" th:text="${user.getUsername()}">Username</a>
                 <a class="navbar-brand" th:href="@{/logout/main}">退出</a>
             </div>
         </div><!--/.nav-collapse -->
