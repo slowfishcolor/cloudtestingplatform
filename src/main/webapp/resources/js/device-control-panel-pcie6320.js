@@ -2,6 +2,9 @@
  * Created by Prophet on 2017/11/5.
  */
 $(function () {
+
+    config =  eval('(' + configStr + ')');
+    setUpComboBox(config);
     connectToBroker();
     initEcharts();
     addBtnClickEvent();
@@ -196,4 +199,29 @@ function setup() {
 
 function trim(s){
     return s.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+function setUpComboBox(config) {
+    var channel = config.config.channel;
+    var method = config.config.method;
+    var first = true;
+    for (var key in channel) {
+        if (channel[key]) {
+            $("#dropdownMenu1-content").append('<li role="presentation"><a role="menuitem" tabindex="-1" >' + key + '</a></li>');
+            if (first) {
+                first = false;
+                $("#dropdownMenu1-chosenItem").text(key);
+            }
+        }
+    }
+    first = true;
+    for (var key in method) {
+        if (method[key]) {
+            $("#dropdownMenu2-content").append('<li role="presentation"><a role="menuitem" tabindex="-1" >' + key + '</a></li>');
+            if (first) {
+                first = false;
+                $("#dropdownMenu2-chosenItem").text(key);
+            }
+        }
+    }
 }

@@ -21,6 +21,7 @@
 <script th:inline="javascript">
     var deviceId = [[${device.getDeviceId()}]];
     var physicalDeviceId = [[${device.getPhysicalDeviceId()}]];
+    var configStr = [[${device.config}]];
 </script>
 
 <div th:replace="~{component-header :: #header}"></div>
@@ -55,40 +56,21 @@
                         <div><div class="left">Channel: </div><div class="dropdown">
                             <button type="button" class="btn dropdown-toggle btn-default" id="dropdownMenu1"
                                     data-toggle="dropdown">
-                                <span class="chosenItem">Dev1/ai0</span>
+                                <span class="chosenItem" id="dropdownMenu1-chosenItem">selected item</span>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai0</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai1</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai2</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai3</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai4</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai5</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai6</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai7</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai8</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai9</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai10</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai11</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai12</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai13</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai14</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai15</a></li>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="dropdownMenu1-content">
+                                <!--<li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai0</a></li>-->
                             </ul>
                         </div></div>
 
                         <div><div class="left">Method: </div><div class="dropdown">
                             <button type="button" class="btn dropdown-toggle btn-default" id="dropdownMenu2"
                                     data-toggle="dropdown">
-                                <span class="chosenItem">Differential</span>
+                                <span class="chosenItem" id="dropdownMenu2-chosenItem">selected item</span>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Differential</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Nrse</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Pseudodifferential</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" >Rse</a></li>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2" id="dropdownMenu2-content">
                             </ul>
                         </div></div>
 
