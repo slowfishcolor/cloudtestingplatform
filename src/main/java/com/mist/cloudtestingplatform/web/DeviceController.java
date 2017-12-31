@@ -92,4 +92,10 @@ public class DeviceController {
         return deviceService.deleteDevice(deviceIdStrs, user.getId());
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/api/updateDeviceConfig", method = RequestMethod.POST)
+    public OperateResult updateDeviceConfig(String deviceId, String config, @ModelAttribute User user) {
+        return deviceService.updateDeviceConfig(deviceId, config);
+    }
+
 }

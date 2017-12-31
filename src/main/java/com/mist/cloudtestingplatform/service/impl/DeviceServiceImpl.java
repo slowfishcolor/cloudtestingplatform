@@ -97,6 +97,17 @@ public class DeviceServiceImpl implements DeviceService {
         return OperateResultFactory.successResult();
     }
 
+    @Override
+    public OperateResult updateDeviceConfig(String deviceId, String config) {
+        Device device = deviceDao.getDevice(deviceId);
+        if (device == null) {
+            return OperateResultFactory.failResult("invalid deviceId");
+        }
+        device.setConfig(config);
+        deviceDao.updateDevice(device);
+        return OperateResultFactory.successResult();
+    }
+
     private void fillModel(List<Device> deviceList, List<Model> modelList) {
         Map<Integer, Model> modelMap = new HashMap<>();
         for (Model model: modelList) {

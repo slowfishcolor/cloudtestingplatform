@@ -1,8 +1,24 @@
 $(function () {
 
+    initChart();
+
     chart.setOption(option);
 
+    config =  eval('(' + configStr + ')');
+    initJsonEditor(config);
+
+    addBtnClickEvent();
+
+
+    $('#alert').on('hidden.bs.modal', function () {
+        location.reload();
+    })
+
 });
+
+var config;
+
+var editor;
 
 var data = {
     "name":"physicalDeviceId",
@@ -77,5 +93,57 @@ function initChart() {
 
 }
 
+function initJsonEditor(jsonObj) {
+    var container = document.getElementById("jsoneditor");
+    var options;
+    if (virtual == 1) {
+        options = {
+            mode: 'tree',
+            onEditable: function (node) {
+                return {
+                    field: false,
+                    value: true
+                }
+            }
+        };
+    } else {
+        options = {
+            mode: 'view'
+        }
+    }
 
-initChart();
+    editor = new JSONEditor(container, options);
+
+    editor.set(jsonObj.config);
+    editor.expandAll();
+}
+
+function addBtnClickEvent() {
+    $("#saveConfigBtn").click(saveConfig);
+    $("#resetConfigBtn").click(resetConfig);
+}
+
+function saveConfig() {
+    var configJson = editor.get();
+    config.config = configJson;
+    var newConfigStr = JSON.stringify(config);
+    $.post(
+            "../api/updateDeviceConfig",
+        {
+            "deviceId": deviceId,
+            "config": newConfigStr
+        },
+        function (data) {
+            if (data.code == 200) {
+                Alert("保存成功！");
+            } else {
+                Alert("保存失败！");
+            }
+        }
+    );
+}
+
+function resetConfig() {
+    editor.set(config.config);
+}
+

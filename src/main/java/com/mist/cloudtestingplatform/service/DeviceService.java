@@ -17,4 +17,6 @@ public interface DeviceService {
 
     public OperateResult deleteDevice(String deviceIdStrs, Integer userId);
 
+    public OperateResult updateDeviceConfig(String deviceId, String config);
+
 }

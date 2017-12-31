@@ -47,4 +47,35 @@ public class DeviceDaoImplTest {
         baseModel.setId(2);
         System.out.println(device.getId());
     }
+
+    @Test
+    public void updateDeviceTest() {
+        Device device = deviceDao.getDevice("virtualDeviceId");
+        device.setVirtual(0);
+        deviceDao.updateDevice(device);
+        device = deviceDao.getDevice("virtualDeviceId");
+        System.out.println(device.getVirtual());
+    }
+
+    @Test
+    public void saveDeviceTest() {
+//        Device device = deviceDao.getDevice("virtualDeviceId");
+        Device device1 = new Device();
+//        device1.setVirtual(device.getVirtual());
+//        device1.setConfig(device.getConfig());
+//        device1.setDeviceId(device.getConfig() + "-new");
+//        device1.setModelId(device.getModelId());
+//        device1.setOwnerId(device.getOwnerId());
+
+        device1.setDeviceId("new");
+        device1.setModelId(1);
+        device1.setStatus(0);
+        device1.setOwnerId(1);
+        device1.setVisibility(0);
+        device1.setVirtual(0);
+        deviceDao.saveDevice(device1);
+//        Device device2 = deviceDao.getDevice(device.getConfig() + "-new");
+//        Device device2 = deviceDao.getDevice("new");
+//        System.out.println(device2.getDeviceId());
+    }
 }

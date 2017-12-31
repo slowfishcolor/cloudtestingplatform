@@ -57,7 +57,7 @@
                     <td><input type="checkbox" deviceId="deviceId" th:attr="deviceId=${device.deviceId}"></td>
                     <td ><a href="" th:href="'device-info/' + ${device.getDeviceId()}" th:text="${device.getDeviceId()}">deviceId</a></td>
                     <td th:text="${device.getModel().getName()}">modelName</td>
-                    <td th:text="${device.getVirtualStr()}">virtualStr</td>
+                    <td th:text="${device.getVirtualStr()}" th:class="${device.virtual == 0}? 'text-primary' : 'text-success'">virtualStr</td>
                     <td th:text="${device.getStatusStr()}">status</td>
                     <td th:text="${device.getRegisterTimeStr()}">registerTime</td>
                     <td th:text="${device.getOwner().getUsername()}">owner</td>

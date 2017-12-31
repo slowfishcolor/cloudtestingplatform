@@ -56,4 +56,9 @@ public class DeviceDaoImpl extends DaoBase implements DeviceDao {
                 .setParameterList("deviceIds", deviceIds).executeUpdate();
     }
 
+    @Override
+    public void updateDevice(Device device) {
+        currentSession().update(device);
+    }
+
 }

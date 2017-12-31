@@ -29,10 +29,27 @@ public class DataServiceImplTest {
         Data data = new Data();
         data.setUserId(1);
         data.setDeviceId("deviceId");
+        data.setPhysicalDeviceId("deviceId");
         data.setDirection(0);
         data.setTimestamp(0L);
         data.setData("{test}");
         dataList.add(data);
         dataService.saveDataCollection(dataList);
+    }
+
+    @Test
+    public void saveDataTest() {
+        System.out.println(dataService.listDataCount("deviceId",1));
+
+        Data data = new Data();
+        data.setUserId(1);
+        data.setDeviceId("deviceId");
+        data.setPhysicalDeviceId("deviceId");
+        data.setDirection(0);
+        data.setTimestamp(0L);
+        data.setData("{test}");
+        dataService.saveData(data);
+
+        System.out.println(dataService.listDataCount("deviceId",1));
     }
 }

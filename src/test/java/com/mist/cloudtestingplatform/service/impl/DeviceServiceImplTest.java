@@ -26,5 +26,11 @@ public class DeviceServiceImplTest {
         System.out.println(device.toString());
     }
 
+    @Test
+    public void updateDeviceConfigTest() {
+        deviceService.updateDeviceConfig("virtualDeviceId","1");
+        Device device = deviceService.getDeviceByDeviceId("virtualDeviceId");
+        System.out.println(device.getConfig());
+    }
 
 }
