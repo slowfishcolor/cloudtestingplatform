@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>添加设备</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+    <link th:href="@{/resources/dist/icheck/skins/all.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/icheck/icheck.js}" ></script>
+    <link th:href="@{/resources/css/device-add.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/device-add.js}" ></script>
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">添加设备</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="arrow-container">
+                    <div class="arrow-steps ">
+                        <div class="step current"> <span>选择类型</span> </div>
+                        <div class="step"> <span>选择型号 / 实体</span> </div>
+                        <div class="step"> <span>完善信息</span> </div>
+                        <div class="step"> <span>核对信息</span> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="height: 500px;">
+            <div class="step-content current" id="step-1">
+
+                <div class="icheck-list">
+                    <div class="block-top" >
+                        <input tabindex="3" type="radio" id="input-virtual-p" name="virtualRadio" checked="">
+                        <label for="input-virtual-p" class="">物理设备</label>
+                    </div>
+                    <div class="block-top" >
+                        <input tabindex="4" type="radio" id="input-virtual-v" name="virtualRadio" >
+                        <label for="input-virtual-v" class="">虚拟设备</label>
+                    </div>
+                </div>
+                <div >
+                    <div class="block physical active" >
+
+                        <p class="vm-icon">
+                            <i class="fa fa-microchip" aria-hidden="true"></i>
+                            <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                            <i class="fa fa-desktop" aria-hidden="true"></i>
+                        </p>
+                        <ul>
+                            <li>物理设备</li>
+                            <li>此类型设备代表物理实体设备，接入平台后，可实现对设备的远程控制、数据获取、历史数据管理等功能。</li>
+                        </ul>
+
+                    </div>
+                    <div class="block virtual" >
+
+                        <p class="vm-icon">
+                            <i class="fa fa-cloud" aria-hidden="true"></i>
+                            <i class="fa fa-arrows-h" aria-hidden="true"></i>
+                            <i class="fa fa-desktop" aria-hidden="true"></i>
+                        </p>
+                        <ul>
+                            <li>虚拟设备</li>
+                            <li>此类设备基于物理设备进行映射，具有同型号宿主机的全部功能，对虚拟设备的所有操作会映射到宿主机上。</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="step-content" id="step-2">
+                step 2
+            </div>
+
+            <div class="step-content" id="step-3">
+                step 3
+            </div>
+
+            <div class="step-content" id="step-4">
+                step 4
+            </div>
+
+
+        </div>
+        <div class="row" style="margin-left:0;">
+            <button class="btn btn-primary prev" style="width: 80px;">上一步</button>
+            <button class="btn btn-primary next" style="width: 80px;"   >下一步</button>
+        </div>
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#device-add").addClass("active");
+</script>
+
+</body>
+</html>

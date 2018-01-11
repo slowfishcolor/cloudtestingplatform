@@ -5,6 +5,7 @@ import com.mist.cloudtestingplatform.model.Device;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.DeviceService;
 import com.mist.cloudtestingplatform.service.OperateResult;
+import com.mist.cloudtestingplatform.util.IdUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,11 @@ public class DeviceController {
         return "device-mapping";
     }
 
+    @RequestMapping(value = "/device-add", method = RequestMethod.GET)
+    public String deviceAddPage(@ModelAttribute User user) {
+        return "device-add";
+    }
+
 
     /***************************** apis *****************************/
     @ResponseBody
@@ -96,6 +102,18 @@ public class DeviceController {
     @RequestMapping(value = "/api/updateDeviceConfig", method = RequestMethod.POST)
     public OperateResult updateDeviceConfig(String deviceId, String config, @ModelAttribute User user) {
         return deviceService.updateDeviceConfig(deviceId, config);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/generateDeviceId", method = RequestMethod.POST)
+    public String generateDeviceId() {
+        return IdUtils.generateDeviceId();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/getAllDevice", method = RequestMethod.GET)
+    public List<Device> getAllDevice(@ModelAttribute User user) {
+        return deviceService.listVisibleDeviceByUser(user.getId());
     }
 
 }

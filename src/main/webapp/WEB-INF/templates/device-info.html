@@ -41,7 +41,7 @@
                     <tr><th>注册时间</th><td th:text="${device.registerTimeStr}">content</td></tr>
                     <tr><th>更新时间</th><td th:text="${device.updateTimeStr}">content</td></tr>
                     <tr><th>备注</th><td th:text="${device.remark}">content</td></tr>
-                    <tr><th>配置信息</th><td th:text="${device.config}">content</td></tr>
+                    <tr><th>配置信息</th><td th:text="${device.config}" style="overflow: hidden; vertical-align: bottom; text-overflow: ellipsis; white-space:nowrap; max-width: 300px">content</td></tr>
                 </table>
             </div>
 

@@ -145,5 +145,6 @@ function saveConfig() {
 
 function resetConfig() {
     editor.set(config.config);
+    editor.expandAll();
 }
 

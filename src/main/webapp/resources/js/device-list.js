@@ -3,6 +3,9 @@
  */
 $(function () {
     $("#deleteDeviceBtn").click(deleteDevice);
+    $("#addDeviceBtn").click(function () {
+        location.href="device-add";
+    });
 });
 function deleteDevice() {
     var deviceIdStrs = "";
