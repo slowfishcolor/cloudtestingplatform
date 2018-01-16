@@ -56,6 +56,22 @@
         </div>
         </div>
 
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    设备操作
+                </div>
+                <div style="padding: 12px;">
+
+                    <a th:href="'../device-description/' + ${device.deviceId}" class="btn btn-default">ATML描述</a>
+                    <a th:href="'../device-control-panel/' + ${device.deviceId}" class="btn btn-default">控制面板</a>
+                    <a class="btn btn-default" href="" th:href="'../device-history/' + ${device.deviceId}">历史数据</a>
+                    <a class="btn btn-default" href="" th:href="'../device-mapping/' + ${device.deviceId}">映射管理</a>
+                    <a class="btn btn-default" href="" th:href="'../device-mapping/' + ${device.deviceId}">暂停使用</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -64,7 +80,7 @@
 
 <!-- nav selector -->
 <script>
-    $("#device-list").addClass("active");
+    $("#device-info").addClass("active");
 </script>
 
 </body>

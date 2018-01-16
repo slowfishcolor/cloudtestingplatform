@@ -34,6 +34,7 @@
     padding-left: 20px;
 }
 .nav-sidebar > li > a > i {
+    width: 24px;
     padding-right: 10px;
 }
 .nav-sidebar > .active > a,

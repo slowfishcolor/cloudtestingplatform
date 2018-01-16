@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="urn:CMfgTestInstrument"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:inst="urn:IEEE-1671.2:2012:InstrumentDescription"
+>
+  <xs:import namespace="urn:IEEE-1671.2:2012:InstrumentDescription" schemaLocation="InstrumentDescription.xsd"/>
+  <xs:element name="CMfgTestInstrument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DeviceId" type="xs:string"></xs:element>
+        <xs:element name="PhysicalDeviceId" type="xs:string"></xs:element>
+        <xs:element name="Virtual" type="xs:boolean"></xs:element>
+        <xs:element name="InstrumentDescription" type="inst:InstrumentDescription"></xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+
+
+

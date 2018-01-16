@@ -90,6 +90,13 @@ public class DeviceController {
         return "device-add";
     }
 
+    @RequestMapping(value = "/device-description/{deviceId}", method = RequestMethod.GET)
+    public String deviceDescriptionPage(@PathVariable("deviceId") String deviceId,@ModelAttribute User user, Model model) {
+        Device device = deviceService.getDeviceByDeviceId(deviceId);
+        model.addAttribute(device);
+        return "device-description";
+    }
+
 
     /***************************** apis *****************************/
     @ResponseBody

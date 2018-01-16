@@ -21,14 +21,14 @@ var config;
 var editor;
 
 var data = {
-    "name":"physicalDeviceId",
+    "name":"a6d5b75cfd94a35b",
     "itemStyle": {
       "normal": {
           "color":"#111"
       }
     },
     "children":[
-        {"name":"deviceId_1"},
+        {"name":"b7d5br4ccd9daa5a"},
         {"name":"deviceId_2"}
     ]
 };

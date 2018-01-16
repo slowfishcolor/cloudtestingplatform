@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>ATML描述</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+    <script th:src="@{/resources/dist/jquery/jquery-ui.min.js}" ></script>
+    <link th:href="@{/resources/dist/jquery.xmleditor/jquery.xmleditor.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/jquery.xmleditor/xsd2json.js}" ></script>
+    <script th:src="@{/resources/dist/jquery.xmleditor/jquery.xmleditor.js}" ></script>
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">ATML描述</h3>
+        <div style="height: 24px;" class="row">
+            <div class="col-md-3" ><b>设备ID：</b><span th:text="${device.deviceId}"></span></div>
+            <div class="col-md-3" ><b>型号：</b><span th:text="${device.model.name}"></span></div>
+            <div class="col-md-3" ><b>设备类型：</b><span th:text="${device.virtualStr}"></span></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            <div id="xml_editor">
+            </div>
+            </div>
+            <script>
+                $(function() {
+                    var extractor = new Xsd2Json("CMfgTestInstrument.xsd", {"schemaURI":"../resources/atml/"});
+
+                    $("#xml_editor").xmlEditor({
+                        schema: extractor.getSchema()
+                    });
+                });
+            </script>
+        </div>
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#device-info").addClass("active");
+</script>
+
+</body>
+</html>
