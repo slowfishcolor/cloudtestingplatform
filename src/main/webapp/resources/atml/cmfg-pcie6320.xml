@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cmfg:CMfgTestInstrument
+  xmlns:cmfg="urn:CMfgTestInstrument"
+  xmlns:c="urn:IEEE-1671:2010:Common"
+	xmlns:hc="urn:IEEE-1671:2010:HardwareCommon"
+  xmlns:inst="urn:IEEE-1671.2:2012:InstrumentDescription"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:CMfgTestInstrument CMfgTestInstrument.xsd"
+  >
+  <cmfg:DeviceId>"a6d5b75cfd94a35b"</cmfg:DeviceId>
+  <cmfg:PhysicalDeviceId>"b7d5br4ccd9daa5a"</cmfg:PhysicalDeviceId>
+  <cmfg:Virtual>true</cmfg:Virtual>
+  <cmfg:InstrumentDescription 
+    type="Instrument"
+	  uuid="{D9B428F7-E1BF-470f-8210-7DF444F8B7DA}"
+	  name="PCIe-6320"
+	  version="1.01">
+    <c:Description>Multi-Channel Instrument</c:Description>
+    <c:Identification>
+      <c:Manufacturers>
+        <c:Manufacturer name="National Instrument" >
+          <c:URL>http://www.ni.com</c:URL>
+        </c:Manufacturer>
+      </c:Manufacturers>
+      <c:ModelName>PCIe-6320</c:ModelName>
+    </c:Identification>
+
+    <hc:Interface>
+      <c:Ports>
+        <c:Port name="Channel_0" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="AI 0" pinID="68"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_1" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="AI_1" pinID="33"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_2" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="28"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_3" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="26"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_4" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="24"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_5" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="22"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_6" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="20"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_7" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="18"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_8" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="16"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_9" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="14"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_10" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="12"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_11" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="10"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_12" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="8"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_13" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="6"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_14" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="4"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_15" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J1A" pinID="2"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_16" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="32"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_17" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="30"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_18" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="28"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_19" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="26"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_20" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="24"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_21" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="22"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_22" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="20"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_23" direction="Input" type="Analog">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="J2A" pinID="18"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="P0.1" pinID="17"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_25" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_26" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_24" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_46" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="Channel_47" direction="Bi-Directional" type="Digital">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="TRIG" pinID="OUT"/>
+          </c:ConnectorPins>
+        </c:Port>
+
+        <c:Port name="AI GND" type="Ground">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="AI GND" pinID="67"/>
+          </c:ConnectorPins>
+        </c:Port>
+        <c:Port name="D GND" type="Ground">
+          <c:ConnectorPins>
+            <c:ConnectorPin connectorID="D GND" pinID="4"/>
+            <c:ConnectorPin connectorID="D GND" pinID="7"/>
+            <c:ConnectorPin connectorID="D GND" pinID="9"/>
+            <c:ConnectorPin connectorID="D GND" pinID="13"/>
+            <c:ConnectorPin connectorID="D GND" pinID="15"/>
+            <c:ConnectorPin connectorID="D GND" pinID="35"/>
+            <c:ConnectorPin connectorID="D GND" pinID="36"/>
+            <c:ConnectorPin connectorID="D GND" pinID="44"/>
+            <c:ConnectorPin connectorID="D GND" pinID="50"/>
+            <c:ConnectorPin connectorID="D GND" pinID="53"/>
+          </c:ConnectorPins>
+        </c:Port>
+      </c:Ports>
+    </hc:Interface>
+    <hc:Control>
+      <hc:Drivers>
+        <hc:Driver version="3.1" qualifier="Min">
+          <hc:Type xsi:type="hc:VPP" prefix="acmeMC">
+            <hc:Bit32 fileName="acmeMC_32.dll" />
+          </hc:Type>
+          <hc:Platform>
+            <hc:OperatingSystem name="Blue" qualifier="Min" version="5.0"/>
+          </hc:Platform>
+        </hc:Driver>
+      </hc:Drivers>
+      <hc:Tools>
+        <hc:Tool name="SFP" filePath="c:\vxipnp\winnt\acmeMC\acmeMC.exe" version="2.1" qualifier="Min"/>
+      </hc:Tools>
+    </hc:Control>
+    <hc:Documentation>
+      <hc:Document uuid="2447913FDFC24745837FF73D2D255A8F" name="Online Help">
+        <c:URL>file://c:\vxipnp\winnt\acmeMC\acmeMC.hlp</c:URL>
+      </hc:Document>
+    </hc:Documentation>
+    <hc:NetworkList>
+      <hc:Network count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/hc:Interface/c:Ports/c:Port[@name="Channel_#"]
+          </hc:Path>
+        </hc:Node>
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Switching/hc:Switch[@name="Channel_Switch_#"]/hc:Interface/c:Ports/c:Port[@name="Out"]
+          </hc:Path>
+        </hc:Node>
+      </hc:Network>
+      <hc:Network count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/hc:Interface/c:Ports/c:Port[@name="Matrix_#"]
+          </hc:Path>
+        </hc:Node>
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Switching/hc:Switch[@name="Channel_Switch_#"]/hc:Interface/c:Ports/c:Port[@name="Matrix"]
+          </hc:Path>
+        </hc:Node>
+      </hc:Network>
+      <hc:Network count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Resources/hc:Resource[@name="Channel_#"]/hc:Interface/c:Ports/c:Port[@name="Source"]
+          </hc:Path>
+        </hc:Node>
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Switching/hc:Switch[@name="Channel_Switch_#"]/hc:Interface/c:Ports/c:Port[@name="Source"]
+          </hc:Path>
+        </hc:Node>
+      </hc:Network>
+      <hc:Network count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Resources/hc:Resource[@name="Channel_#"]/hc:Interface/c:Ports/c:Port[@name="Measure"]
+          </hc:Path>
+        </hc:Node>
+        <hc:Node>
+          <hc:Path>
+            /inst:InstrumentDescription/inst:Switching/hc:Switch[@name="Channel_Switch_#"]/hc:Interface/c:Ports/c:Port[@name="Measure"]
+          </hc:Path>
+        </hc:Node>
+      </hc:Network>
+    </hc:NetworkList>
+    <inst:Buses>
+      <inst:Bus
+        xsi:type="inst:PCIe" vendorID="1093" deviceID="C4C4" numberOfLanes="1"></inst:Bus>
+    </inst:Buses>
+    <inst:Specifications>
+      <hc:Specification xsi:type="hc:Feature" name="some">
+        <hc:Description>Some spec</hc:Description>
+        <hc:Limits>
+          <hc:Limit>
+            <c:Expected comparator="EQ">
+              <c:IndexedArray dimensions="[2]" xsi:type="c:doubleArray">
+                <c:Element position="[0]" value="2.5"/>
+              </c:IndexedArray>
+            </c:Expected>
+          </hc:Limit>
+        </hc:Limits>
+      </hc:Specification>
+      <hc:Group>
+        <hc:Group>
+          <hc:Specification xsi:type="hc:Feature" name="a">
+            <hc:Description>Blah</hc:Description>
+          </hc:Specification>
+          <hc:Group>
+            <hc:Specification xsi:type="hc:Feature" name="b">
+              <hc:Description>b</hc:Description>
+            </hc:Specification>
+          </hc:Group>
+        </hc:Group>
+      </hc:Group>
+    </inst:Specifications>
+    <inst:Resources>
+      <hc:Resource name="Channel_#" count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Interface>
+          <c:Ports>
+            <c:Port name="Source"/>
+            <c:Port name="Measure"/>
+          </c:Ports>
+        </hc:Interface>
+      </hc:Resource>
+    </inst:Resources>
+    <inst:Switching>
+      <hc:Switch name="Channel_Switch_#" count="32" baseIndex="0" replacementCharacter="#">
+        <hc:Interface>
+          <c:Ports>
+            <c:Port name="Out"/>
+            <c:Port name="Matrix"/>
+            <c:Port name="Source"/>
+            <c:Port name="Measure"/>
+          </c:Ports>
+        </hc:Interface>
+        <hc:Connections>
+          <hc:RelaySetting name="Off"/>
+          <hc:RelaySetting name="Matrix">
+            <hc:RelayConnection to="Matrix" from="Out"/>
+          </hc:RelaySetting>
+          <hc:RelaySetting name="Source">
+            <hc:RelayConnection to="Source" from="Out"/>
+          </hc:RelaySetting>
+          <hc:RelaySetting name="Measure">
+            <hc:RelayConnection to="Measure" from="Out"/>
+          </hc:RelaySetting>
+        </hc:Connections>
+      </hc:Switch>
+    </inst:Switching>
+    <inst:Capabilities>
+      <hc:Capability name="MeasureVoltage">
+        <hc:Interface>
+          <c:Ports>
+            <c:Port name="Out"/>
+          </c:Ports>
+        </hc:Interface>
+      </hc:Capability>
+      <hc:CapabilityMap>
+        <hc:Mapping count="32" baseIndex="0" replacementCharacter="#">
+          <hc:Map>
+            <hc:Node>
+              <hc:Path>
+                /inst:InstrumentDescription/inst:Resources/hc:Resource[@name="Channel_#"]/hc:Interface/c:Ports/c:Port[@name="Measure"]
+              </hc:Path>
+            </hc:Node>
+            <hc:Node>
+              <hc:Path>
+                /inst:InstrumentDescription/inst:Capabilities/hc:Capability[@name="MeasureVoltage"]/hc:Interface/c:Ports/c:Port[@name="Out"]
+              </hc:Path>
+            </hc:Node>
+          </hc:Map>
+        </hc:Mapping>
+      </hc:CapabilityMap>
+    </inst:Capabilities>
+  </cmfg:InstrumentDescription>
+  
+</cmfg:CMfgTestInstrument>
+
+
+
+

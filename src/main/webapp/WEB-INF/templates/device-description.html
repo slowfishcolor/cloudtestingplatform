@@ -14,7 +14,7 @@
     <link th:href="@{/resources/dist/jquery.xmleditor/jquery.xmleditor.css}" rel="stylesheet">
     <script th:src="@{/resources/dist/jquery.xmleditor/xsd2json.js}" ></script>
     <script th:src="@{/resources/dist/jquery.xmleditor/jquery.xmleditor.js}" ></script>
-
+    <script th:src="@{/resources/js/device-description.js}" ></script>
 </head>
 <body>
 
@@ -34,18 +34,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-            <div id="xml_editor">
+                <div id="xml_editor"></div>
+                <div class="loading">
+                    <p id="i-loading" class="m-t-lg"
+                       style="text-align: center; font-size: 50px; margin-top: 128px;">
+                        <i class="fa fa-spinner fa fa-spin fa fa-2x"></i>
+                    </p>
+                </div>
             </div>
-            </div>
-            <script>
-                $(function() {
-                    var extractor = new Xsd2Json("CMfgTestInstrument.xsd", {"schemaURI":"../resources/atml/"});
-
-                    $("#xml_editor").xmlEditor({
-                        schema: extractor.getSchema()
-                    });
-                });
-            </script>
         </div>
 
     </div>
