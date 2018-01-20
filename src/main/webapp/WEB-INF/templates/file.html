@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>文件管理</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+    <link th:href="@{/resources/dist/bootstrap-fileinput/fileinput.min.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/bootstrap-fileinput/fileinput.min.js}" ></script>
+
+</head>
+<body>
+
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">文件管理</h3>
+        <div id="uploadFile" class="row ">
+            <div class="col-sm-6 col-md-4">
+                <input id="input-b1" name="file-data" type="file" >
+            </div>
+
+        </div>
+        <div>
+            <p id="i-loading" class="m-t-lg"
+               style="text-align: center; font-size: 50px;">
+                <i class="fa fa-spinner fa fa-spin fa fa-2x"></i>
+            </p>
+            <table class="table datashow table-striped" id="dataList">
+                <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>文件名</th>
+                    <th>类型</th>
+                    <th>更新时间</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox" ></td>
+                    <td><a href="" target="_blank">name</a></td>
+                    <td >type</td>
+                    <td >updateTime</td>
+                    <td>remark</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#file").addClass("active");
+</script>
+
+<script>
+$(function () {
+    // initialize with defaults
+    $("#input-b1").fileinput({
+        uploadAsync: true,
+        uploadUrl: "./api/uploadFile",
+        maxFileSize: 160000
+    }).on('filepreupload', function(event, data, previewId, index) {     //上传中
+        var form = data.form, files = data.files, extra = data.extra,
+            response = data.response, reader = data.reader;
+        console.log('文件正在上传');
+    }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+        console.log('文件上传成功！'+data.id);
+        listData();
+
+    }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+        console.log('文件上传失败！'+data.id);
+    });
+
+    listData();
+});
+
+function listData() {
+    $("#i-loading").show();
+    $(".datashow").hide();
+
+    $.ajax({
+        type : "POST",
+        url : "./api/getFileList",
+        data : {},
+        success : function(data) {
+            $("#dataList").find("tr:gt(0)").remove();
+            $(data).each(function () {
+               var tr = $("<tr><td><input type='checkbox' ></td><td><a href='' target='_blank'></a></td><td ></td><td ></td><td></td></tr>");
+                $("#dataList").append(tr);
+                $(tr).find("td:eq(1)").find("a").text(this.name).attr("href", "./api/file/" + this.name);
+                $(tr).find("td:eq(2)").text(this.type);
+                $(tr).find("td:eq(3)").text(timeStampToDateStrMs(this.updateTime));
+                $(tr).find("td:eq(4)").text(this.remark);
+            });
+        },
+        dataType : "json"
+    });
+
+    $("#i-loading").hide();
+    $(".datashow").show();
+}
+
+
+</script>
+
+</body>
+</html>

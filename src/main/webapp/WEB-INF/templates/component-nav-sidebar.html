@@ -51,6 +51,12 @@
             <li id="user">
                 <a th:href="@{/user}"><i class="fa fa-user-circle" aria-hidden="true"></i>用户中心</a>
             </li>
+            <li id="user-manage" th:if="${user.role == 'admin'}">
+                <a th:href="@{/user-manage}"><i class="fa fa-users" aria-hidden="true"></i>用户管理</a>
+            </li>
+            <li id="file" th:if="${user.role == 'admin'}">
+                <a th:href="@{/file}"><i class="fa fa-file" aria-hidden="true"></i>文件管理</a>
+            </li>
 
         </ul>
     </div>
