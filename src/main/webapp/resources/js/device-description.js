@@ -6,7 +6,7 @@ $(function() {
 
     $("#xml_editor").xmlEditor({
         ajaxOptions: {
-            xmlRetrievalPath: "../resources/atml/cmfg-pcie6320.xml"
+            xmlRetrievalPath: "../api/file/" + deviceId + ".xml"
         },
         elementUpdated: hideLoading,
         confirmExitWhenUnsubmitted : false,

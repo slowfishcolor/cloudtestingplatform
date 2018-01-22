@@ -17,6 +17,9 @@
     <script th:src="@{/resources/js/device-description.js}" ></script>
 </head>
 <body>
+<script th:inline="javascript">
+    var deviceId = [[${device.getDeviceId()}]];
+</script>
 
 <div th:replace="~{component-header :: #header}"></div>
 

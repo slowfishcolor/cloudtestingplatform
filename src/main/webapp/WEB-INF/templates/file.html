@@ -30,6 +30,22 @@
             <div class="col-sm-6 col-md-4">
                 <input id="input-b1" name="file-data" type="file" >
             </div>
+            <div class="col-sm-6 col-md-4">
+                <ul>
+                    <li>
+                        该页面上传的文件会保存到 file 表中
+                    </li>
+                    <li>
+                        文件大小上限 16MB
+                    </li>
+                    <li>
+                        成功上传的文件通过 api/file/{fileName:.+} 访问
+                    </li>
+                    <li>
+                        文件不会缓存，如需缓存的小图片，请 <a href="uploadImage" target="_blank">在此上传</a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
         <div>

@@ -2,6 +2,7 @@ package com.mist.cloudtestingplatform.web;
 
 import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.Image;
+import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.ImageService;
 import com.mist.cloudtestingplatform.service.OperateResult;
 import com.mist.cloudtestingplatform.service.OperateResultFactory;
@@ -11,10 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -28,6 +26,7 @@ import java.io.OutputStream;
  * Created by Prophet on 2017/11/18.
  */
 @Auth
+@SessionAttributes("user")
 @Controller
 public class ImageController {
 
@@ -43,7 +42,7 @@ public class ImageController {
     /***************************** pages *****************************/
 
     @RequestMapping(value = "uploadImage", method = RequestMethod.GET)
-    public String uploadImagePage() {
+    public String uploadImagePage(@ModelAttribute User user) {
         return "upload-image";
     }
 

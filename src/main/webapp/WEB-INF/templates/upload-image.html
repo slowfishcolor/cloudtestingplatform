@@ -47,6 +47,22 @@
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h3 class="page-header">图片上传</h3>
+        <div>
+            <ul>
+                <li>
+                    该页面上传的图片保存于 image 表
+                </li>
+                <li>
+                    上传的图片会被自动压缩到小于 65kb 的大小
+                </li>
+                <li>
+                    上传过的图片在 api/image/{imageId} 访问
+                </li>
+                <li>
+                    图片通过 Ehcache 缓存
+                </li>
+            </ul>
+        </div>
         <form class="form-inline" enctype="multipart/form-data" method="post" id="uploadForm" >
             <div class="form-group">
             <label>上传文件： </label><input id="file_input_1" type="file" name="file"/>
