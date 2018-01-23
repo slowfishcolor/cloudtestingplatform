@@ -46,5 +46,14 @@ public class HomeController {
         return "index-login";
     }
 
+    @RequestMapping(value = "/doc", method = RequestMethod.GET)
+    public String doc(Model model, HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
+
+        return "doc";
+    }
+
 
 }

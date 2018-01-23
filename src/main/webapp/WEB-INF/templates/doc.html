@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>云检测平台</title>
+    <title>文档中心</title>
     <link rel="icon"  th:href="@{/resources/image/cloudtesting-icon.png}">
 
     <!-- Bootstrap core CSS -->
@@ -19,6 +19,29 @@
     <link th:href="@{/resources/css/common.css}" rel="stylesheet">
     <link th:href="@{/resources/css/index-login.css}" rel="stylesheet">
 
+    <!-- markdown css -->
+    <link th:href="@{/resources/dist/github-markdown-css/github-markdown.css}" rel="stylesheet">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+        .markdown-body img {
+            max-width: 500px;
+            margin: 24px 100px;
+        }
+    </style>
+
+
 </head>
 <body>
 
@@ -26,7 +49,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" th:href="@{/}"><img style="height: 22px;"  th:src="@{/resources/image/cloudtesting-logo-9d9d9d.svg}"></a>
-            <a class="navbar-brand" href="#">云检测平台</a>
+            <a class="navbar-brand" href="./">云检测平台</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form th:if="${user == null}" class="navbar-form navbar-right" role="form" th:action="@{/login}" method="post">
@@ -47,33 +70,25 @@
     </div>
 </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1><img style="height: 64px;"  th:src="@{/resources/image/cloudtesting-logo-777777.svg}"> 云检测平台</h1>
-        <p>云检测平台是云制造理论在测试行业的落地应用，平台 1.0 版本针对电子组装制造业的模块及整机测试环节的测试模式进行了研发适配，实现了实验室环境下对典型测试仪器的接入及虚拟化服务化封装，可以通过 Web 应用的方式来调用仪器仪表，执行测试任务。</p>
-        <p><a class="btn btn-primary btn-lg" href="doc#architecture" role="button">了解更多 &raquo;</a></p>
-    </div>
-</div>
-
 <div class="container">
-    <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-4">
-            <h2><i class="fa fa-cogs" aria-hidden="true" style="color:grey; margin-right: 16px;"></i>平台架构</h2>
-            <p>基于云制造理论体系，提出针对电子组装制造业模块及整机测试环节的云检测模式架构。 </p>
-            <p><a class="btn btn-default" href="doc#architecture" role="button">查看全部 &raquo;</a></p>
+        <div class="col-md-2 " style="padding-top:45px;">
+            <div class="list-group">
+                <a class="list-group-item active">
+                    <div class="list-group-item-heading" style="font-size: 18px;text-align: center;margin-bottom: 0">文档列表</div>
+                </a>
+                <a class="list-group-item" href="#architecture" >系统架构</a>
+                <a class="list-group-item" href="#protocol" >云检测接入协议</a>
+                <a class="list-group-item" href="#description" >云检测设备描述</a>
+                <a class="list-group-item" href="#dependency" >原型平台项目依赖</a>
+                <a class="list-group-item" href="#deploy" >原型平台部署</a>
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2><i class="fa fa-telegram" aria-hidden="true" style="color:grey; margin-right: 16px;"></i> 接入协议</h2>
-            <p>平台基础MQTT协议与JSON数据格式制定了应用层协议，设备接入平台需兼容此协议，该部分对协议进行介绍。 </p>
-            <p><a class="btn btn-default" href="doc#protocol" role="button">查看全部 &raquo;</a></p>
+        <div class="col-md-10 ">
+            <div id="htmlout" class="markdown-body"></div>
         </div>
-        <div class="col-md-4">
-            <h2><i class="fa fa-file-text" aria-hidden="true" style="color:grey; margin-right: 16px;"></i> 设备描述</h2>
-            <p>基于IEEE ATML协议标准，提出云制造测试设备资源描述方法，该部分对测试设备的描述方法进行了介绍。</p>
-            <p><a class="btn btn-default" href="doc#description" role="button">查看全部 &raquo;</a></p>
-        </div>
+
     </div>
 
     <hr>
@@ -91,6 +106,37 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script th:src="@{/resources/dist/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/resources/dist/bootstrap/js/bootstrap.min.js}" ></script>
+<script th:src="@{/resources/dist/hyperdown/Parser.js}" ></script>
+<script>
+    $(function () {
+        $(window).on("hashchange", function () {
+           var markdown = loadMarkdown(location.hash.replace("#",""));
+           parseMarkdown(markdown);
+        });
+        $(window).trigger("hashchange");
+    });
+    function loadMarkdown(fileName) {
+        var requestUrl = "resources/markdown/" + fileName + ".md";
+        var responseBody = $.ajax({
+            url:requestUrl,
+            async:false
+        });
+        if (responseBody.status == 200) {
+            return responseBody.responseText;
+        } else {
+            return "# 没有指定文件：" + fileName + ".md";
+        }
+
+    }
+    function parseMarkdown(markdown) {
+        var parser = new HyperDown;
+        var html = parser.makeHtml(markdown);
+        var out = document.getElementById("htmlout");
+        var processedHtml = html.replace(new RegExp("src=\"static/","gm"), "src=\"resources/markdown/static/");
+        processedHtml = processedHtml.replace(new RegExp("<br>","gm"),"</p><P>");
+        out.innerHTML = processedHtml;
+    }
+</script>
 
 </body>
 </html>
