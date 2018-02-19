@@ -47,3 +47,6 @@ a:hover {
 ::-webkit-scrollbar-track:hover {
     background-color:rgba(50, 50, 50, 0.2);
 }
+body {
+    overflow-y:scroll;
+}

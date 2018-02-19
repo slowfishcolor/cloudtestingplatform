@@ -17,11 +17,14 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/resources/css/common.css}" rel="stylesheet">
-    <link th:href="@{/resources/css/index-login.css}" rel="stylesheet">
 
     <!-- markdown css -->
     <link th:href="@{/resources/dist/github-markdown-css/github-markdown.css}" rel="stylesheet">
     <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
         .markdown-body {
             box-sizing: border-box;
             min-width: 200px;
@@ -45,7 +48,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" th:href="@{/}"><img style="height: 22px;"  th:src="@{/resources/image/cloudtesting-logo-9d9d9d.svg}"></a>
@@ -72,8 +75,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-2 " style="padding-top:45px;">
-            <div class="list-group">
+        <div class="col-md-2" >
+            <div class="list-group side-nav" style="padding-top:45px; width: 165px;">
                 <a class="list-group-item active">
                     <div class="list-group-item-heading" style="font-size: 18px;text-align: center;margin-bottom: 0">文档列表</div>
                 </a>
@@ -82,6 +85,7 @@
                 <a class="list-group-item" href="#description" >云检测设备描述</a>
                 <a class="list-group-item" href="#dependency" >原型平台项目依赖</a>
                 <a class="list-group-item" href="#deploy" >原型平台部署</a>
+                <a class="list-group-item" href="#deploy" >原型平台使用</a>
             </div>
 
         </div>
@@ -107,6 +111,7 @@
 <script th:src="@{/resources/dist/jquery/jquery-3.2.1.min.js}"></script>
 <script th:src="@{/resources/dist/bootstrap/js/bootstrap.min.js}" ></script>
 <script th:src="@{/resources/dist/hyperdown/Parser.js}" ></script>
+<script th:src="@{/resources/dist/stickUp/stickUp.min.js}" ></script>
 <script>
     $(function () {
         $(window).on("hashchange", function () {
@@ -114,6 +119,11 @@
            parseMarkdown(markdown);
         });
         $(window).trigger("hashchange");
+//        $(".side-nav").stickUp();
+        $(document).ready( function() {
+            //enabling stickUp on the '.navbar-wrapper' class
+            $(".side-nav").stickUp();
+        });
     });
     function loadMarkdown(fileName) {
         var requestUrl = "resources/markdown/" + fileName + ".md";
