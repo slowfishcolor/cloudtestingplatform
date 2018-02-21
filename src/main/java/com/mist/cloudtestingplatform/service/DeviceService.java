@@ -1,6 +1,7 @@
 package com.mist.cloudtestingplatform.service;
 
 import com.mist.cloudtestingplatform.model.Device;
+import com.mist.cloudtestingplatform.model.MappingModel;
 import com.sun.istack.internal.NotNull;
 
 import java.util.List;
@@ -18,5 +19,7 @@ public interface DeviceService {
     public OperateResult deleteDevice(String deviceIdStrs, Integer userId);
 
     public OperateResult updateDeviceConfig(String deviceId, String config);
+
+    public MappingModel getDeviceMapping(String deviceId);
 
 }

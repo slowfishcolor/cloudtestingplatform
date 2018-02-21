@@ -1,8 +1,10 @@
 $(function () {
 
-    initChart();
+    // initChart();
+    // fillChart();
+    initAndFillChart();
 
-    chart.setOption(option);
+    // chart.setOption(option);
 
     config =  eval('(' + configStr + ')');
     initJsonEditor(config);
@@ -14,6 +16,8 @@ $(function () {
         location.reload();
     })
 
+    $(window).on('resize',function(){ chart.resize(); });
+
 });
 
 var config;
@@ -22,16 +26,12 @@ var editor;
 
 var data = {
     "name":"a6d5b75cfd94a35b",
-    "itemStyle": {
-      "normal": {
-          "color":"#111"
-      }
-    },
     "children":[
         {"name":"b7d5br4ccd9daa5a"},
         {"name":"deviceId_2"}
     ]
 };
+
 
 var count = 0;
 
@@ -46,7 +46,7 @@ var option = {
         {
             type: 'tree',
 
-            data: [data],
+            data: [],
 
             top: '1%',
             left: '25%',
@@ -91,6 +91,20 @@ function initChart() {
         console.log(params);
     });
 
+}
+
+function initAndFillChart() {
+    chart = echarts.init(document.getElementById('chart'));
+    chart.hideLoading();
+    fillChart();
+}
+
+function fillChart() {
+    $.get("../api/getDeviceMapping/" + deviceId, function (result) {
+        console.log(result);
+        option.series[0].data.push(result);
+        chart.setOption(option);
+    });
 }
 
 function initJsonEditor(jsonObj) {

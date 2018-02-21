@@ -2,6 +2,7 @@ package com.mist.cloudtestingplatform.web;
 
 import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.Device;
+import com.mist.cloudtestingplatform.model.MappingModel;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.DeviceService;
 import com.mist.cloudtestingplatform.service.OperateResult;
@@ -121,6 +122,12 @@ public class DeviceController {
     @RequestMapping(value = "/api/getAllDevice", method = RequestMethod.GET)
     public List<Device> getAllDevice(@ModelAttribute User user) {
         return deviceService.listVisibleDeviceByUser(user.getId());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/getDeviceMapping/{deviceId}", method = RequestMethod.GET)
+    public MappingModel getDeviceMapping(@PathVariable("deviceId") String deviceId) {
+        return deviceService.getDeviceMapping(deviceId);
     }
 
 }
