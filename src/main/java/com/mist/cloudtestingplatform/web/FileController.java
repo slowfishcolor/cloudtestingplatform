@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,5 +98,44 @@ public class FileController {
     public List<File> getFileList() {
         List<File> files = fileService.listAllFilesWithoutData();
         return files;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "api/uploadXml/{fileName}", method = RequestMethod.POST)
+    public void uploadXml(@PathVariable String fileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        InputStream inputStream = request.getInputStream();
+        int nRead = 1;
+        int nTotalRead = 0;
+        byte[] bytes = new byte[102400];
+        while (nRead > 0) {
+            nRead = inputStream.read(bytes, nTotalRead, bytes.length - nTotalRead);
+            if (nRead > 0)
+                nTotalRead = nTotalRead + nRead;
+        }
+        String str = new String(bytes, 0, nTotalRead, "utf-8");
+//        System.out.println(str);
+
+        String xmlFileName = fileName + ".xml";
+        File file = fileService.getFileByName(xmlFileName);
+        if (file == null) {
+            file = new File();
+            file.setName(xmlFileName);
+            file.setType("text/xml");
+        }
+        byte[] data = new byte[nTotalRead];
+        System.arraycopy(bytes,0, data, 0, nTotalRead);
+        file.setData(data);
+        file.setUpdateTime(System.currentTimeMillis());
+
+        fileService.saveFile(file);
+
+        logger.info("successful save file: {}", xmlFileName);
+
+        Writer writer = response.getWriter();
+        writer.write(str);
+        writer.flush();
+        writer.close();
+
     }
 }

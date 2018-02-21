@@ -6,13 +6,17 @@ $(function() {
 
     $("#xml_editor").xmlEditor({
         ajaxOptions: {
-            xmlRetrievalPath: "../api/file/" + deviceId + ".xml"
+            xmlRetrievalPath: "../api/file/" + deviceId + ".xml",
+            xmlUploadPath: "../api/uploadXml/" + deviceId,
+            submitResponseHandler: new function (jqXHR, exception) {
+
+            }
         },
         elementUpdated: hideLoading,
         confirmExitWhenUnsubmitted : false,
         submitButtonConfigs : [
             {
-                url : "/submit",
+                url : "../api/uploadXml/" + deviceId,
 //                                responseHandler : myResponseHandler,
                 label : "保存",
                 cssClass: "btn btn-primary mg-r mg-b mg-t"
