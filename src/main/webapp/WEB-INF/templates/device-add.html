@@ -12,6 +12,10 @@
 
     <link th:href="@{/resources/dist/icheck/skins/all.css}" rel="stylesheet">
     <script th:src="@{/resources/dist/icheck/icheck.js}" ></script>
+
+    <link th:href="@{/resources/dist/bootstrap-fileinput/fileinput.min.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/bootstrap-fileinput/fileinput.min.js}" ></script>
+
     <link th:href="@{/resources/css/device-add.css}" rel="stylesheet">
     <script th:src="@{/resources/js/device-add.js}" ></script>
 
@@ -88,22 +92,157 @@
 
 
             <div class="step-content" id="step-2">
-                step 2
+                <div class="phy">
+                    <div class="row">
+                        <div class="col-md-2 select-label">选择设备型号：</div>
+                        <div class="col-md-3">
+                            <div class="dropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default" id="modelList"
+                                        data-toggle="dropdown">
+                                    <span class="chosenItem" id="modelList-chosenItem" >选择型号</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dynamic" role="menu" aria-labelledby="modelList" id="modelList-content">
+                                    <!--<li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai0dsfdsf</a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mg-t">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    型号信息
+                                </div>
+                                <table class="table">
+                                    <tr><th>型号 ID</th><td id="modelId"> </td></tr>
+                                    <tr><th>型号</th><td id="modelName"> </td></tr>
+                                    <tr><th>状态</th><td id="modelStatus"> </td></tr>
+                                    <tr><th>类别</th><td id="modelType"> </td></tr>
+                                    <tr><th>测试类别</th><td id="modelTestType"> </td></tr>
+                                    <tr><th>注册时间</th><td id="modelRegisterTime"> </td></tr>
+                                    <tr><th>备注</th><td id="modelRemark"> </td></tr>
+                                    <tr><th>配置信息</th><td id="modelConfig" class="config"> </td></tr>
+                                </table>
+                            </div>
+
+                        </div>
+                        <img id="model-img" class="img-thumbnail" style="max-height: 300px; max-width: 300px;" src="">
+                    </div>
+                </div>
+                <div class="vir">
+                    <div class="row">
+                    <div class="col-md-2 select-label">选择模板设备：</div>
+                    <div class="col-md-3">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle btn-default" id="deviceList"
+                                    data-toggle="dropdown">
+                                <span class="chosenItem" id="deviceList-chosenItem" >选择设备</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dynamic" role="menu" aria-labelledby="modelList" id="deviceList-content">
+                                <!--<li role="presentation"><a role="menuitem" tabindex="-1" >Dev1/ai0dsfdsf</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row mg-t">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    设备信息
+                                </div>
+                                <table class="table">
+                                    <tr><th>设备 ID</th><td id="deviceId"> </td></tr>
+                                    <tr><th>型号</th><td id="deviceModel"> </td></tr>
+                                    <tr><th>类型</th><td id="deviceVirtualType"> </td></tr>
+                                    <tr><th>物理设备 ID</th><td id="devicePhysicalId"> </td></tr>
+                                    <tr><th>状态</th><td id="deviceStatus"> </td></tr>
+                                    <tr><th>类别</th><td id="deviceType"> </td></tr>
+                                    <tr><th>测试类别</th><td id="deviceTestType"> </td></tr>
+                                    <tr><th>注册时间</th><td id="deviceRegisterTime"> </td></tr>
+                                    <tr><th>备注</th><td id="deviceRemark"> </td></tr>
+                                    <tr><th>配置信息</th><td id="deviceConfig" class="config"> </td></tr>
+                                </table>
+                            </div>
+
+                        </div>
+                        <img id="device-img" class="img-thumbnail" style="max-height: 300px; max-width: 300px;" src="">
+                    </div>
+                </div>
             </div>
 
             <div class="step-content" id="step-3">
-                step 3
+                <div class="row">
+                    <div class="col-md-2 select-label">设备 ID：</div>
+                    <div class="col-md-2"><input id="input-deviceId" class="input-text" type="text"/></div>
+                    <div class="col-md-2"><button class="btn btn-default" id="btn-generateId">生成 ID</button></div>
+                </div>
+                <div class="row mg-t">
+                    <div class="col-md-2 select-label">可见性：</div>
+                    <div class="col-md-5">
+                        <div class="dropdown">
+                        <button type="button" class="btn dropdown-toggle btn-default" id="visibilityList"
+                                data-toggle="dropdown">
+                            <span class="chosenItem" id="visibilityList-chosenItem" >选择可见性</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu fix" role="menu" aria-labelledby="modelList" id="visibilityList-content">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" visibility="2">公共可见 </a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" visibility="1">组可见 </a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" visibility="0">私有 </a></li>
+                        </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mg-t">
+                    <div class="col-md-2 select-label">备 注：</div>
+                    <div class="col-md-5"><input id="input-remark" class="input-text" type="text" style="width: 100%"/></div>
+
+                </div>
+                <div class="row mg-t">
+                    <div class="col-md-2 select-label">描述文件：</div>
+                    <div class="col-md-5"><input id="input-b1" name="file-data" type="file" accept="text/xml"></div>
+
+                </div>
+
             </div>
 
             <div class="step-content" id="step-4">
-                step 4
+                <div class="row">
+                    <div class="col-md-2"><b>请确认信息</b></div>
+                </div>
+                <div class="row mg-t">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                设备信息
+                            </div>
+                            <table class="table">
+                                <tr><th>设备 ID</th><td id="nDeviceId"> </td></tr>
+                                <tr class="vir"><th>模板设备 ID</th><td id="nDeviceBaseId"> </td></tr>
+                                <tr><th>型号</th><td id="nDeviceModel"> </td></tr>
+                                <tr><th>类型</th><td id="nDeviceVirtualType"> </td></tr>
+                                <tr><th>物理设备 ID</th><td id="nDevicePhysicalId"> </td></tr>
+                                <tr><th>可见性</th><td id="nDeviceVisibility"> </td></tr>
+                                <tr><th>备注</th><td id="nDeviceRemark"> </td></tr>
+                                <tr><th>描述文件</th><td id="nDeviceFile"> </td></tr>
+
+                            </table>
+                        </div>
+
+                    </div>
+                    <img id="nDevice-img" class="img-thumbnail" style="max-height: 300px; max-width: 300px;" src="">
+                </div>
             </div>
 
 
         </div>
         <div class="row" style="margin-left:0;">
             <button class="btn btn-primary prev" style="width: 80px;">上一步</button>
-            <button class="btn btn-primary next" style="width: 80px;"   >下一步</button>
+            <button id="btn-next" class="btn btn-primary next" style="width: 80px;"   >下一步</button>
+            <button id="btn-finish" class="btn btn-success" style="width: 80px;">完成</button>
         </div>
 
     </div>

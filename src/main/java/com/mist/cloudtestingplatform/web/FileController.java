@@ -4,6 +4,7 @@ import com.mist.cloudtestingplatform.annotation.Auth;
 import com.mist.cloudtestingplatform.model.File;
 import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.service.FileService;
+import com.mist.cloudtestingplatform.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,8 @@ public class FileController {
     public Map<String, String> uploadFile(HttpServletRequest request) throws IOException{
         Map<String, String> result = new HashMap<>();
 
+        String fileName = request.getParameter("file-name");
+
         // 转型为MultipartHttpRequest：
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         // 获得文件：
@@ -61,7 +64,11 @@ public class FileController {
         if (file == null) {
             file = new File();
         }
-        file.setName(multipartFile.getOriginalFilename());
+        if (StringUtils.isEmpty(fileName)) {
+            file.setName(multipartFile.getOriginalFilename());
+        } else {
+            file.setName(fileName);
+        }
         file.setType(multipartFile.getContentType());
         file.setData(multipartFile.getBytes());
         file.setUpdateTime(System.currentTimeMillis());
@@ -69,7 +76,7 @@ public class FileController {
         fileService.saveFile(file);
 //        logger.info("type {}", multipartFile.getContentType());
 
-        logger.info("executed");
+        logger.info("file :{} uploaded", file.getName());
         result.put("result", "success");
         return result;
     }

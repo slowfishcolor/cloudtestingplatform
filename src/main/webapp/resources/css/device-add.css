@@ -89,21 +89,39 @@
 .step-content .block-top {
     /*margin: 6px 16px;*/
     margin-right: 32px;
-    width: 400px;
+    width: 250px;
     height: 32px;
     display: inline-block;
 }
+
 .step-content .block {
     border: 1px solid #dddddd;
     border-radius: 4px;
     min-height: 400px;
     /*margin: 0 16px;*/
     margin-right: 32px;
-    width: 400px;
+    width: 250px;
     display: inline-block;
     vertical-align: middle;
     padding: 24px;
 }
+@media (min-width: 992px) {
+    .step-content .block-top {
+        width: 350px;
+    }
+    .step-content .block {
+        width: 350px;
+    }
+}
+@media (min-width: 1200px) {
+    .step-content .block-top {
+        width: 400px;
+    }
+    .step-content .block {
+        width: 400px;
+    }
+}
+
 .step-content .block.active {
     border-color: #428bca;
 }
@@ -127,4 +145,38 @@
 
 .step-content.current {
     display: block;
+}
+
+.select-label {
+    height: 34px;
+    text-align: right;
+    line-height: 34px;
+    font-weight: 600;
+}
+
+.dropdown-toggle {
+    width: 160px;
+}
+
+.config {
+    overflow: hidden;
+    vertical-align: bottom;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    max-width: 300px;
+}
+
+.input-text {
+    width: 110%;
+    height: 34px;
+    line-height: 30px;
+    padding: 2px;
+    border-radius: 2px;
+    border-color: #d5d5d5;
+    border-width: 1px;
+}
+
+
+div.kv-file-content {
+    height: 100px !important;
 }

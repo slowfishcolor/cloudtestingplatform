@@ -4,14 +4,12 @@ import com.mist.cloudtestingplatform.dao.DeviceDao;
 import com.mist.cloudtestingplatform.dao.ModelDao;
 import com.mist.cloudtestingplatform.dao.UserDao;
 import com.mist.cloudtestingplatform.exception.BusinessException;
-import com.mist.cloudtestingplatform.model.Device;
-import com.mist.cloudtestingplatform.model.MappingModel;
-import com.mist.cloudtestingplatform.model.Model;
-import com.mist.cloudtestingplatform.model.User;
+import com.mist.cloudtestingplatform.model.*;
 import com.mist.cloudtestingplatform.service.DeviceService;
 import com.mist.cloudtestingplatform.service.OperateResult;
 import com.mist.cloudtestingplatform.service.OperateResultFactory;
 import com.mist.cloudtestingplatform.util.IdUtils;
+import com.mist.cloudtestingplatform.util.StringUtils;
 import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,6 +123,48 @@ public class DeviceServiceImpl implements DeviceService {
             return mappingFromDeviceId(device.getPhysicalDeviceId(), deviceList);
         }
         return null;
+    }
+
+    @Override
+    public OperateResult addDevice(NewDevice newDevice, User user) {
+        if (newDevice == null || StringUtils.isEmpty(newDevice.getDeviceId())) {
+            return OperateResultFactory.failResult("empty deviceId");
+        }
+        if (deviceDao.getDevice(newDevice.getDeviceId()) != null) {
+            return OperateResultFactory.failResult("duplicate deviceId");
+        }
+
+        Device device = new Device();
+        device.setDeviceId(newDevice.getDeviceId());
+        device.setOwnerId(user.getId());
+        device.setRemark(newDevice.getRemark());
+        device.setRegisterTime(System.currentTimeMillis());
+        device.setUpdateTime(System.currentTimeMillis());
+        device.setStatus(0);
+
+        if (newDevice.isVirtual()) {
+            device.setVirtual(1);
+            Device baseDevice = deviceDao.getDevice(newDevice.getBaseDeviceId());
+            if (baseDevice == null) {
+                return OperateResultFactory.failResult("invalid base deviceId");
+            }
+            device.setPhysicalDeviceId(baseDevice.getPhysicalDeviceId());
+            device.setModelId(baseDevice.getModelId());
+            device.setConfig(baseDevice.getConfig());
+        } else {
+            device.setVirtual(0);
+            Model baseModel = modelDao.getModel(newDevice.getBaseModelId());
+            if (baseModel == null) {
+                return OperateResultFactory.failResult("invalid base modelId");
+            }
+            device.setPhysicalDeviceId(device.getDeviceId());
+            device.setModelId(baseModel.getId());
+            device.setConfig(baseModel.getConfig());
+        }
+
+        deviceDao.saveDevice(device);
+
+        return OperateResultFactory.successResult();
     }
 
     private MappingModel mappingFromDeviceId(String physicalDeviceId, List<Device> deviceList) {

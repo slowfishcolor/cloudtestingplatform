@@ -8,6 +8,8 @@ $(function () {
     connectToBroker();
     initEcharts();
     addBtnClickEvent();
+
+    $(window).on('resize',function(){ chart.resize(); });
 });
 
 // STOMP connect
