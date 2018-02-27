@@ -1,9 +1,6 @@
 package com.mist.cloudtestingplatform.protocol.util;
 
-import com.mist.cloudtestingplatform.protocol.model.ControlData;
-import com.mist.cloudtestingplatform.protocol.model.Option;
-import com.mist.cloudtestingplatform.protocol.model.Payload;
-import com.mist.cloudtestingplatform.protocol.model.PayloadFactory;
+import com.mist.cloudtestingplatform.protocol.model.*;
 
 import java.util.Map;
 
@@ -43,6 +40,21 @@ public class PayloadUtil {
         controlData.setCommandMap(commandMap);
 
         Payload payload = PayloadFactory.createPayload(option, controlData);
+        payload.setDeviceId(deviceId);
+        payload.setPhysicalDeviceId(physicalDeviceId);
+        payload.setUserId(userId);
+
+        return payload;
+    }
+
+    public static Payload createInstructionPayload(String deviceId, String physicalDeviceId, int userId, InstructionData instructionData) {
+
+        Option option = new Option();
+
+        option.setPublish(1);
+        option.setSubscribe(0);
+
+        Payload payload = PayloadFactory.createPayload(option, instructionData);
         payload.setDeviceId(deviceId);
         payload.setPhysicalDeviceId(physicalDeviceId);
         payload.setUserId(userId);

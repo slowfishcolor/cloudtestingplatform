@@ -5,6 +5,12 @@ package com.mist.cloudtestingplatform.protocol.model;
  */
 public class PayloadBase {
 
+    public static String ANALOG_SAMPLE_DATA = "AnalogSampleData";
+
+    public static String CONTROL_DATA = "ControlData";
+
+    public static String INSTRUCTION_DATA = "InstructionData";
+
     private long messageId;
 
     private String destination;

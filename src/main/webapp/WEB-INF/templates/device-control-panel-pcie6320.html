@@ -36,7 +36,7 @@
 
         <h3 style="margin-bottom: 24px;">
             <span th:text="${device.model.getName()}">Device Name</span>
-            <a style="font-size: 18px; margin-left: 18px;"> Setting</a>
+            <a style="font-size: 18px; margin-left: 18px;" th:text="${device.deviceId}" th:href="'../device-info/' + ${device.getDeviceId()}"> </a>
         </h3>
 
         <div>

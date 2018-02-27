@@ -40,3 +40,36 @@
     text-overflow: ellipsis;
     white-space:nowrap;
 }
+
+.select-label {
+    height: 34px;
+    text-align: right;
+    line-height: 34px;
+    font-weight: 600;
+    margin-right: 12px;
+}
+.content {
+    margin-right: 24px;
+}
+
+.config {
+    overflow: hidden;
+    vertical-align: bottom;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    max-width: 300px;
+}
+
+.input-text {
+    width: 387px;
+    height: 32px;
+    line-height: 30px;
+    padding: 2px;
+    border-radius: 2px;
+    border-color: #d5d5d5;
+    border-width: 1px;
+}
+
+.btn-wide {
+    width: 80px;
+}

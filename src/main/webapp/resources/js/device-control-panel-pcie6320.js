@@ -13,9 +13,9 @@ $(function () {
 });
 
 // STOMP connect
-var url = "ws://www.prophet-xu.com:61614/stomp";
-var login = "";
-var passcode = "";
+var url = brokerUrl;
+var login = brokerUser;
+var passcode = brokerPassword;
 var sendDestination = "/topic/messenger.topic.server.";
 var subDestination = "/topic/messenger.topic.device.";
 // STOMP client

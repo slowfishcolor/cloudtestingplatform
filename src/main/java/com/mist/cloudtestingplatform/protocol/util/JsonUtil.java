@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mist.cloudtestingplatform.protocol.model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Prophet on 2017/11/23.
@@ -46,10 +47,12 @@ public class JsonUtil {
         payload.setOption(objectMapper.readValue(optionStr, Option.class));
 
         String dataStr = node.get("data").toString();
-        if ("AnalogSampleData".equals(payload.getType())) {
+        if (Payload.ANALOG_SAMPLE_DATA.equals(payload.getType())) {
             payload.setData(objectMapper.readValue(dataStr, AnalogSampleData.class));
-        } else if ("ControlData".equals(payload.getType())) {
+        } else if (Payload.CONTROL_DATA.equals(payload.getType())) {
             payload.setData(objectMapper.readValue(dataStr, ControlData.class));
+        } else if (Payload.INSTRUCTION_DATA.equals(payload.getType())) {
+            payload.setData(objectMapper.readValue(dataStr, InstructionData.class));
         } else {
             payload.setData(null);
         }
@@ -89,6 +92,18 @@ public class JsonUtil {
         System.out.println(jsonPayload.getDestination());
         System.out.println(jsonPayload.getMessageId());
         System.out.println(jsonPayload.getOption());
+        System.out.println(jsonPayload.getData());
+
+        Instruction instruction = new Instruction();
+        instruction.setName("test");
+        instruction.setType(Instruction.COMMAND_STRING);
+        InstructionData instructionData = new InstructionData(instruction);
+
+        payLoad.setType(Payload.INSTRUCTION_DATA);
+        payLoad.setData(instructionData);
+
+        jsonStr = payLoadToJson(payLoad);
+        jsonPayload = jsonToPayload(jsonStr);
         System.out.println(jsonPayload.getData());
 
     }

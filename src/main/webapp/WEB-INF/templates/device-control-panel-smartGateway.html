@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>控制面板</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+    <script th:src="@{/resources/js/stomp.js}" ></script>
+
+    <link th:href="@{/resources/css/device-control-panel.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/device-control-panel-smartGateway.js}" ></script>
+
+</head>
+<body>
+<script th:inline="javascript">
+    var deviceId = [[${device.getDeviceId()}]];
+    var physicalDeviceId = [[${device.getPhysicalDeviceId()}]];
+    var configStr = [[${device.config}]];
+</script>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">控制面板</h3>
+
+        <h3 >
+            <span th:text="${device.model.getName()}">Device Name</span>
+            <a style="font-size: 18px; margin-left: 18px;" th:text="${device.deviceId}" th:href="'../device-info/' + ${device.getDeviceId()}"> </a>
+        </h3>
+
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#panel-instruction" data-toggle="tab">指令收发</a></li>
+            <li><a href="#panel-script" data-toggle="tab">检测脚本</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="panel-instruction">
+                <div class="mg-t">
+                    <span class="select-label">端口: </span>
+                    <span class="dropdown content">
+                        <button type="button" class="btn dropdown-toggle btn-default" id="dropdownPort"
+                                data-toggle="dropdown">
+                            <span class="chosenItem" id="dropdownPort-chosenItem">/dev/ttyUSB0</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="dropdownPort-content">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" >/dev/ttyUSB0</a></li>
+                        </ul>
+                    </span>
+                    <span class="select-label">波特率: </span>
+                    <span class="dropdown content">
+                        <button type="button" class="btn dropdown-toggle btn-default" id="dropdownBound"
+                                data-toggle="dropdown">
+                            <span class="chosenItem" id="dropdownBound-chosenItem">9600</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="dropdownBound-content">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" >9600</a></li>
+                        </ul>
+                    </span>
+                    <button class="btn btn-success btn-wide mg-r" id="btn-connect">连接</button>
+                    <button class="btn btn-danger btn-wide" disabled id="btn-disconnect">断开</button>
+                </div>
+                <div class="mg-t">
+                    <span class="select-label">指令: </span>
+                    <input id="input-instruction" class="input-text mg-r" type="text"/>
+                    <button class="btn btn-primary btn-wide" disabled id="btn-send">发送</button>
+                </div>
+                <div class="row mg-t">
+                    <div class="col-md-4 col-sm-5">
+                        <div class="list-group">
+                            <a class="list-group-item active">发送</a>
+                            <div id="send-list">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-5">
+                        <div class="list-group">
+                            <a class="list-group-item active">接收</a>
+                            <div id="receive-list">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="panel-script">
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#device-control-panel").addClass("active");
+</script>
+
+
+</body>
+</html>

@@ -2,6 +2,10 @@
  * Created by Prophet on 2017/11/15.
  */
 
+var brokerUrl = "ws://www.prophet-xu.com:61614/stomp";
+var brokerUser = "";
+var brokerPassword = ""
+
 function Alert(msg) {
     $("#alert-content").text(msg);
     $("#alert").modal();
@@ -57,4 +61,8 @@ function getMinMaxAvg(values) {
     avg /= values.length;
 
     return [min, max, min - tenPercent, max + tenPercent, avg];
+}
+
+function currentTimeStr() {
+    return new Date().format("hh:mm:ss.S");
 }
