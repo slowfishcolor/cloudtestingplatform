@@ -6,6 +6,7 @@ import com.mist.cloudtestingplatform.model.User;
 import com.mist.cloudtestingplatform.protocol.model.Instruction;
 import com.mist.cloudtestingplatform.service.MQServiceSmartGateway;
 import com.mist.cloudtestingplatform.service.OperateResult;
+import com.mist.cloudtestingplatform.util.IdUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,8 @@ public class MqControllerSmartGateway implements MqController {
         instruction.setName(instructionString);
         instruction.setPort(port);
 
-        return mqServiceSmartGateway.sendSingleInstruction(deviceId, user.getId(), instruction);
+        long messageId = IdUtils.generateMessageId();
+
+        return mqServiceSmartGateway.sendSingleInstruction(deviceId, user.getId(), messageId, instruction);
     }
 }

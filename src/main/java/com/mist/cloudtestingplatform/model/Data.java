@@ -20,6 +20,8 @@ public class Data extends BaseModel {
 
     private String data;
 
+    private long messageId;
+
     @Override
     public int getId() {
         return id;
@@ -76,5 +78,13 @@ public class Data extends BaseModel {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public long getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(long messageId) {
+        this.messageId = messageId;
     }
 }

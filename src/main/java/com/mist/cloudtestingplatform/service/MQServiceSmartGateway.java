@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface MQServiceSmartGateway {
 
-    public OperateResult sendSingleInstruction(String deviceId, int userId, Instruction instruction);
+    public OperateResult sendSingleInstruction(String deviceId, int userId, long messageId, Instruction instruction);
 
-    public OperateResult sendInstructions(String deviceId, int userId, List<Instruction> instructions);
+    public OperateResult sendInstructions(String deviceId, int userId, long messageId, List<Instruction> instructions);
 }

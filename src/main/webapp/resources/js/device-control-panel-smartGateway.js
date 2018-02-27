@@ -2,6 +2,8 @@
  * Created by Prophet on 2018/2/26.
  */
 $(function () {
+    initICheck();
+    initFileUpload();
     addBtnClickEvent();
 });
 
@@ -13,6 +15,8 @@ var sendDestination = "/topic/messenger.topic.server.";
 var subDestination = "/topic/messenger.topic.device.";
 // STOMP client
 var client;
+
+var scriptName = "UUTSenseHatFull.json";
 
 function connectToBroker() {
     client = Stomp.client(url);
@@ -56,11 +60,14 @@ function disconnect() {
 
 function addData(data) {
     var instructions = data.instructions;
-    for (var index in instructions) {
-        if ($("#panel-instruction").is(":visible")) {
+    if ($("#panel-instruction").is(":visible")) {
+        for (var index in instructions) {
             addReceiveText(instructions[index].valueString);
         }
+    } else if ($("#panel-script").is(":visible")) {
+
     }
+
 }
 
 function addBtnClickEvent() {
@@ -105,4 +112,46 @@ function addReceiveText(text) {
     var t = document.createTextNode(currentTimeStr()+ ": " + text);
     d.appendChild(t);
     $(d).hide().prependTo($('#receive-list')).slideDown();
+}
+
+
+function initICheck() {
+    $('.icheck-list input').on('ifClicked', function(event){
+        if (this.id === "input-script-default") {
+
+        } else {
+
+        }
+    }).iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%'
+    });
+}
+
+function initFileUpload() {
+    $("#input-b1").fileinput({
+        uploadAsync: true,
+        uploadUrl: "./api/uploadFile",
+        maxFileSize: 160000,
+        allowedFileExtensions: ['json'],
+        uploadExtraData: function () {
+            return {'file-name': scriptName};
+        },
+        maxFileCount: 1,
+        previewSettings: {
+            text: {width: "100%", height: "100px"}
+        }
+    }).on('filepreupload', function(event, data, previewId, index) {     //上传中
+        var form = data.form, files = data.files, extra = data.extra,
+            response = data.response, reader = data.reader, filenames = data.filenames;
+        console.log('文件'+ filenames[0] +'正在上传');
+
+        newDevice.fileName = filenames[0];
+
+    }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+        console.log('文件上传成功！'+data.id);
+    }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+        console.log('文件上传失败！'+data.id);
+    });
 }

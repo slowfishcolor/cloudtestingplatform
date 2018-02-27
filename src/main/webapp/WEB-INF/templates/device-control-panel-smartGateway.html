@@ -12,6 +12,13 @@
     <script th:src="@{/resources/js/stomp.js}" ></script>
 
     <link th:href="@{/resources/css/device-control-panel.css}" rel="stylesheet">
+
+    <link th:href="@{/resources/dist/icheck/skins/all.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/icheck/icheck.js}" ></script>
+
+    <link th:href="@{/resources/dist/bootstrap-fileinput/fileinput.min.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/bootstrap-fileinput/fileinput.min.js}" ></script>
+
     <script th:src="@{/resources/js/device-control-panel-smartGateway.js}" ></script>
 
 </head>
@@ -94,7 +101,28 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="panel-script">
-
+                <div class="row mg-t">
+                    <div class="col-md-8" style="max-width: 700px;">
+                        <div class="icheck-list">
+                            <div>
+                                <input tabindex="3" type="radio" id="radio-script-default" name="radio-script" checked="">
+                                <label for="radio-script-default" class="">UUT Sense Hat Full Test</label>
+                            </div>
+                            <div class="mg-t">
+                                <div class="mg-r" style="display: inline-block; vertical-align: middle;">
+                                <input tabindex="4" type="radio" id="radio-script-upload" name="radio-script" >
+                                <label for="radio-script-upload" class="">自定义</label>
+                                </div>
+                                <div style="display: inline-block; width: 400px; vertical-align: middle">
+                                    <div><input id="input-b1" name="file-data" type="file" accept="text/json" data-show-preview="false"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <button class="btn btn-success btn-wide pull-right">执行</button>
+                    </div>
+                </div>
             </div>
         </div>
 

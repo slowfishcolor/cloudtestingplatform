@@ -49,6 +49,7 @@ public class MessageProcessor {
         } else {
             data = DataFacotry.createDeviceData(payload, messageStr);
         }
+        data.setMessageId(payload.getMessageId());
         return data;
     }
 }

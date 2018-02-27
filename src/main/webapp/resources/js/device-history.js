@@ -81,8 +81,8 @@ function dataDisplay(jsonStr, dir) {
     $('#dataPrettyJson').jsonview(jsonStr);
 
     var obj = eval('(' + jsonStr + ')');
-    // console.log(obj)
-    if (dir === '0') {
+    console.log(obj)
+    if (dir === '0' && obj.type == "AnalogSampleData") {
         showDataGraphChart(obj);
     } else if (dir === '1') {
         showDataGraphText(obj);
