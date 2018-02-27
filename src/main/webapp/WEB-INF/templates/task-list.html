@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
+
+    <title>任务列表</title>
+    <!-- Custom styles for this template -->
+    <!-- should have at least 1 link and script for thymeleaf to parse -->
+
+    <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
+    <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+
+</head>
+<body>
+
+<div th:replace="~{component-header :: #header}"></div>
+
+
+<div class="container-fluid">
+
+    <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h3 class="page-header">任务列表</h3>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    任务列表
+                </h3>
+            </div>
+            <div class="panel-body">
+
+                <button class="btn btn-success" id="addTaskBtn">新的任务</button>
+
+            </div>
+            <table class="table" id="deviceList">
+                <thead>
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>任务名称</th>
+                    <th>脚本</th>
+                    <th>消息 ID</th>
+                    <th>设备 ID</th>
+                    <th>执行时间</th>
+                    <th>状态</th>
+                    <th>结果</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td><input type="checkbox" taskName="taskName" th:attr="taskName=${task.taskName}"></td>
+                    <td ><a href="" th:href="'task-info/' + ${task.taskName}" th:text="${task.taskName}">deviceId</a></td>
+                    <td th:text="${task.script}">modelName</td>
+                    <td th:text="${task.messageId}">virtualStr</td>
+                    <td ><a href="" th:href="'device-info/' + ${task.deviceId}" th:text="${task.deviceId}">deviceId</a></td>
+                    <td th:text="${task.timeStr}">registerTime</td>
+                    <td th:text="${task.status}">owner</td>
+                    <td th:text="${task.result}">visibility</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer" th:text="'共 ' + ${tasks.size()} + ' 条'">数目</div>
+        </div>
+
+
+
+    </div>
+
+
+
+</div><!-- /.container -->
+
+<!-- nav selector -->
+<script>
+    $("#task-list").addClass("active");
+</script>
+<div class="modal fade" id="alert" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 300px;">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="alertModalLabel">操作提示</h4>
+            </div>
+            <div class="modal-body" id="alert-content">在这里添加一些文本</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+</html>

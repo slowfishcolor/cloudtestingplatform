@@ -120,9 +120,39 @@
                         </div>
                     </div>
                     <div class="col-md-1 ">
-                        <button class="btn btn-success btn-wide pull-right">执行</button>
+                        <button class="btn btn-success btn-wide pull-right" id="btn-perform-task">执行</button>
                     </div>
                 </div>
+                <p id="loading" class="mg-t"
+                   style="text-align: center; font-size: 50px;">
+                    <i class="fa fa-spinner fa fa-spin fa fa-2x"></i>
+                </p>
+                <table class="table datashow" id="dataList">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>指令</th>
+                        <th>数据</th>
+                        <th>数据值</th>
+                        <th>最小</th>
+                        <th>最大</th>
+                        <th>时间</th>
+                        <th>端口</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" ></td>
+                        <td>time</td>
+                        <td >direction</td>
+                        <td >data</td>
+                        <td>
+                            <a class="btn btn-default btn-sm" href="" >详细数据</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

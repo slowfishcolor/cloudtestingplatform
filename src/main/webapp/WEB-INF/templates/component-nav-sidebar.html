@@ -42,10 +42,12 @@
                     <a th:href="@{/model-list}"><i class="fa fa-list" aria-hidden="true"></i>型号列表</a>
                 </li>
             <li>
-                <a href=""><i class="fa fa-tasks" aria-hidden="true"></i>测试任务</a>
+                <a th:href="@{/task-list}"><i class="fa fa-tasks" aria-hidden="true"></i>测试任务</a>
             </li>
-            <li class="second-nav">
-                <a href=""><i class="fa fa-list" aria-hidden="true"></i>任务列表</a>
+            <li class="second-nav" id="task-list">
+                <a th:href="@{/task-list}"><i class="fa fa-list" aria-hidden="true"></i>任务列表</a>
+            </li>
+            <li class="second-nav" id="task-add">
                 <a href=""><i class="fa fa-plus-square" aria-hidden="true"></i>新的任务</a>
             </li>
             <li id="user">

@@ -29,6 +29,10 @@ public class IdUtils {
         return System.currentTimeMillis();
     }
 
+    public static String generateTaskName() {
+        return "T-" + generateDeviceId();
+    }
+
     public static void main(String[] args) {
         for (int i = 0; i < 20; i++) {
             System.out.println(generateDeviceId());

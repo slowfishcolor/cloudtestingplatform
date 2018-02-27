@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 4.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-15 16:30:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.mist.cloudtestingplatform.model.Task">
+        <id name="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="deviceId" type="java.lang.String"/>
+        <property name="userId" type="java.lang.Integer"/>
+        <property name="timestamp" type="java.lang.Long"/>
+        <property name="messageId" type="java.lang.Long"/>
+        <property name="result" type="java.lang.String"/>
+        <property name="script" type="java.lang.String"/>
+        <property name="status" type="java.lang.Integer"/>
+        <property name="taskName" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

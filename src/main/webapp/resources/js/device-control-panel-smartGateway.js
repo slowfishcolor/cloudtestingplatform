@@ -5,6 +5,7 @@ $(function () {
     initICheck();
     initFileUpload();
     addBtnClickEvent();
+    $("#loading").hide();
 });
 
 // STOMP connect
@@ -16,12 +17,15 @@ var subDestination = "/topic/messenger.topic.device.";
 // STOMP client
 var client;
 
+var isConnect = false;
+
 var scriptName = "UUTSenseHatFull.json";
 
 function connectToBroker() {
     client = Stomp.client(url);
     // on connect callback
     var onconnect = function (frame) {
+        isConnect = true;
         // add deviceId to subDestination
         subDestination += physicalDeviceId;
         sendDestination += deviceId;
@@ -49,6 +53,7 @@ function connectToBroker() {
 
 function disconnect() {
     client.disconnect(function () {
+        isConnect = false;
         // disconnect call back
         $("#btn-connect").attr("disabled", false);
         $("#btn-disconnect").attr("disabled", true);
@@ -65,7 +70,25 @@ function addData(data) {
             addReceiveText(instructions[index].valueString);
         }
     } else if ($("#panel-script").is(":visible")) {
+        $("#dataList").find("tr:gt(0)").remove();
 
+        for (var index in instructions) {
+            var instruction = instructions[index];
+            var tr = $("<tr><td><input type='checkbox' ></td><td></td><td ></td><td ></td><td></td><td ></td><td ></td><td ></td><td ></td></tr>");
+            $("#dataList").append(tr);
+            $(tr).find("td:eq(1)").text(instruction.name);
+            $(tr).find("td:eq(2)").text(instruction.valueString);
+            $(tr).find("td:eq(3)").text(instruction.valueNumber);
+            $(tr).find("td:eq(4)").text(instruction.minValue);
+            $(tr).find("td:eq(5)").text(instruction.maxValue);
+            $(tr).find("td:eq(6)").text(timeStampToDateStrMs(instruction.timestamp));
+            $(tr).find("td:eq(7)").text(instruction.port);
+            $(tr).find("td:eq(8)").text(instruction.remark);
+
+        }
+
+        $(".datashow").show();
+        $("#loading").hide();
     }
 
 }
@@ -85,6 +108,7 @@ function addBtnClickEvent() {
         }
     });
     $("#btn-disconnect").click(disconnect);
+    $("#btn-perform-task").click(performTask);
 }
 
 function sendSingleInstruction(instructionString) {
@@ -95,6 +119,25 @@ function sendSingleInstruction(instructionString) {
     }, function (data) {
         console.log(data.code);
         addSendText(instructionString);
+    })
+}
+
+function performTask() {
+    $(".datashow").hide();
+    $("#loading").show();
+    if (!isConnect) {
+        connectToBroker();
+    }
+    $.get("../api/file/" + scriptName, function (data) {
+        // var obj = JSON.parse(data);
+        // console.log(obj);
+        $.post("../api/performTask", {
+            "deviceId": deviceId,
+            "script": scriptName,
+            "instructionsJson": data
+        }, function () {
+            console.log("success");
+        })
     })
 }
 
