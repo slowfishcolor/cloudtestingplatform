@@ -23,4 +23,10 @@ public interface DeviceDao {
     public void deleteDevice(Collection deviceIds);
 
     public void updateDevice(Device device);
+
+    public Long getDeviceCount();
+
+    public Long getPhysicalDeviceCount();
+
+    public Device getNewDevice();
 }

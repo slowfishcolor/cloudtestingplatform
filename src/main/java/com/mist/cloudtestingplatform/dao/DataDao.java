@@ -24,4 +24,6 @@ public interface DataDao {
 
     public Long getDataListCountByDirection(String deviceId, Integer userId);
 
+    public Long getDataCount();
+
 }

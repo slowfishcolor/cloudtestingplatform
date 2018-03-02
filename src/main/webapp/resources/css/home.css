@@ -1,0 +1,29 @@
+.statistic {
+
+    height: 250px;
+    border-bottom: 1px solid #eee;
+}
+.label-group {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: right;
+}
+.data-group {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: center;
+}
+#chart {
+    height: 248px;
+}
+#image {
+    margin-top: 24px;
+    height: 150px;
+
+}
+.font-normal {
+    font-size: 14px;
+    text-align: left;
+}

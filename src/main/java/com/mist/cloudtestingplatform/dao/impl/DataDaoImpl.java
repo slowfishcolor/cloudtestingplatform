@@ -71,4 +71,10 @@ public class DataDaoImpl extends DaoBase implements DataDao {
     public Long getDataListCountByDirection(String deviceId, Integer userId) {
         return null;
     }
+
+    @Override
+    public Long getDataCount() {
+        String hql = "select count (*) from Data";
+        return (Long) currentSession().createQuery(hql).uniqueResult();
+    }
 }

@@ -61,4 +61,24 @@ public class DeviceDaoImpl extends DaoBase implements DeviceDao {
         currentSession().update(device);
     }
 
+    @Override
+    public Long getDeviceCount() {
+        String hql = "select count (*) from Device";
+        return (Long) currentSession().createQuery(hql).uniqueResult();
+    }
+
+    @Override
+    public Long getPhysicalDeviceCount() {
+        String hql = "select count (*) from Device where virtual = 0";
+        return (Long) currentSession().createQuery(hql).uniqueResult();
+    }
+
+    @Override
+    public Device getNewDevice() {
+        String hql = "from Device order by registerTime desc ";
+        List<Device> rs = currentSession()
+                .createQuery(hql).setFirstResult(0).setMaxResults(1).list();
+        return rs.get(0);
+    }
+
 }

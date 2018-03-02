@@ -3,12 +3,16 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="component-common-head :: common_header(~{::title},~{::link},~{::script})">
 
-    <title>用户</title>
+    <title>总览面板</title>
     <!-- Custom styles for this template -->
     <!-- should have at least 1 link and script for thymeleaf to parse -->
 
     <link th:href="@{/resources/css/emptycss.css}" rel="stylesheet">
     <script th:src="@{/resources/js/emptyjs.js}" ></script>
+
+    <link th:href="@{/resources/css/home.css}" rel="stylesheet">
+    <script th:src="@{/resources/dist/echarts/echarts.min.js}" ></script>
+    <script th:src="@{/resources/js/home.js}" ></script>
 
 </head>
 <body>
@@ -23,7 +27,80 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div class="">
             <h1 class="page-header">总览面板</h1>
-            <p class="lead" th:text="'Hello ' + ${user.getUsername()}">Hello user! </p>
+            <p class="lead" th:text="'您好 ' + ${user.username} + ' ！'">Hello user! </p>
+            <div class="row statistic">
+                <div class="col-md-2 label-group">
+                    <div>设备数：</div>
+                    <div>型号数：</div>
+                    <div>任务数：</div>
+                </div>
+                <div class="col-md-2 data-group">
+                    <div id="deviceCount">0</div>
+                    <div id="modelCount">0</div>
+                    <div id="taskCount">0</div>
+                </div>
+                <div class="col-md-2 label-group">
+                    <div>物理设备：</div>
+                    <div>虚拟设备：</div>
+                    <div>测试数据：</div>
+                </div>
+                <div class="col-md-2 data-group">
+                    <div id="physicalDeviceCount">0</div>
+                    <div id="virtualDeviceCount">0</div>
+                    <div id="dataCount">0</div>
+                </div>
+                <div class="col-md-4">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            <div class="row statistic" style="height: 200px;">
+                <div class="col-md-2 label-group">
+                    <div class="text-left">最新添加设备</div>
+                    <div >添加时间：</div>
+                    <div >DeviceId：</div>
+                </div>
+                <div class="col-md-2 data-group">
+                    <div>&nbsp</div>
+                    <div class="font-normal" id="registerTimeStr">0</div>
+                    <div class="font-normal" ><a id="deviceId" href="#" >0</a></div>
+                </div>
+                <div class="col-md-2 label-group">
+                    <div>&nbsp</div>
+                    <div>设备类型：</div>
+                    <div>型号：</div>
+                </div>
+                <div class="col-md-2 data-group">
+                    <div>&nbsp</div>
+                    <div class="font-normal"id="virtualStr">0</div>
+                    <div class="font-normal"><a id="modelName" href="#" >0</a></div>
+                </div>
+                <div class="col-md-4">
+                    <div  class=""><img id="image" src=""></div>
+                </div>
+            </div>
+            <div class="row " style="height: 200px;">
+                <div class="col-md-2 label-group">
+                    <div class="text-left">最新执行任务</div>
+                    <div>执行时间：</div>
+                    <div>执行设备：</div>
+                </div>
+                <div class="col-md-2 data-group">
+                    <div>&nbsp</div>
+                    <div class="font-normal" id="taskTime">0</div>
+                    <div class="font-normal" ><a id="taskDeviceId" href="#" >0</a></div>
+                </div>
+                <div class="col-md-2 label-group">
+                    <div>&nbsp</div>
+                    <div>任务脚本：</div>
+                    <div>任务名称：</div>
+                </div>
+                <div class="col-md-3 data-group">
+                    <div>&nbsp</div>
+                    <div class="font-normal" ><a id="script" href="#" >0</a></div>
+                    <div class="font-normal" ><a id="taskId" href="#" >0</a></div>
+                </div>
+
+            </div>
         </div>
     </div>
 

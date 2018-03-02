@@ -39,4 +39,10 @@ public class ModelDaoImpl extends DaoBase implements ModelDao {
                 .createQuery(hql).setParameterList("idList", idList)
                 .list();
     }
+
+    @Override
+    public Long getModelCount() {
+        String hql = "select count (*) from Model";
+        return (Long) currentSession().createQuery(hql).uniqueResult();
+    }
 }

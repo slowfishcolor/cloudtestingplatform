@@ -167,6 +167,11 @@ public class DeviceServiceImpl implements DeviceService {
         return OperateResultFactory.successResult();
     }
 
+    @Override
+    public long getDeviceCount() {
+        return 0;
+    }
+
     private MappingModel mappingFromDeviceId(String physicalDeviceId, List<Device> deviceList) {
         MappingModel mappingModel = new MappingModel();
         mappingModel.setName(physicalDeviceId);

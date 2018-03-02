@@ -17,4 +17,6 @@ public interface ModelDao {
     public Model getModel(Integer modelId);
 
     public List<Model> listModelIn(Collection<Integer> idList);
+
+    public Long getModelCount();
 }

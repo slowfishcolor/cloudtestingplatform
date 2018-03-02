@@ -14,4 +14,8 @@ public interface TaskDao {
     public Task getTaskByTaskName(String taskName);
 
     public List<Task> listTaskByUserId(Integer userId, Integer offset, Integer length);
+
+    public Long getTaskCount();
+
+    public Task getNewTask(Integer userId);
 }

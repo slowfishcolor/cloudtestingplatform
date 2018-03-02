@@ -35,4 +35,19 @@ public class TaskDaoImpl extends DaoBase implements TaskDao {
                 .setInteger("uId", userId)
                 .setFirstResult(offset).setMaxResults(length).list();
     }
+
+    @Override
+    public Long getTaskCount() {
+        String hql = "select count (*) from Task";
+        return (Long) currentSession().createQuery(hql).uniqueResult();
+    }
+
+    @Override
+    public Task getNewTask(Integer userId) {
+        String hql = "from Task where userId = :uId order by timestamp desc ";
+        List<Task> rs = currentSession()
+                .createQuery(hql).setInteger("uId", userId)
+                .setFirstResult(0).setMaxResults(1).list();
+        return rs.get(0);
+    }
 }

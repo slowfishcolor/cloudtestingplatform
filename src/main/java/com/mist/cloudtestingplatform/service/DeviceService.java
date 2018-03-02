@@ -26,4 +26,6 @@ public interface DeviceService {
 
     public OperateResult addDevice(NewDevice newDevice, User user);
 
+    public long getDeviceCount();
+
 }
