@@ -29,7 +29,7 @@
     <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h3 class="page-header">ATML描述</h3>
+        <h3 class="page-header">ATML描述<a style="font-size: 18px; margin-left: 18px;" th:text="${device.deviceId}" th:href="'../device-info/' + ${device.getDeviceId()}"> </a></h3>
         <div style="height: 24px;" class="row">
             <div class="col-md-3" ><b>设备ID：</b><span th:text="${device.deviceId}"></span></div>
             <div class="col-md-3" ><b>型号：</b><span th:text="${device.model.name}"></span></div>

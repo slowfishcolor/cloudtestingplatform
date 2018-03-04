@@ -37,11 +37,11 @@
     <div th:replace="~{component-nav-sidebar :: #nav-sidebar}"></div>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h3 class="page-header">控制面板</h3>
+        <h3 class="page-header">控制面板<a style="font-size: 18px; margin-left: 18px;" th:text="${device.deviceId}" th:href="'../device-info/' + ${device.getDeviceId()}"> </a></h3>
 
         <h3 >
             <span th:text="${device.model.getName()}">Device Name</span>
-            <a style="font-size: 18px; margin-left: 18px;" th:text="${device.deviceId}" th:href="'../device-info/' + ${device.getDeviceId()}"> </a>
+
         </h3>
 
         <ul id="myTab" class="nav nav-tabs">
